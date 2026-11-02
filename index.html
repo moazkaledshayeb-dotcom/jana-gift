@@ -2,400 +2,687 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#100913">
-<title>هدية لجنى ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#100815">
+<title>Nox Love • هدية لجنى</title>
 <style>
-:root{--pink:#ff77b7;--bg:#100913;--glass:#ffffff0d}
+:root{--bg:#100815;--pink:#ff83c5;--pink2:#ff4fa8;--purple:#b18aff;--glass:rgba(255,255,255,.075);--line:rgba(255,255,255,.16);--muted:#d8c5dc}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:#fff0f7;font-family:Tahoma,Arial,sans-serif;overflow-x:hidden}
-button,input,textarea{font:inherit}
-button{cursor:pointer;border:0;border-radius:14px;padding:12px 17px;background:linear-gradient(120deg,#ff65aa,#b74bff);color:white;font-weight:bold}
-input,textarea{width:100%;padding:13px;border-radius:12px;border:1px solid #ffffff25;background:#160e1b;color:white;margin:7px 0}
-textarea{min-height:85px;resize:vertical}
-.wrap{width:min(900px,92%);margin:auto}
-.center{min-height:100dvh;display:flex;align-items:center;justify-content:center;text-align:center}
-.panel,.card{background:var(--glass);border:1px solid #ffffff20;border-radius:22px;padding:22px;backdrop-filter:blur(14px);box-shadow:0 12px 45px #0004}
-.panel{width:min(420px,90%);position:relative;z-index:2}
-h1{color:#ffacd5;font-size:clamp(27px,7vw,44px)}
-h2{color:#ffacd5}
-.sub{color:#d8b9ce;line-height:1.9}
+html{scroll-behavior:smooth;scroll-padding-top:18px}
+body{margin:0;background:var(--bg);color:#fff4fb;font-family:Tahoma,Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(ellipse at 15% 10%,#81235b55,transparent 42%),radial-gradient(ellipse at 90% 45%,#5032a355,transparent 45%),linear-gradient(145deg,#100815,#160b21 55%,#09060d)}
+button,input,textarea,select{font:inherit}
+button{border:1px solid #ffffff18;border-radius:14px;padding:12px 17px;background:linear-gradient(120deg,var(--pink2),#9259ed);color:white;font-weight:700;cursor:pointer;transition:transform .2s,filter .2s,box-shadow .2s}
+button:hover{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 8px 25px #ff4fa82b}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+input,textarea,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:#160d20;color:#fff;margin:6px 0 12px}
+textarea{min-height:100px;resize:vertical}
+label{display:block;color:#f2d7eb;font-size:14px;margin-top:8px}
+a{color:#ffc3e4}
 .hidden{display:none!important}
-header{text-align:center;padding:55px 0 25px}
-section{padding:22px 0 35px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px}
-.card{transition:transform .35s,opacity .35s}
-.card.reveal{opacity:0;transform:translateY(22px)}
-.card.reveal.visible{opacity:1;transform:translateY(0)}
-.msg{line-height:1.9;white-space:pre-wrap}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.small{font-size:12px;color:#cbb4c9}
-#floaters{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.heart{position:absolute;bottom:-50px;animation:rise linear forwards;opacity:.7}
-@keyframes rise{to{transform:translateY(-115vh) rotate(35deg);opacity:0}}
-main,header,footer{position:relative;z-index:1}
-footer{text-align:center;padding:45px 12px 35px}
-.signature{font-size:27px;color:#ff9acb;text-shadow:0 0 20px #ff42a8}
-#musicbox{position:fixed;bottom:12px;left:12px;z-index:5;background:#1c1020ed;border:1px solid #ffffff25;border-radius:15px;padding:12px;width:min(300px,calc(100% - 24px))}
-#musicbox button{padding:9px 12px}
-#musicname{font-size:13px;margin-bottom:8px}
-#admin{position:fixed;inset:0;background:#09060bf5;z-index:10;overflow:auto;padding:20px}
-#admin .inner{max-width:700px;margin:auto}
-.admin-trigger{position:fixed;top:6px;left:6px;z-index:6;background:#ffffff09;padding:5px;font-size:11px;opacity:.22}
-.admin-trigger:hover{opacity:1}
-.question{margin:15px 0;padding:14px;border:1px solid #ffffff1c;border-radius:15px}
-.option{display:block;text-align:right;width:100%;margin:7px 0;background:#ffffff0c;border:1px solid #ffffff20}
-.option.selected{background:#9d3676}
-.note{background:#3b253e;padding:12px;border-radius:12px;line-height:1.8}
-a{color:#ffacd5}
+.wrap{width:min(1000px,92%);margin:auto}
+.center-screen{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:22px;position:relative}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:24px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 18px 55px #0004}
+.lock-card{width:min(430px,100%);padding:28px;text-align:center;position:relative;z-index:2;overflow:hidden}
+.lock-card:before{content:"";position:absolute;width:230px;height:230px;border-radius:50%;background:#ff58b31c;filter:blur(30px);top:-100px;right:-70px;pointer-events:none}
+.eyebrow{letter-spacing:2px;font-size:11px;color:#e6b4dc;text-transform:uppercase}
+h1,h2,h3,p{overflow-wrap:anywhere}
+h1{font-size:clamp(30px,8vw,56px);line-height:1.2;color:#ffd0e9;margin:14px 0;text-shadow:0 0 25px #ff55b84d}
+h2{color:#ffc0e1;font-size:clamp(22px,5vw,31px);margin:0 0 12px}
+h3{color:#ffd5eb}
+.sub{color:var(--muted);line-height:1.95}
+.tiny{font-size:12px;color:#cdb9d0;line-height:1.8}
+.hero{min-height:94svh;display:flex;align-items:center;text-align:center;position:relative;overflow:hidden}
+.hero-inner{padding:90px 0 65px;width:100%}
+.hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.19;z-index:-1;mask-image:linear-gradient(to bottom,black 0%,black 70%,transparent 100%)}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#10081544,#100815aa 75%,#100815)}
+.hero-title{animation:riseIn 1.2s both}
+.hero-copy{max-width:660px;margin:16px auto 25px;animation:riseIn 1.6s both}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid #ff9ed044;border-radius:99px;background:#ffffff08;color:#ffe0f0;font-size:13px}
+.actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+.ghost{background:#ffffff0a;border:1px solid #ffffff25}
+section{padding:36px 0 46px}
+.section-head{text-align:center;max-width:690px;margin:0 auto 24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr));gap:15px}
+.card{padding:20px;position:relative;overflow:hidden}
+.card p{line-height:1.9}
+.reveal{opacity:0;transform:translateY(25px) scale(.985);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0) scale(1)}
+.icon{font-size:34px}
+.counter-card{padding:25px;text-align:center}
+.counter-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:20px 0}
+.counter-unit{padding:16px 5px;border:1px solid #ff9dd52c;background:#ffffff08;border-radius:16px}
+.counter-number{display:block;font-size:clamp(23px,6vw,38px);font-weight:800;color:#ffc0e1;font-variant-numeric:tabular-nums}
+.counter-label{display:block;color:#d8bdd6;font-size:12px;margin-top:7px}
+.counter-line{line-height:1.9;color:#f2d5e8}
+.timeline{border-right:2px solid #ff83c588;margin-right:8px;padding-right:19px}
+.timeline .card{margin:16px 0}
+.photo-card{padding:0;overflow:hidden}
+.photo-card img{display:block;width:100%;height:210px;object-fit:cover;transition:transform .7s}
+.photo-card:hover img{transform:scale(1.045)}
+.photo-caption{padding:15px 17px}
+.message-text{white-space:pre-wrap;line-height:2;color:#ffedf7}
+.message-text.closed{display:none}
+.message-card{min-height:160px}
+.quiz-q{padding:17px;border:1px solid #ffffff18;border-radius:17px;margin:14px 0;background:#ffffff05}
+.option{width:100%;display:block;text-align:right;margin:8px 0;background:#ffffff09;border:1px solid #ffffff1b}
+.option.selected{background:#a33c80;border-color:#ffacd8}
+.result{padding:15px;border:1px solid #ff83c544;border-radius:16px;background:#ff83c50b;line-height:1.9}
+.surprise-box{text-align:center;padding:28px}
+.gift-icon{font-size:75px;animation:float 3s ease-in-out infinite}
+footer{text-align:center;padding:60px 12px 100px}
+.signature{font-size:clamp(27px,7vw,42px);font-weight:bold;color:#ff9bd1;text-shadow:0 0 22px #ff4fa86e;margin:10px 0}
+#floaters{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
+.floater{position:absolute;bottom:-70px;animation:floatUp linear forwards;opacity:.7;filter:drop-shadow(0 0 8px #ff64b955)}
+@keyframes floatUp{to{transform:translateY(-115svh) rotate(35deg);opacity:0}}
+@keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+#musicDock{position:fixed;bottom:12px;left:12px;width:min(310px,calc(100% - 24px));z-index:8;padding:13px 14px;border-radius:17px;background:#160b20ed;border:1px solid #ff9dd533;box-shadow:0 10px 40px #0007;backdrop-filter:blur(16px)}
+.music-row{display:flex;align-items:center;gap:8px}
+.music-meta{flex:1;min-width:0}
+#songName{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#songState{font-size:11px;color:#d5bcd7;margin-top:4px}
+.mini-btn{padding:9px 12px}
+#adminBtn{position:fixed;top:7px;left:7px;z-index:12;padding:7px 9px;background:#ffffff09;opacity:.28;font-size:12px}
+#adminBtn:hover{opacity:1}
+#adminOverlay{position:fixed;inset:0;z-index:30;background:#0a0610f5;overflow:auto;padding:18px}
+.admin-inner{max-width:760px;margin:0 auto;padding-bottom:35px}
+.admin-top{display:flex;align-items:center;gap:10px;justify-content:space-between;position:sticky;top:0;background:#0a0610f2;padding:10px 0;z-index:2}
+.admin-block{padding:18px;margin:15px 0}
+.notice{padding:12px 14px;border-radius:12px;background:#39243d;color:#f5d9ed;line-height:1.8;font-size:13px}
+hr{border:0;border-top:1px solid #ffffff18;margin:20px 0}
+.video-frame{width:min(100%,390px);aspect-ratio:9/16;margin:18px auto;border-radius:20px;overflow:hidden;background:#050407;border:1px solid #ff9dd544}
+.video-frame iframe{width:100%;height:100%;border:0}
+.media-video{width:100%;max-height:70svh;border-radius:18px;background:#050407}
+nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:20px auto}
+nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px solid #ffffff15;border-radius:99px;font-size:12px}
+@media(max-width:520px){.counter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lock-card{padding:23px}.card{padding:17px}.hero-inner{padding-top:85px}.counter-unit{padding:14px 4px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<div id="floaters"></div>
+<div id="floaters" aria-hidden="true"></div>
 
-<div id="lock" class="center">
- <div class="panel">
-  <div style="font-size:48px">💌</div>
-  <h1 id="lockTitle">هدية صغيرة لجنى</h1>
-  <p class="sub" id="lockSub">في حاجة حلوة مستنياكي ❤️</p>
-  <form id="unlockForm">
-   <input id="pass" type="password" placeholder="كلمة السر" autocomplete="current-password" required>
-   <button style="width:100%">فتح الهدية ✨</button>
-  </form>
-  <p id="lockError" class="small"></p>
- </div>
+<div id="lockScreen" class="center-screen">
+  <div class="lock-card glass">
+    <div class="eyebrow">A little something for you</div>
+    <div style="font-size:54px;margin:12px">💌</div>
+    <h1 id="lockTitle">هدية مخصوص لجنى</h1>
+    <p class="sub" id="lockSubtitle">في حكاية صغيرة مستنياكي جوه ❤️</p>
+    <form id="unlockForm">
+      <input id="sitePassword" type="password" placeholder="كلمة السر" autocomplete="current-password" required aria-label="كلمة مرور الموقع">
+      <button type="submit" style="width:100%">افتحي الهدية ✨</button>
+    </form>
+    <p id="lockError" class="tiny" aria-live="polite"></p>
+    <p class="tiny">صممت بكل حب • Nox Love</p>
+  </div>
 </div>
 
 <div id="site" class="hidden">
- <button class="admin-trigger" id="adminBtn" aria-label="الإعدادات">⚙️</button>
- <header class="wrap">
-  <div style="font-size:44px">🌹 ❤️ ✨</div>
-  <h1 id="title">إلى جنى، أجمل هدية ❤️</h1>
-  <p class="sub" id="subtitle">كل تفصيلة هنا معمولة مخصوص عشانك.</p>
-  <p>💖 كل ما تنزلي هتلاقي حاجة جديدة 💖</p>
- </header>
-
- <main class="wrap">
-  <section>
-   <h2>💌 رسائل ليكي</h2>
-   <p class="sub">كل رسالة ليها كلامها الخاص… افتحي اللي تحبيه.</p>
-   <div id="messages" class="grid"></div>
+  <button id="adminBtn" aria-label="فتح لوحة الإعدادات">⚙️</button>
+  <section class="hero">
+    <img class="hero-image" id="heroImage" alt="" src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=1800&q=85">
+    <div class="wrap hero-inner">
+      <span class="pill">✦ MADE WITH LOVE ✦</span>
+      <h1 id="heroTitle" class="hero-title">إلى جنى… حكاية صغيرة من قلبي ❤️</h1>
+      <p id="heroSubtitle" class="sub hero-copy">مش مجرد لينك؛ دي مساحة صغيرة فيها كلام وذكريات وتفاصيل معمولة مخصوص ليكي.</p>
+      <div class="actions">
+        <a href="#counter" style="text-decoration:none"><button>شوفي حكايتنا ↓</button></a>
+        <a href="#messages" style="text-decoration:none"><button class="ghost">رسائل مستنياكي 💌</button></a>
+      </div>
+      <p style="font-size:22px;margin-top:28px">♡ ✧ ♡ ✧ ♡</p>
+    </div>
   </section>
 
-  <section>
-   <h2>🎀 إنتِ تعرفيني قد إيه؟</h2>
-   <div class="card" id="quizCard">
-    <p class="sub" id="quizIntro">جاوبي على الأسئلة وشوفي نتيجتك ❤️</p>
-    <div id="quizQuestions"></div>
-    <button id="submitQuiz">احسبي النتيجة وأرسليها لمعاذ 🚀</button>
-    <p id="quizResult" aria-live="polite"></p>
-   </div>
-  </section>
+  <nav class="wrap" aria-label="التنقل داخل الموقع">
+    <a href="#counter">العداد ⏳</a><a href="#story">حكايتنا ✨</a><a href="#gallery">معرض الصور 🌷</a><a href="#messages">الرسائل 💌</a><a href="#quiz">الاختبار 🧠</a><a href="#surprise">مفاجأة 🎁</a><a href="#tiktok">فيديو 🎬</a>
+  </nav>
 
-  <section>
-   <h2>🎶 موسيقى هادية</h2>
-   <div class="card">
-    <p class="sub">شغّلي الموسيقى من زر التشغيل. تقدري تضيفي روابط ملفات صوتية تملكي حق استخدامها من لوحة الإعدادات.</p>
-    <p id="playlistInfo">قائمة التشغيل جاهزة للإعداد 🎵</p>
-   </div>
-  </section>
+  <main class="wrap">
+    <section id="counter">
+      <div class="section-head reveal">
+        <div class="icon">⏳</div><h2>كل ثانية ليها حكاية</h2>
+        <p class="sub" id="counterIntro">وقت بيعد من لحظة مميزة… والتفاصيل بتكمل الحكاية.</p>
+      </div>
+      <div class="glass counter-card reveal">
+        <p class="counter-line" id="counterCaption">من يوم ما بدأت حكايتنا</p>
+        <div class="counter-grid">
+          <div class="counter-unit"><span id="months" class="counter-number">0</span><span class="counter-label">شهر</span></div>
+          <div class="counter-unit"><span id="days" class="counter-number">0</span><span class="counter-label">يوم</span></div>
+          <div class="counter-unit"><span id="hours" class="counter-number">00</span><span class="counter-label">ساعة</span></div>
+          <div class="counter-unit"><span id="minutes" class="counter-number">00</span><span class="counter-label">دقيقة</span></div>
+          <div class="counter-unit"><span id="seconds" class="counter-number">00</span><span class="counter-label">ثانية</span></div>
+          <div class="counter-unit"><span id="weeks" class="counter-number">0</span><span class="counter-label">أسبوع تقريبًا</span></div>
+          <div class="counter-unit"><span id="totalDays" class="counter-number">0</span><span class="counter-label">إجمالي الأيام</span></div>
+          <div class="counter-unit"><span id="totalHours" class="counter-number">0</span><span class="counter-label">إجمالي الساعات</span></div>
+        </div>
+        <p class="tiny">العداد بيتحدث كل ثانية. غيّر تاريخ البداية من لوحة الإعدادات عشان يعكس التاريخ الحقيقي.</p>
+      </div>
+    </section>
 
-  <section style="text-align:center">
-   <h2>💗 كلمة منك</h2>
-   <p class="sub">لو حبيتي تبعتي رأيك في الهدية، اضغطي هنا.</p>
-   <button id="whatsapp">ابعتيلي على واتساب ❤️</button>
-  </section>
- </main>
+    <section id="story">
+      <div class="section-head reveal"><div class="icon">📖</div><h2>محطات في الحكاية</h2><p class="sub">اكتبوا هنا تفاصيل حقيقية من حكايتكم؛ كل محطة ليها معنى مختلف.</p></div>
+      <div id="timeline" class="timeline"></div>
+    </section>
 
- <footer>
-  <div style="font-size:25px">صُنعت بمحبة ❤️</div>
-  <p class="signature">معاذ شعيب</p>
-  <p class="sub">تم التصميم والتطوير بكل حب ❤️</p>
- </footer>
+    <section id="gallery">
+      <div class="section-head reveal"><div class="icon">🌷</div><h2>ركن الصور والذكريات</h2><p class="sub">صور هادية وألوان دافية، وتقدر تغيّر الروابط من لوحة الأدمن.</p></div>
+      <div id="galleryGrid" class="grid"></div>
+    </section>
+
+    <section id="messages">
+      <div class="section-head reveal"><div class="icon">💌</div><h2>عشر رسائل ليكي</h2><p class="sub">كل كارت مقفول لحد ما تضغطي عليه. افتحيهم واحدة واحدة براحتك.</p></div>
+      <div id="messagesGrid" class="grid"></div>
+    </section>
+
+    <section id="quiz">
+      <div class="section-head reveal"><div class="icon">🧠</div><h2>إنتِ تعرفيني قد إيه؟</h2><p class="sub">عشر أسئلة، وكل إجابة بتقرّبنا من النتيجة.</p></div>
+      <div class="glass card reveal">
+        <div id="quizQuestions"></div>
+        <button id="submitQuiz" style="width:100%">احسبي النتيجة وأرسليها لمعاذ 🚀</button>
+        <div id="quizResult" class="result hidden" style="margin-top:15px" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="surprise">
+      <div class="section-head reveal"><div class="icon">🎁</div><h2>صندوق المفاجآت</h2><p class="sub">كل ضغطة تفتحلك رسالة مختلفة.</p></div>
+      <div class="glass surprise-box reveal">
+        <div id="giftIcon" class="gift-icon">🎁</div>
+        <p id="giftText" class="sub">مستعدة تفتحي المفاجأة؟</p>
+        <button id="openGift">افتحي المفاجأة 💖</button>
+      </div>
+    </section>
+
+    <section id="mood">
+      <div class="section-head reveal"><div class="icon">🌙</div><h2>اختاري إحساسك</h2><p class="sub">اختاري الحالة اللي شبهك دلوقتي.</p></div>
+      <div class="grid reveal">
+        <button data-mood="happy">🥰 فرحانة</button><button data-mood="calm">🌙 محتاجة هدوء</button><button data-mood="laugh">😂 عاوزة تضحكي</button><button data-mood="brave">🌷 محتاجة تشجيع</button>
+      </div>
+      <div id="moodResult" class="result hidden" style="margin-top:15px"></div>
+    </section>
+
+    <section id="tiktok">
+      <div class="section-head reveal"><div class="icon">🎬</div><h2>فيديو ليه ذكرى</h2><p class="sub">الصقي رابط فيديو TikTok الكامل لو عاوزة تعرضيه داخل الموقع.</p></div>
+      <div class="glass card reveal">
+        <label for="tiktokUrl">رابط فيديو TikTok</label>
+        <input id="tiktokUrl" placeholder="https://www.tiktok.com/@.../video/..." inputmode="url">
+        <button id="loadTikTok">عرض الفيديو ✨</button>
+        <p id="tiktokError" class="tiny" aria-live="polite"></p>
+        <div id="tiktokPlayer"></div>
+      </div>
+    </section>
+
+    <section id="lastNote">
+      <div class="glass card reveal" style="text-align:center;padding:30px">
+        <div style="font-size:35px">🦋</div>
+        <h2>قبل ما تمشي…</h2>
+        <p id="closingMessage" class="sub">أتمنى كل مرة تفتحي فيها الموقع تلاقي تفصيلة لطيفة ترسم ابتسامة على وشك. ❤️</p>
+        <p class="signature">معاذ شعيب</p>
+        <p class="sub">تم التصميم والتطوير بكل حب ❤️</p>
+        <button id="whatsappBtn">ابعتي رأيك لمعاذ على واتساب 💗</button>
+      </div>
+    </section>
+  </main>
+  <footer><p class="tiny">A little digital gift • Nox Love</p><p style="color:#ffabd7">♡ صُنعت بكل حب ♡</p></footer>
 </div>
 
-<div id="musicbox" class="hidden">
- <div id="musicname">مفيش أغنية مضافة</div>
- <div class="actions">
-  <button id="playMusic">تشغيل 🎶</button>
-  <button id="nextMusic">التالي ⏭</button>
- </div>
- <audio id="audio" preload="none"></audio>
+<div id="musicDock" class="hidden">
+  <div class="music-row">
+    <div class="music-meta"><div id="songName">موسيقى الهدية</div><div id="songState">اختاري تشغيل 🎶</div></div>
+    <button class="mini-btn" id="playBtn">▶</button>
+    <button class="mini-btn ghost" id="nextBtn" aria-label="الأغنية التالية">⏭</button>
+  </div>
+  <audio id="audio" preload="none"></audio>
 </div>
 
-<div id="admin" class="hidden">
- <div class="inner">
-  <div class="actions">
-   <h2 style="flex:1">⚙️ لوحة الإعدادات</h2>
-   <button id="closeAdmin">إغلاق ✕</button>
+<div id="adminOverlay" class="hidden">
+  <div class="admin-inner">
+    <div class="admin-top"><h2>⚙️ لوحة Nox Love</h2><button id="closeAdmin" class="ghost">إغلاق ✕</button></div>
+    <div class="notice">تنبيه مهم: هذه نسخة GitHub Pages تجريبية. الإعدادات وكلمات المرور والنتائج تُحفظ في المتصفح الحالي فقط، وكلمة مرور الأدمن ليست حماية حقيقية لأن الكود ظاهر للزوار. لا تضعي بيانات خاصة هنا. الربط الآمن بين الأجهزة يحتاج قاعدة بيانات ومصادقة منفصلتين.</div>
+
+    <div class="glass admin-block">
+      <h3>🔐 كلمات المرور</h3>
+      <label>كلمة مرور فتح الموقع</label><input id="adminSitePass" type="password">
+      <label>كلمة مرور لوحة الأدمن</label><input id="adminPanelPass" type="password">
+      <button id="savePasswords">حفظ كلمات المرور</button>
+    </div>
+
+    <div class="glass admin-block">
+      <h3>✨ العناوين والمظهر</h3>
+      <label>عنوان شاشة القفل والعنوان الرئيسي</label><input id="adminTitle">
+      <label>الوصف الرئيسي</label><textarea id="adminSubtitle"></textarea>
+      <label>وصف العداد</label><input id="adminCounterIntro">
+      <label>عبارة فوق العداد</label><input id="adminCounterCaption">
+      <label>رسالة الختام</label><textarea id="adminClosing"></textarea>
+      <label>رابط صورة الخلفية (اختياري)</label><input id="adminHeroImage" placeholder="رابط صورة مباشر">
+      <label>رابط فيديو خلفية MP4/WebM مباشر (اختياري)</label><input id="adminBgVideo" placeholder="رابط ملف فيديو مباشر، وليس رابط TikTok">
+      <label>رابط واتساب بصيغة دولية بدون +</label><input id="adminWhatsapp" placeholder="201550660352">
+      <button id="saveAppearance">حفظ المظهر</button>
+    </div>
+
+    <div class="glass admin-block">
+      <h3>⏳ إعداد عداد الوقت</h3>
+      <p class="tiny">اكتب التاريخ الحقيقي اللي عاوز العداد يبدأ منه. مثال: 2025-06-09T18:30</p>
+      <label>تاريخ ووقت البداية</label><input id="adminStartDate" type="datetime-local">
+      <button id="saveCounter">حفظ تاريخ العداد</button>
+    </div>
+
+    <div class="glass admin-block">
+      <h3>📖 محطات الحكاية</h3>
+      <p class="tiny">كل محطة في سطر بالشكل: العنوان | التاريخ أو الوصف | التفاصيل</p>
+      <textarea id="adminTimeline" style="min-height:180px"></textarea>
+      <button id="saveTimeline">حفظ المحطات</button>
+    </div>
+
+    <div class="glass admin-block">
+      <h3>🖼️ معرض الصور</h3>
+      <p class="tiny">كل صورة في سطر: وصف الصورة | رابط صورة مباشر. استخدم صورًا تملك حق نشرها أو صورًا عامة مناسبة.</p>
+      <textarea id="adminGallery" style="min-height:150px"></textarea>
+      <button id="saveGallery">حفظ المعرض</button>
+    </div>
+
+    <div class="glass admin-block">
+      <h3>💌 تعديل الرسائل العشرة</h3>
+      <p class="tiny">كل رسالة في سطر منفصل.</p>
+      <textarea id="adminMessages" style="min-height:240px"></textarea>
+      <button id="saveMessages">حفظ الرسائل</button>
+    </div>
+
+    <div class="glass admin-block">
+      <h3>🎵 قائمة الموسيقى</h3>
+      <p class="tiny">كل سطر: اسم الأغنية | رابط MP3 مباشر. استخدم روابط ملفات تملك حق استخدامها. التشغيل التلقائي قد يُمنع من المتصفح حتى تتفاعل جنى مع زر التشغيل.</p>
+      <textarea id="adminSongs" style="min-height:140px" placeholder="اسم المقطع | https://example.com/audio.mp3"></textarea>
+      <button id="saveSongs">حفظ قائمة الموسيقى</button>
+    </div>
+
+    <div class="glass admin-block">
+      <h3>🧠 تعديل الاختبار</h3>
+      <p class="tiny">10 أسئلة، كل سؤال في سطر: السؤال | اختيار 1 | اختيار 2 | اختيار 3 | رقم الإجابة الصحيحة (1 أو 2 أو 3)</p>
+      <textarea id="adminQuiz" style="min-height:280px"></textarea>
+      <button id="saveQuiz">حفظ الأسئلة</button>
+    </div>
+
+    <div class="glass admin-block">
+      <h3>📊 سجل النتائج على هذا الجهاز</h3>
+      <button id="viewResults">عرض النتائج</button> <button id="clearResults" class="ghost">مسح النتائج المحلية</button>
+      <div id="resultsList"></div>
+    </div>
   </div>
-  <div class="note">
-   هذه نسخة تجريبية: كلمة سر الأدمن والإعدادات هنا داخل المتصفح وليستا حماية حقيقية. لا تضعي بيانات حساسة، وسنضيف المصادقة وقاعدة البيانات لاحقًا.
-  </div>
-
-  <h2>🔐 كلمات المرور</h2>
-  <label>كلمة مرور دخول جنى</label>
-  <input id="cfgPass" type="password">
-  <label>كلمة مرور الأدمن</label>
-  <input id="cfgAdminPass" type="password">
-  <button id="savePasswords">حفظ كلمات المرور</button>
-
-  <h2>✍️ عنوان الموقع</h2>
-  <label>العنوان الرئيسي</label>
-  <input id="cfgTitle">
-  <label>العنوان الفرعي</label>
-  <input id="cfgSubtitle">
-  <label>خلفية صورة أو فيديو (رابط مباشر)</label>
-  <input id="cfgBg" placeholder="https://example.com/image.jpg أو video.mp4">
-  <button id="saveAppearance">حفظ المظهر</button>
-
-  <h2>💌 تعديل الرسائل العشرة</h2>
-  <div id="messageEditor"></div>
-  <button id="saveMessages">حفظ الرسائل</button>
-
-  <h2>🎵 قائمة الأغاني</h2>
-  <p class="small">اكتب اسم كل أغنية ثم | ثم رابط MP3 مباشر، كل أغنية في سطر. يجب أن يكون المصدر مسموحًا ويتيح التشغيل من موقعك.</p>
-  <textarea id="cfgSongs" placeholder="اسم الأغنية | https://example.com/song.mp3"></textarea>
-  <button id="saveSongs">حفظ قائمة الأغاني</button>
-
-  <h2>🧠 إعدادات الاختبار</h2>
-  <p class="small">كل سؤال في سطر منفصل: السؤال | الاختيار الأول | الاختيار الثاني | الاختيار الثالث | رقم الإجابة الصحيحة (1 أو 2 أو 3).</p>
-  <textarea id="cfgQuiz" style="min-height:220px"></textarea>
-  <button id="saveQuiz">حفظ الأسئلة</button>
-
-  <h2>📊 نتائج الاختبار على هذا الجهاز</h2>
-  <p class="small">النتائج هنا محلية على نفس المتصفح فقط، وليست مرئية لك من جهاز آخر.</p>
-  <button id="showResults">عرض النتائج</button>
-  <button id="clearResults" style="background:#71334c">مسح النتائج المحلية</button>
-  <div id="resultsArea"></div>
- </div>
 </div>
 
 <script>
-const $=id=>document.getElementById(id);
-const defaults={
- pass:"1234",
- adminPass:"13451345",
- title:"إلى جنى، أجمل هدية ❤️",
- subtitle:"كل تفصيلة هنا معمولة مخصوص عشانك.",
- bg:"",
- messages:[
- "يا جنى، وجودك بيضيف لحياتي حاجات حلوة كتير ❤️",
- "أتمنى دايمًا تلاقي سبب يخلّي يومك أحلى.",
- "يمكن الكلام ما يوصفش كل اللي جوايا، بس إنتِ غالية عندي.",
- "أجمل حاجة إننا نعرف نسمع بعض ونفهم بعض.",
- "أتمنى لك أيام مليانة راحة وفرح ونجاح 🌷",
- "خليكي دايمًا فخورة بنفسك وبكل خطوة بتعمليها.",
- "لو اليوم كان صعب، أتمنى بكرة يكون ألطف عليكي ✨",
- "ضحكتك وفرحتك حاجات أتمنى أشوفها دايمًا.",
- "شكرًا على اللحظات الحلوة والكلام الجميل 💌",
- "دي هديتي الصغيرة ليكي، وأتمنى إنها ترسم ابتسامة على وشك ❤️"
- ],
- songs:[],
- quiz:[
- ["إيه اللون اللي بحبه أكتر؟","الأسود","الأزرق","الأحمر",1],
- ["إيه أكتر حاجة بحب أعملها؟","البرمجة","الرسم","الطبخ",1],
- ["أنا بحب الهدوء ولا الدوشة؟","الهدوء","الدوشة","الاتنين بالتساوي",1],
- ["إيه أكتر حاجة بتفرحني؟","كلام حلو من شخص غالي","الهدايا الغالية","النوم طول اليوم",1],
- ["لو عندي وقت فاضي أختار إيه؟","أتعلم حاجة جديدة","أفضل زهقان","أسيب كل حاجة",1],
- ["إيه أكتر صفة مهمة عندي؟","الصدق","المظاهر","المنافسة",1],
- ["بحب أتعلم عن إيه؟","التكنولوجيا","الزراعة فقط","الفلك فقط",1],
- ["إيه أفضل طريقة لحل مشكلة؟","أفكر بهدوء","أستعجل","أتجاهلها دائمًا",1],
- ["إيه اللي يهمني في الكلام؟","الصراحة والاحترام","الكلام الكتير","المجاملة فقط",1],
- ["إيه اللي أتمنى لك دايمًا؟","الفرح والنجاح","التعب","القلق",1]
- ]
+(() => {
+"use strict";
+const $ = id => document.getElementById(id);
+const defaultConfig = {
+  sitePass:"1234", adminPass:"13451345",
+  title:"إلى جنى… حكاية صغيرة من قلبي ❤️",
+  subtitle:"مش مجرد لينك؛ دي مساحة صغيرة فيها كلام وذكريات وتفاصيل معمولة مخصوص ليكي.",
+  counterIntro:"وقت بيعد من لحظة مميزة… والتفاصيل بتكمل الحكاية.",
+  counterCaption:"من يوم ما بدأت حكايتنا",
+  startDate:"2025-06-09T18:30",
+  closing:"أتمنى كل مرة تفتحي فيها الموقع تلاقي تفصيلة لطيفة ترسم ابتسامة على وشك. ❤️",
+  heroImage:"https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=1800&q=85",
+  bgVideo:"",
+  whatsapp:"201550660352",
+  timeline:[
+    ["البداية ✨","أول ذكرى","اكتب هنا التاريخ والتفاصيل الحقيقية لبداية حكايتكم."],
+    ["لحظة مميزة 💌","ذكرى تانية","ضيف موقف جميل أو كلام ليه معنى خاص عندكم."],
+    ["ضحكة مش بتتنسي 🌷","ذكرى تالتة","اكتب موقف مضحك بتفتكروه سوا."],
+    ["والحكاية مكملة 🦋","اللي جاي","أمنية حلوة للمستقبل من غير وعود أو ضغط."]
+  ],
+  gallery:[
+    ["ورود هادية","https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=80"],
+    ["سماء وقت الغروب","https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=80"],
+    ["نجوم وليل","https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?auto=format&fit=crop&w=900&q=80"],
+    ["وردة وردية","https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=900&q=80"]
+  ],
+  messages:[
+    "يا جنى، دي هدية صغيرة معمولة مخصوص عشان ترسم ابتسامة على وشك ❤️",
+    "أتمنى تلاقي في كل يوم حاجة بسيطة تفرح قلبك 🌷",
+    "وجود الناس اللي بنرتاح معاهم نعمة تستاهل التقدير.",
+    "خليكي دايمًا فخورة بنفسك وبكل خطوة بتعمليها ✨",
+    "حتى الأيام العادية ممكن تبقى أحلى بذكرى لطيفة.",
+    "أتمنى أحلامك تكبر معاكي وتوصليلها واحدة واحدة 🦋",
+    "خليكي على طبيعتك؛ مفيش أجمل من الصدق والراحة.",
+    "لو يومك كان صعب، أتمنى بكرة يكون ألطف وأهدى 🌙",
+    "شكرًا على كل لحظة حلوة وكل كلمة لطيفة 💌",
+    "دي مش نهاية الحكاية، دي صفحة صغيرة من ذكريات جميلة ❤️"
+  ],
+  songs:[],
+  quiz:[
+    ["إيه اللون اللي بحبه أكتر؟","الأسود","الأزرق","الأحمر",1],
+    ["إيه أكتر مجال بيشدني؟","التكنولوجيا","الطبخ","الرسم",1],
+    ["أنا بحب أتعلم حاجات جديدة؟","أيوه","لأ","مش أبدًا",1],
+    ["إيه الأهم في الكلام؟","الصدق والاحترام","المظاهر","المجاملة بس",1],
+    ["لو عندي مشكلة أعمل إيه؟","أفكر وأحاول أحلها","أستعجل","أتجاهلها دايمًا",1],
+    ["إيه صفة بحبها في الناس؟","الوفاء","التكبر","عدم الاهتمام",1],
+    ["بحب الهدوء أحيانًا؟","أيوه","لأ أبدًا","مستحيل",1],
+    ["إيه اللي أتمنّاه للي بحبهم؟","الخير والنجاح","التعب","القلق",1],
+    ["إيه أفضل طريقة للتفاهم؟","نسمع بعض باحترام","نزعق","نتجاهل بعض",1],
+    ["إيه رأيي في التفاصيل الصغيرة؟","ممكن تفرق جدًا","ملهاش أي معنى","مش مهمة أبدًا",1]
+  ]
 };
-let cfg;
-try{cfg={...defaults,...JSON.parse(localStorage.getItem("janaSiteConfig")||"{}")}}catch(e){cfg={...defaults}}
-let answers={},questionIndex=0,currentSong=0;
+let config;
+try {
+  const stored = JSON.parse(localStorage.getItem("noxLoveConfig") || "{}");
+  config = {...defaultConfig,...stored};
+} catch { config = {...defaultConfig}; }
+let answers = {};
+let songIndex = 0;
+let bgVideoElement = null;
+const fallbackImage = defaultConfig.heroImage;
 
-function saveCfg(){localStorage.setItem("janaSiteConfig",JSON.stringify(cfg))}
-function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function safeUrl(s){try{let u=new URL(s);return ["https:","http:"].includes(u.protocol)?u.href:""}catch(e){return ""}}
-
-function makeHearts(){
- const box=$("floaters");
- const icons=["❤️","💖","💌","🌹","✨","🥰","💘","💓","🌷"];
- for(let i=0;i<22;i++){
-  const h=document.createElement("span");
-  h.className="heart";h.textContent=icons[Math.floor(Math.random()*icons.length)];
-  h.style.left=Math.random()*100+"%";
-  h.style.fontSize=(13+Math.random()*21)+"px";
-  h.style.animationDuration=(7+Math.random()*12)+"s";
-  h.style.animationDelay=(-Math.random()*16)+"s";
-  box.appendChild(h);
- }
+function saveConfig(){localStorage.setItem("noxLoveConfig",JSON.stringify(config));}
+function esc(value){return String(value ?? "").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
+function safeHttpUrl(value){
+  try { const u=new URL(String(value)); return ["https:","http:"].includes(u.protocol)?u.href:""; }
+  catch { return ""; }
 }
-makeHearts();
-
-function applyBackground(){
- document.body.style.background=cfg.bg?"#100913":"var(--bg)";
- document.querySelectorAll(".custom-bg").forEach(x=>x.remove());
- const url=safeUrl(cfg.bg||"");if(!url)return;
- if(/\.(mp4|webm|ogg)(\?.*)?$/i.test(url)){
-  const v=document.createElement("video");v.src=url;v.autoplay=true;v.loop=true;v.muted=true;v.playsInline=true;
-  v.className="custom-bg";v.style.cssText="position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.3";
-  document.body.prepend(v);
- }else{
-  const d=document.createElement("div");d.className="custom-bg";
-  d.style.cssText="position:fixed;inset:0;background:linear-gradient(#10091399,#100913cc),url('"+url.replace(/'/g,"%27")+"') center/cover;z-index:-2";
-  document.body.prepend(d);
- }
+function setText(id,value){$(id).textContent=value ?? "";}
+function parseLines(value,minimum){
+  const rows=value.split("\n").map(s=>s.trim()).filter(Boolean).map(s=>s.split("|").map(x=>x.trim()));
+  return rows.filter(row=>row.length>=minimum);
 }
-function renderSiteText(){
- $("title").textContent=cfg.title;
- $("subtitle").textContent=cfg.subtitle;
- $("lockTitle").textContent=cfg.title;
- $("lockSub").textContent=cfg.subtitle;
- applyBackground();
-}
-
-function renderMessages(){
- $("messages").innerHTML=cfg.messages.map((m,i)=>`
- <article class="card reveal">
-  <h3>💌 رسالة رقم ${i+1}</h3>
-  <p class="msg hidden" id="msg${i}">${escapeHTML(m)}</p>
-  <button data-msg="${i}">فتح الرسالة 💗</button>
- </article>`).join("");
- $("messages").querySelectorAll("button").forEach(b=>b.onclick=()=>{
-  const p=$("msg"+b.dataset.msg);p.classList.toggle("hidden");
-  b.textContent=p.classList.contains("hidden")?"فتح الرسالة 💗":"إخفاء الرسالة";
- });
- setupReveals();
+function renderFloaters(){
+  const root=$("floaters"), emojis=["❤️","💖","💌","🌹","✨","💘","💓","🌷","🦋"];
+  for(let i=0;i<22;i++){
+    const el=document.createElement("span");
+    el.className="floater";el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    el.style.left=(Math.random()*100)+"%";el.style.fontSize=(14+Math.random()*22)+"px";
+    el.style.animationDuration=(9+Math.random()*13)+"s";el.style.animationDelay=(-Math.random()*20)+"s";
+    root.appendChild(el);
+  }
 }
 function setupReveals(){
- if(!("IntersectionObserver" in window)){
-  document.querySelectorAll(".reveal").forEach(x=>x.classList.add("visible"));return;
- }
- const io=new IntersectionObserver(entries=>entries.forEach(e=>{
-  if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target)}
- }),{threshold:.12});
- document.querySelectorAll(".reveal").forEach(x=>io.observe(x));
+  const cards=document.querySelectorAll(".reveal:not([data-observed])");
+  if(!("IntersectionObserver" in window)){cards.forEach(el=>el.classList.add("visible"));return;}
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target);}
+  }),{threshold:.12});
+  cards.forEach(el=>{el.dataset.observed="1";observer.observe(el);});
 }
-
+function renderConfigText(){
+  setText("lockTitle",config.title);setText("heroTitle",config.title);
+  setText("lockSubtitle",config.subtitle);setText("heroSubtitle",config.subtitle);
+  setText("counterIntro",config.counterIntro);setText("counterCaption",config.counterCaption);
+  setText("closingMessage",config.closing);
+  const image=safeHttpUrl(config.heroImage)||fallbackImage;
+  $("heroImage").src=image;
+  if(bgVideoElement){bgVideoElement.remove();bgVideoElement=null;}
+  const videoUrl=safeHttpUrl(config.bgVideo);
+  if(videoUrl && /\.(mp4|webm|ogg)(\?.*)?$/i.test(videoUrl)){
+    bgVideoElement=document.createElement("video");
+    bgVideoElement.src=videoUrl;bgVideoElement.autoplay=true;bgVideoElement.loop=true;
+    bgVideoElement.muted=true;bgVideoElement.playsInline=true;bgVideoElement.className="hero-image";
+    bgVideoElement.style.opacity=".25";bgVideoElement.setAttribute("aria-hidden","true");
+    $("site").querySelector(".hero").prepend(bgVideoElement);
+    bgVideoElement.play().catch(()=>{});
+  }
+}
+function renderTimeline(){
+  $("timeline").innerHTML=config.timeline.map((item,i)=>`
+    <article class="glass card reveal">
+      <span class="pill">MEMORY ${String(i+1).padStart(2,"0")}</span>
+      <h3>${esc(item[0])}</h3><p class="tiny">${esc(item[1])}</p><p class="sub">${esc(item[2])}</p>
+    </article>`).join("");
+  setupReveals();
+}
+function renderGallery(){
+  $("galleryGrid").innerHTML=config.gallery.map((item,i)=>{
+    const url=safeHttpUrl(item[1]);
+    return `<article class="glass photo-card reveal">
+      ${url?`<img src="${esc(url)}" alt="${esc(item[0])}" loading="lazy" onerror="this.style.display='none'">`:`<div style="height:170px;display:grid;place-items:center;font-size:45px">🌷</div>`}
+      <div class="photo-caption"><h3>${esc(item[0])}</h3><p class="tiny">ذكرى لطيفة • ${i+1}</p></div>
+    </article>`;
+  }).join("");
+  setupReveals();
+}
+function renderMessages(){
+  $("messagesGrid").innerHTML=config.messages.map((message,i)=>`
+    <article class="glass card message-card reveal">
+      <div class="icon">💌</div><h3>رسالة ${i+1}</h3>
+      <p id="message-${i}" class="message-text closed">${esc(message)}</p>
+      <button class="ghost" data-open-message="${i}">افتحي الرسالة ✨</button>
+    </article>`).join("");
+  $("messagesGrid").querySelectorAll("[data-open-message]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const p=$("message-"+btn.dataset.openMessage);
+      p.classList.toggle("closed");
+      btn.textContent=p.classList.contains("closed")?"افتحي الرسالة ✨":"اقفلي الرسالة 💗";
+    });
+  });
+  setupReveals();
+}
 function renderQuiz(){
- answers={};
- $("quizResult").textContent="";
- $("quizQuestions").innerHTML=cfg.quiz.map((q,i)=>`
- <div class="question">
- <strong>${i+1}. ${escapeHTML(q[0])}</strong>
- ${q.slice(1,4).map((o,j)=>`<button class="option" data-q="${i}" data-a="${j+1}">${j+1}. ${escapeHTML(o)}</button>`).join("")}
- </div>`).join("");
- $("quizQuestions").querySelectorAll(".option").forEach(b=>b.onclick=()=>{
-  const qi=+b.dataset.q;answers[qi]=+b.dataset.a;
-  document.querySelectorAll('[data-q="'+qi+'"]').forEach(x=>x.classList.remove("selected"));
-  b.classList.add("selected");
- });
+  answers={};
+  $("quizResult").classList.add("hidden");
+  $("quizQuestions").innerHTML=config.quiz.map((q,i)=>`
+    <div class="quiz-q">
+      <strong>${i+1}. ${esc(q[0])}</strong>
+      ${q.slice(1,4).map((choice,j)=>`<button class="option" type="button" data-q="${i}" data-a="${j+1}">${j+1}. ${esc(choice)}</button>`).join("")}
+    </div>`).join("");
+  $("quizQuestions").querySelectorAll("[data-q]").forEach(btn=>btn.addEventListener("click",()=>{
+    const q=Number(btn.dataset.q);answers[q]=Number(btn.dataset.a);
+    $("quizQuestions").querySelectorAll(`[data-q="${q}"]`).forEach(b=>b.classList.remove("selected"));
+    btn.classList.add("selected");
+  }));
 }
-$("submitQuiz").onclick=()=>{
- if(Object.keys(answers).length!==cfg.quiz.length){
-  $("quizResult").textContent="جاوبي على كل الأسئلة الأول ❤️";return;
- }
- let correct=0;
- cfg.quiz.forEach((q,i)=>{if(answers[i]===+q[4])correct++});
- const score=Math.round(correct/cfg.quiz.length*100);
- const record={date:new Date().toLocaleString("ar-EG"),score,correct,total:cfg.quiz.length,answers:cfg.quiz.map((q,i)=>({question:q[0],answer:q[answers[i]],correct:answers[i]===+q[4]}))};
- let results=[];try{results=JSON.parse(localStorage.getItem("janaQuizResults")||"[]")}catch(e){}
- results.push(record);localStorage.setItem("janaQuizResults",JSON.stringify(results));
- $("quizResult").textContent=`إنتِ تعرفيني بنسبة ${score}% ❤️ (${correct} من ${cfg.quiz.length})`;
- const body=`نتيجة اختبار جنى: ${score}% (${correct}/${cfg.quiz.length})`;
- const wa="https://wa.me/201550660352?text="+encodeURIComponent(body);
- const a=document.createElement("a");a.href=wa;a.target="_blank";a.rel="noopener";a.textContent="إرسال النتيجة على واتساب";
- a.style.cssText="display:inline-block;margin-top:12px;color:#ffacd5";
- $("quizResult").appendChild(document.createElement("br"));$("quizResult").appendChild(a);
-};
-
-function parseSongs(){
- return (cfg.songs||[]).map(s=>{
-  const p=s.split("|");return {name:(p[0]||"أغنية").trim(),url:safeUrl((p[1]||"").trim())};
- }).filter(s=>s.url);
+function readResults(){try{return JSON.parse(localStorage.getItem("noxLoveResults")||"[]");}catch{return [];}}
+function submitQuiz(){
+  if(Object.keys(answers).length!==config.quiz.length){
+    $("quizResult").textContent="جاوبي على كل الأسئلة الأول عشان نحسب النتيجة ❤️";
+    $("quizResult").classList.remove("hidden");return;
+  }
+  let correct=0;
+  const detail=config.quiz.map((q,i)=>{
+    const ok=answers[i]===Number(q[4]);if(ok)correct++;
+    return {question:q[0],answer:q[answers[i]],correct:ok};
+  });
+  const score=Math.round(correct/config.quiz.length*100);
+  const record={date:new Date().toISOString(),score,correct,total:config.quiz.length,detail};
+  const results=readResults();results.push(record);localStorage.setItem("noxLoveResults",JSON.stringify(results));
+  const box=$("quizResult");box.replaceChildren();box.classList.remove("hidden");
+  const title=document.createElement("h3");title.textContent=`إنتِ تعرفيني بنسبة ${score}% ❤️`;
+  const desc=document.createElement("p");desc.textContent=`إجابات صحيحة: ${correct} من ${config.quiz.length}.`;
+  box.append(title,desc);
+  const wa=document.createElement("a");wa.href="https://wa.me/"+config.whatsapp+"?text="+encodeURIComponent(`نتيجة اختبار جنى: ${score}% (${correct}/${config.quiz.length}) ❤️`);wa.target="_blank";wa.rel="noopener";wa.textContent="إرسال النتيجة على واتساب";
+  box.appendChild(wa);
 }
+function parseSongs(){return (config.songs||[]).map(row=>({name:(row[0]||"موسيقى").trim(),url:safeHttpUrl(row[1]||"")})).filter(x=>x.url);}
 function renderSongs(){
- const songs=parseSongs();
- $("musicbox").classList.toggle("hidden",!songs.length);
- $("playlistInfo").textContent=songs.length?`تم إعداد ${songs.length} أغنية 🎵`:"أضيفي روابط الأغاني من لوحة الإعدادات.";
- if(!songs.length){$("audio").removeAttribute("src");$("musicname").textContent="مفيش أغنية مضافة";return}
- if(currentSong>=songs.length)currentSong=0;
- $("musicname").textContent=songs[currentSong].name;
- $("audio").src=songs[currentSong].url;
+  const songs=parseSongs();$("musicDock").classList.toggle("hidden",songs.length===0);
+  if(!songs.length){$("audio").pause();$("audio").removeAttribute("src");setText("songName","أضيفي رابط موسيقى من لوحة الأدمن");setText("songState","الموسيقى غير مضافة");return;}
+  if(songIndex>=songs.length)songIndex=0;
+  setText("songName",songs[songIndex].name);setText("songState","جاهزة للتشغيل 🎶");
+  $("audio").src=songs[songIndex].url;
 }
-$("playMusic").onclick=async()=>{
- const a=$("audio");
- if(a.paused){try{await a.play();$("playMusic").textContent="إيقاف مؤقت ⏸"}catch(e){$("musicname").textContent="تعذر التشغيل؛ تأكدي من رابط الصوت."}}
- else{a.pause();$("playMusic").textContent="تشغيل 🎶"}
-};
-$("audio").addEventListener("ended",()=>{
- const s=parseSongs();if(!s.length)return;
- currentSong=(currentSong+1)%s.length;renderSongs();
- $("audio").play().catch(()=>{$("musicname").textContent+=" — اضغطي تشغيل"});
+async function playAudio(){
+  const audio=$("audio");
+  if(!audio.src){setText("songState","أضيفي رابط ملف صوتي صالح من لوحة الأدمن");return;}
+  if(audio.paused){
+    try{await audio.play();setText("songState","بتشتغل دلوقتي ♫");$("playBtn").textContent="Ⅱ";}
+    catch{setText("songState","المتصفح منع التشغيل؛ اضغطي تشغيل مرة تانية.");}
+  }else{audio.pause();setText("songState","متوقفة مؤقتًا");$("playBtn").textContent="▶";}
+}
+$("playBtn").addEventListener("click",playAudio);
+$("nextBtn").addEventListener("click",()=>{
+  const songs=parseSongs();if(!songs.length)return;
+  songIndex=(songIndex+1)%songs.length;renderSongs();playAudio();
 });
-$("audio").addEventListener("pause",()=>{$("playMusic").textContent="تشغيل 🎶"});
-$("audio").addEventListener("play",()=>{$("playMusic").textContent="إيقاف مؤقت ⏸"});
-$("nextMusic").onclick=()=>{
- const s=parseSongs();if(!s.length)return;
- currentSong=(currentSong+1)%s.length;renderSongs();
- $("audio").play().catch(()=>{});
-};
-$("whatsapp").onclick=()=>window.open("https://wa.me/201550660352?text="+encodeURIComponent("الموقع عجبني جداً يا معاذ! ❤️"),"_blank","noopener");
-
-function openAdmin(){
- const p=prompt("كلمة مرور لوحة التحكم");
- if(p!==cfg.adminPass){alert("كلمة المرور غير صحيحة");return}
- $("admin").classList.remove("hidden");fillAdmin();
+$("audio").addEventListener("ended",()=>{
+  const songs=parseSongs();if(!songs.length)return;
+  songIndex=(songIndex+1)%songs.length;renderSongs();playAudio();
+});
+$("audio").addEventListener("pause",()=>{$("playBtn").textContent="▶";});
+$("audio").addEventListener("play",()=>{$("playBtn").textContent="Ⅱ";setText("songState","بتشتغل دلوقتي ♫");});
+function updateCounter(){
+  const start=new Date(config.startDate);
+  const now=new Date();
+  if(Number.isNaN(start.getTime()))return;
+  let ms=Math.max(0,now-start);
+  let totalSeconds=Math.floor(ms/1000),totalMinutes=Math.floor(totalSeconds/60),totalHours=Math.floor(totalMinutes/60),totalDays=Math.floor(totalHours/24);
+  let years=now.getFullYear()-start.getFullYear();
+  let months=now.getMonth()-start.getMonth()+years*12;
+  if(now.getDate()<start.getDate())months--;
+  months=Math.max(0,months);
+  const remainderMs=now>=start?ms:0;
+  const days= Math.floor(remainderMs/86400000);
+  const hours=Math.floor(totalSeconds/3600)%24;
+  const minutes=Math.floor(totalSeconds/60)%60;
+  const seconds=totalSeconds%60;
+  setText("months",months.toLocaleString("en-US"));
+  setText("days",days.toLocaleString("en-US"));
+  setText("hours",String(hours).padStart(2,"0"));
+  setText("minutes",String(minutes).padStart(2,"0"));
+  setText("seconds",String(seconds).padStart(2,"0"));
+  setText("weeks",Math.floor(totalDays/7).toLocaleString("en-US"));
+  setText("totalDays",totalDays.toLocaleString("en-US"));
+  setText("totalHours",totalHours.toLocaleString("en-US"));
 }
-$("adminBtn").onclick=openAdmin;
-$("closeAdmin").onclick=()=>$("admin").classList.add("hidden");
+const surprises=[
+  "أتمنى تلاقي النهارده سبب صغير يفرح قلبك ❤️",
+  "دي رسالة بتقولك إن التفاصيل الصغيرة ممكن تبقى جميلة جدًا 🌷",
+  "خليكي فخورة بنفسك وبالطريق اللي بتكمليه ✨",
+  "أتمنى أيامك الجاية تكون أهدى وأحلى 🦋",
+  "ابتسامة صغيرة منك ممكن تغيّر شكل يوم كامل 💗"
+];
+$("openGift").addEventListener("click",()=>{
+  $("giftIcon").textContent=["💖","🌹","🦋","✨","💌"][Math.floor(Math.random()*5)];
+  $("giftText").textContent=surprises[Math.floor(Math.random()*surprises.length)];
+  $("openGift").textContent="افتحي مفاجأة تانية 🎁";
+});
+const moods={
+ happy:"يا رب الفرحة دي تفضل معاكي طول اليوم 🥰",
+ calm:"خدي وقتك واهدي شوية؛ مش لازم كل حاجة تتحل مرة واحدة 🌙",
+ laugh:"افتكري موقف مضحك حصل بينكم أو حاجة بتضحكك 😂",
+ brave:"خطوة صغيرة كل يوم ممكن توصلك لحاجة كبيرة. إنتِ قدها 🌷"
+};
+document.querySelectorAll("[data-mood]").forEach(btn=>btn.addEventListener("click",()=>{
+  $("moodResult").textContent=moods[btn.dataset.mood]||"أتمنى يومك يكون لطيف ❤️";
+  $("moodResult").classList.remove("hidden");
+}));
+$("whatsappBtn").addEventListener("click",()=>{
+  const number=String(config.whatsapp||"201550660352").replace(/\D/g,"");
+  window.open("https://wa.me/"+number+"?text="+encodeURIComponent("الموقع عجبني جداً يا معاذ! ❤️"),"_blank","noopener");
+});
+$("loadTikTok").addEventListener("click",()=>{
+  const raw=$("tiktokUrl").value.trim();let u;
+  try{u=new URL(raw);}catch{$("tiktokError").textContent="حطّي رابط فيديو صحيح الأول.";return;}
+  const host=u.hostname.toLowerCase();
+  if(!(host==="tiktok.com"||host.endsWith(".tiktok.com"))){$("tiktokError").textContent="ده مش رابط TikTok.";return;}
+  const match=u.pathname.match(/\/video\/(\d+)/);
+  if(!match){$("tiktokError").textContent="الرابط المختصر قد لا يعمل هنا؛ افتحي الفيديو وانسخي الرابط الكامل.";return;}
+  $("tiktokError").textContent="";
+  const box=$("tiktokPlayer");box.replaceChildren();
+  const frame=document.createElement("div");frame.className="video-frame";
+  const iframe=document.createElement("iframe");
+  iframe.src="https://www.tiktok.com/player/v1/"+match[1]+"?controls=1";
+  iframe.title="TikTok video";iframe.allow="fullscreen";iframe.allowFullscreen=true;iframe.loading="lazy";
+  frame.appendChild(iframe);box.appendChild(frame);
+});
 
+function askAdmin(){
+  const attempt=prompt("كلمة مرور لوحة الأدمن");
+  if(attempt===null)return;
+  if(attempt!==config.adminPass){alert("كلمة المرور غير صحيحة");return;}
+  fillAdmin();$("adminOverlay").classList.remove("hidden");
+}
+$("adminBtn").addEventListener("click",askAdmin);
+$("closeAdmin").addEventListener("click",()=>$("adminOverlay").classList.add("hidden"));
 function fillAdmin(){
- $("cfgPass").value=cfg.pass;$("cfgAdminPass").value=cfg.adminPass;
- $("cfgTitle").value=cfg.title;$("cfgSubtitle").value=cfg.subtitle;$("cfgBg").value=cfg.bg;
- $("messageEditor").innerHTML=cfg.messages.map((m,i)=>`<label>الرسالة ${i+1}</label><textarea data-editmsg="${i}">${escapeHTML(m)}</textarea>`).join("");
- $("cfgSongs").value=(cfg.songs||[]).join("\n");
- $("cfgQuiz").value=cfg.quiz.map(q=>q.join(" | ")).join("\n");
+  $("adminSitePass").value=config.sitePass;$("adminPanelPass").value=config.adminPass;
+  $("adminTitle").value=config.title;$("adminSubtitle").value=config.subtitle;
+  $("adminCounterIntro").value=config.counterIntro;$("adminCounterCaption").value=config.counterCaption;
+  $("adminClosing").value=config.closing;$("adminHeroImage").value=config.heroImage;
+  $("adminBgVideo").value=config.bgVideo;$("adminWhatsapp").value=config.whatsapp;
+  $("adminStartDate").value=config.startDate;
+  $("adminTimeline").value=config.timeline.map(x=>x.join(" | ")).join("\n");
+  $("adminGallery").value=config.gallery.map(x=>x.join(" | ")).join("\n");
+  $("adminMessages").value=config.messages.join("\n");
+  $("adminSongs").value=(config.songs||[]).map(x=>x.join(" | ")).join("\n");
+  $("adminQuiz").value=config.quiz.map(x=>x.join(" | ")).join("\n");
 }
-$("savePasswords").onclick=()=>{
- if(!$("cfgPass").value||!$("cfgAdminPass").value){alert("اكتبي كلمتي مرور");return}
- cfg.pass=$("cfgPass").value;cfg.adminPass=$("cfgAdminPass").value;saveCfg();alert("تم الحفظ على هذا المتصفح فقط");
-};
-$("saveAppearance").onclick=()=>{
- cfg.title=$("cfgTitle").value;cfg.subtitle=$("cfgSubtitle").value;cfg.bg=$("cfgBg").value;saveCfg();renderSiteText();alert("تم حفظ المظهر");
-};
-$("saveMessages").onclick=()=>{
- cfg.messages=[...$("messageEditor").querySelectorAll("textarea")].map(x=>x.value);
- saveCfg();renderMessages();alert("تم حفظ الرسائل");
-};
-$("saveSongs").onclick=()=>{
- cfg.songs=$("cfgSongs").value.split("\n").map(x=>x.trim()).filter(Boolean);
- saveCfg();currentSong=0;renderSongs();alert("تم حفظ قائمة التشغيل");
-};
-$("saveQuiz").onclick=()=>{
- const rows=$("cfgQuiz").value.split("\n").map(s=>s.split("|").map(x=>x.trim())).filter(a=>a.length>=5);
- if(rows.length!==10||rows.some(q=>!q[0]||!q[1]||!q[2]||!q[3]||!["1","2","3"].includes(q[4]))){
-  alert("لازم تدخلي 10 أسئلة، ولكل سؤال 3 اختيارات ورقم إجابة صحيحة من 1 إلى 3.");return;
- }
- cfg.quiz=rows.map(q=>[q[0],q[1],q[2],q[3],+q[4]]);
- saveCfg();renderQuiz();alert("تم حفظ الأسئلة");
-};
-$("showResults").onclick=()=>{
- let r=[];try{r=JSON.parse(localStorage.getItem("janaQuizResults")||"[]")}catch(e){}
- $("resultsArea").innerHTML=r.length?r.slice().reverse().map(x=>`
- <div class="card" style="margin:12px 0">
- <strong>${escapeHTML(x.date)}</strong><p>النتيجة: ${x.score}% (${x.correct}/${x.total})</p>
- ${x.answers.map(a=>`<p>${escapeHTML(a.question)}<br>الإجابة: ${escapeHTML(a.answer)} ${a.correct?"✅":"❌"}</p>`).join("")}
- </div>`).join(""):"<p>مفيش نتائج محفوظة على هذا الجهاز.</p>";
-};
-$("clearResults").onclick=()=>{
- if(confirm("متأكد إنك عايز تمسح كل النتائج المحلية؟")){localStorage.removeItem("janaQuizResults");$("resultsArea").innerHTML=""}
-};
-$("unlockForm").onsubmit=e=>{
- e.preventDefault();
- if($("pass").value===cfg.pass){
-  $("lock").classList.add("hidden");$("site").classList.remove("hidden");renderSiteText();
- }else{$("lockError").textContent="كلمة السر مش صحيحة، جربي تاني ❤️"}
-};
-
-renderSiteText();renderMessages();renderQuiz();renderSongs();
+$("savePasswords").addEventListener("click",()=>{
+  const a=$("adminSitePass").value,b=$("adminPanelPass").value;
+  if(!a||!b){alert("اكتب كلمتي مرور غير فارغتين.");return;}
+  config.sitePass=a;config.adminPass=b;saveConfig();alert("اتحفظت على المتصفح الحالي فقط.");
+});
+$("saveAppearance").addEventListener("click",()=>{
+  config.title=$("adminTitle").value.trim()||defaultConfig.title;
+  config.subtitle=$("adminSubtitle").value.trim();
+  config.counterIntro=$("adminCounterIntro").value.trim();
+  config.counterCaption=$("adminCounterCaption").value.trim();
+  config.closing=$("adminClosing").value.trim();
+  config.heroImage=safeHttpUrl($("adminHeroImage").value)||fallbackImage;
+  config.bgVideo=safeHttpUrl($("adminBgVideo").value);
+  config.whatsapp=$("adminWhatsapp").value.replace(/\D/g,"")||"201550660352";
+  saveConfig();renderConfigText();alert("اتحفظ المظهر.");
+});
+$("saveCounter").addEventListener("click",()=>{
+  const date=$("adminStartDate").value;
+  if(!date||Number.isNaN(new Date(date).getTime())){alert("اختار تاريخ بداية صحيح.");return;}
+  config.startDate=date;saveConfig();updateCounter();alert("اتحفظ تاريخ العداد.");
+});
+$("saveTimeline").addEventListener("click",()=>{
+  const rows=parseLines($("adminTimeline").value,3);
+  if(!rows.length){alert("اكتب محطة واحدة على الأقل بالشكل المطلوب.");return;}
+  config.timeline=rows.map(x=>x.slice(0,3));saveConfig();renderTimeline();alert("اتحفظت المحطات.");
+});
+$("saveGallery").addEventListener("click",()=>{
+  const rows=parseLines($("adminGallery").value,2);
+  config.gallery=rows.map(x=>[x[0],safeHttpUrl(x[1])]).filter(x=>x[1]);
+  saveConfig();renderGallery();alert("اتحفظ المعرض.");
+});
+$("saveMessages").addEventListener("click",()=>{
+  const rows=$("adminMessages").value.split("\n").map(x=>x.trim()).filter(Boolean);
+  if(rows.length!==10){alert("لازم تدخل 10 رسائل بالضبط، كل رسالة في سطر.");return;}
+  config.messages=rows;saveConfig();renderMessages();alert("اتحفظت الرسائل العشرة.");
+});
+$("saveSongs").addEventListener("click",()=>{
+  const rows=parseLines($("adminSongs").value,2);
+  config.songs=rows.map(x=>[x[0],safeHttpUrl(x[1])]).filter(x=>x[1]);
+  songIndex=0;saveConfig();renderSongs();alert("اتحفظت قائمة الموسيقى. جرّب زر التشغيل للتأكد من الروابط.");
+});
+$("saveQuiz").addEventListener("click",()=>{
+  const rows=parseLines($("adminQuiz").value,5);
+  if(rows.length!==10||rows.some(x=>!x[0]||!x[1]||!x[2]||!x[3]||!["1","2","3"].includes(x[4]))){
+    alert("لازم 10 أسئلة، 3 اختيارات لكل سؤال، ورقم إجابة صحيحة 1 أو 2 أو 3.");return;
+  }
+  config.quiz=rows.map(x=>[x[0],x[1],x[2],x[3],Number(x[4])]);
+  saveConfig();renderQuiz();alert("اتحفظ الاختبار.");
+});
+$("viewResults").addEventListener("click",()=>{
+  const results=readResults().slice().reverse(),root=$("resultsList");root.replaceChildren();
+  if(!results.length){root.textContent="مفيش نتائج محفوظة على المتصفح ده.";return;}
+  results.forEach(r=>{
+    const card=document.createElement("div");card.className="glass card";card.style.margin="12px 0";
+    const date=document.createElement("p");date.textContent=new Date(r.date).toLocaleString("ar-EG");
+    const score=document.createElement("h3");score.textContent=`${r.score}% — ${r.correct}/${r.total}`;
+    card.append(date,score);
+    (r.detail||[]).forEach(item=>{const p=document.createElement("p");p.className="tiny";p.textContent=(item.correct?"✓ ":"✗ ")+item.question+" — "+item.answer;card.appendChild(p);});
+    root.appendChild(card);
+  });
+});
+$("clearResults").addEventListener("click",()=>{
+  if(confirm("تمسح النتائج المحفوظة محليًا من هذا المتصفح؟")){localStorage.removeItem("noxLoveResults");$("resultsList").textContent="تم مسح النتائج المحلية.";}
+});
+$("unlockForm").addEventListener("submit",async event=>{
+  event.preventDefault();
+  if($("sitePassword").value!==config.sitePass){setText("lockError","كلمة السر مش صحيحة، جربي تاني ❤️");return;}
+  $("lockScreen").classList.add("hidden");$("site").classList.remove("hidden");
+  renderConfigText();updateCounter();setupReveals();
+  const songs=parseSongs();
+  if(songs.length){
+    // Autoplay is attempted only after the user's password submission.
+    renderSongs();
+    try{await $("audio").play();setText("songState","بتشتغل دلوقتي ♫");}
+    catch{setText("songState","اضغطي ▶ لتشغيل الموسيقى");}
+  }
+});
+renderFloaters();renderConfigText();renderTimeline();renderGallery();renderMessages();renderQuiz();renderSongs();
+updateCounter();setInterval(updateCounter,1000);
+})();
 </script>
 </body>
-</html>
+ </html>
