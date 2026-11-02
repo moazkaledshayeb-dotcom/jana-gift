@@ -43,7 +43,7 @@
         #site-lock {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(10, 10, 22, 0.96);
+            background: rgba(10, 10, 22, 0.98);
             z-index: 9999;
             display: flex;
             justify-content: center;
@@ -101,7 +101,7 @@
             100% { transform: translateY(-10vh) scale(1.3) rotate(360deg); opacity: 0; }
         }
 
-        /* حاوية الموقع الكبيرة */
+        /* حاوية الموقع الرئيسية */
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -109,7 +109,7 @@
             position: relative;
             z-index: 2;
             text-align: center;
-            display: none; /* تفتح بعد كلمة السر */
+            display: none; /* تفتح بعد إدخال الباسورد */
         }
 
         header {
@@ -129,7 +129,7 @@
             color: var(--text-sub);
         }
 
-        /* مشغل أغانى تامر عاشور */
+        /* مشغل الأغاني */
         .music-box {
             background: var(--glass-bg);
             backdrop-filter: blur(12px);
@@ -143,7 +143,7 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
 
-        /* كروت الرسائل ذات الأنيميشن والفتح/الإخفاء */
+        /* كروت الرسائل المخفية */
         .section-title {
             font-size: 2rem;
             margin: 40px 0 20px 0;
@@ -208,7 +208,7 @@
             color: #f9f9f9;
         }
 
-        /* قسم لعبة الأسئلة "إنت تعرفني قد إيه؟" */
+        /* قسم لعبة الأسئلة */
         .quiz-section {
             background: var(--glass-bg);
             backdrop-filter: blur(15px);
@@ -297,7 +297,7 @@
             letter-spacing: 1px;
         }
 
-        /* زر الإعدادات المخفي (الترس الصغير جداً) */
+        /* زر الإعدادات المخفي */
         .admin-trigger {
             position: fixed;
             bottom: 10px;
@@ -368,7 +368,7 @@
 </head>
 <body>
 
-    <!-- شاشة كلمة السر عند الدخول -->
+    <!-- شاشة كلمة السر للدخول -->
     <div id="site-lock">
         <div class="lock-box">
             <h2 style="color: var(--secondary); margin-bottom: 15px;">🔒 دخول خاص جداً</h2>
@@ -378,20 +378,20 @@
         </div>
     </div>
 
-    <!-- خلفية ميديا -->
+    <!-- خلفية الفيديو أو الصور -->
     <video id="bg-media" autoplay muted loop playsinline><source src="" type="video/mp4"></video>
     <div class="bg-overlay"></div>
 
-    <!-- القلوب والرموز المتطايرة -->
+    <!-- القلوب وإيموجي الحب المتطايرة -->
     <div class="hearts-container" id="heartsContainer"></div>
 
-    <!-- مشغل أغانى تامر عاشور -->
+    <!-- مشغل الصوتيات -->
     <audio id="bg-audio" preload="auto"></audio>
 
     <div class="container" id="main-container">
         <header>
             <h1 id="main-title">عالمنا الخاص لجنى ❤️</h1>
-            <p class="subtitle" id="main-subtitle">موقع مصمم بكل حب وعشق خصيصاً ليكِ</p>
+            <p class="subtitle" id="main-subtitle">موقع مصمم بكل حب وغرام خصيصاً ليكِ</p>
             
             <div class="music-box">
                 <span id="now-playing" style="font-size: 0.95rem;">🎵 تامر عاشور - إحساس عالي</span>
@@ -399,11 +399,11 @@
             </div>
         </header>
 
-        <!-- قسم الـ 10 رسائل المخفية -->
+        <!-- قسم الرسائل الـ 10 المخفية -->
         <h2 class="section-title">💌 رسائل من صميم قلبي</h2>
         <div class="messages-grid" id="messagesContainer"></div>
 
-        <!-- قسم لعبة الأسئلة "إنت تعرفني قد إيه؟" -->
+        <!-- قسم لعبة الأسئلة -->
         <div class="quiz-section">
             <h2 style="color: var(--secondary); margin-bottom: 15px; text-align: center;">🎮 إنتِ تعرفيني قد إيه؟</h2>
             <p style="text-align: center; margin-bottom: 25px; color: #ddd;">اختبري نفسك وشوفي هتعرفي إجاباتي بنسبة كام في المية!</p>
@@ -416,7 +416,7 @@
             </div>
         </div>
 
-        <!-- قسم الواتساب والتوقيع -->
+        <!-- زر الواتساب والتوقيع -->
         <div class="whatsapp-section">
             <h3 style="margin-bottom: 12px; font-size: 1.4rem;">عجبك الموقع تعالى قوليلى واتس 💬</h3>
             <a href="https://wa.me/201550660352?text=الموقع%20عجبني%20جداً%20يا%20معاذ!%20❤️" target="_blank" class="btn btn-whatsapp">
@@ -428,10 +428,10 @@
         </div>
     </div>
 
-    <!-- زر الترس المخفي جداً للوصول للوحة التحكم -->
+    <!-- زر الترس المخفي للتحكم -->
     <button class="admin-trigger" onclick="openAdmin()">⚙️</button>
 
-    <!-- لوحة التحكم المتطورة -->
+    <!-- لوحة التحكم -->
     <div id="admin-modal">
         <div class="modal-content">
             <h2>لوحة التحكم الخاصة بك</h2>
@@ -469,7 +469,7 @@
     </div>
 
     <script>
-        // إيموجي حب متنوعة للقلوب والرموز المتطايرة
+        // إيموجي حب متنوعة للقلوب المتطايرة
         const symbols = ['❤️', '💖', '💌', '🌹', '✨', '🥰', '💘', '💓', '🌷'];
         function createSymbol() {
             const container = document.getElementById('heartsContainer');
@@ -483,7 +483,6 @@
         }
         setInterval(createSymbol, 300);
 
-        // البيانات الإفتراضية الشاملة
         let defaultMessages = [
             "وجودك في حياتي بيخلي كل الأيام منورة وأحلى بكتير.",
             "بابتسامتك بتنسيني كل تعب ومشاكل اليوم بحاله.",
@@ -510,7 +509,7 @@
             { q: "مستقبلنا سوا هيكون عامل إزاي؟", options: ["أجمل حياة", "كلنا نجاح", "عالم خاص بينا", "كل ماسبق"], correct: 3 }
         ];
 
-        let siteData = JSON.parse(localStorage.getItem('jana_ultimate_site')) || {
+        let siteData = JSON.parse(localStorage.getItem('jana_ultimate_site_v3')) || {
             sitePass: "1234",
             title: "عالمنا الخاص لجنى ❤️",
             subtitle: "موقع مصمم بكل حب وغرام خصيصاً ليكِ",
@@ -524,27 +523,26 @@
             logs: []
         };
 
-        // فتح الموقع بكلمة المرور
+        // دالة فتح الموقع المضبوطة تماماً
         function unlockSite() {
-            const entered = document.getElementById('site-password-input').value;
+            const entered = document.getElementById('site-password-input').value.trim();
             if(entered === siteData.sitePass) {
                 document.getElementById('site-lock').style.display = 'none';
                 document.getElementById('main-container').style.display = 'block';
                 renderSite();
                 playPlaylist();
             } else {
-                alert("كلمة المرور خطأ يا فنان، جربي تاني! ❤️");
+                alert("كلمة المرور خطأ يا فنان! (الباسورد الافتراضي هو 1234)");
             }
         }
 
-        // مشغل الأغاني المتتالي
         let currentTrack = 0;
         const audioPlayer = document.getElementById('bg-audio');
 
         function playPlaylist() {
             if (!siteData.playlist || siteData.playlist.length === 0) return;
             audioPlayer.src = siteData.playlist[currentTrack];
-            audioPlayer.play().catch(e => console.log("التفاعل مطلوب لتشغيل الصوت"));
+            audioPlayer.play().catch(e => console.log("التفاعل مطلوب للصوت"));
             
             audioPlayer.onended = function() {
                 currentTrack = (currentTrack + 1) % siteData.playlist.length;
@@ -559,4 +557,9 @@
             } else {
                 audioPlayer.pause();
                 document.getElementById('now-playing').innerText = "⏸️ الموسيقى متوقفة";
-      
+            }
+        }
+
+        function renderSite() {
+            document.getElementById('main-title').innerText = siteData.title;
+            document.getElementB
