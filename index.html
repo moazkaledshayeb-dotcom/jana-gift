@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>هدية خاصة جداً - لجنى ❤️</title>
+    <title>عالمنا الخاص لجنى ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #ff3366;
-            --secondary-color: #ff66b2;
-            --whatsapp-color: #25D366;
-            --bg-dark: #0f0f1a;
-            --glass-bg: rgba(255, 255, 255, 0.12);
-            --text-color: #ffffff;
+            --primary: #ff3366;
+            --secondary: #ff66b2;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --text: #ffffff;
+            --text-sub: #f0f0f0;
         }
 
         * {
@@ -23,256 +23,316 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-color);
+            background: linear-gradient(135deg, #0a0a16, #1c0b1a, #0f0f1a);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            padding-bottom: 50px;
+            padding-bottom: 60px;
         }
 
-        /* خلفية الفيديو أو الصور */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* شاشة حماية كلمة السر لفتح الموقع */
+        #site-lock {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 10, 22, 0.96);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .lock-box {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 25px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        /* خلفية الفيديو والصور */
         #bg-media {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover;
             z-index: -2;
-            opacity: 0.45;
+            opacity: 0.35;
         }
 
         .bg-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(15,15,26,0.85), rgba(40,10,30,0.9));
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(20,10,25,0.7) 0%, rgba(10,10,22,0.95) 100%);
             z-index: -1;
         }
 
-        /* القلوب المتطايرة */
+        /* القلوب وإيموجي الحب المتطايرة */
         .hearts-container {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
             z-index: 1;
         }
 
-        .heart {
+        .floating-symbol {
             position: absolute;
-            color: var(--primary-color);
-            font-size: 22px;
-            animation: flyHeart 5s linear infinite;
-            opacity: 0.8;
+            font-size: 24px;
+            animation: flyUp 6s linear infinite;
+            opacity: 0.75;
         }
 
-        @keyframes flyHeart {
-            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+        @keyframes flyUp {
+            0% { transform: translateY(105vh) scale(0.4) rotate(0deg); opacity: 0; }
             50% { opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.3); opacity: 0; }
+            100% { transform: translateY(-10vh) scale(1.3) rotate(360deg); opacity: 0; }
         }
 
-        /* حاوية الموقع الرئيسية */
+        /* حاوية الموقع الكبيرة */
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
             position: relative;
             z-index: 2;
             text-align: center;
+            display: none; /* تفتح بعد كلمة السر */
         }
 
         header {
-            margin: 35px 0;
+            margin: 40px 0;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: #ff4d88;
-            text-shadow: 0 0 15px rgba(255, 51, 102, 0.6);
-            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 51, 102, 0.7);
             font-weight: 900;
+            margin-bottom: 10px;
         }
 
         p.subtitle {
-            font-size: 1.1rem;
-            color: #e6e6e6;
+            font-size: 1.2rem;
+            color: var(--text-sub);
         }
 
-        /* مشغل الأغاني البصري */
-        .music-player-box {
+        /* مشغل أغانى تامر عاشور */
+        .music-box {
             background: var(--glass-bg);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 15px 20px;
-            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 12px 25px;
+            border-radius: 30px;
             margin: 20px auto;
             display: inline-flex;
             align-items: center;
             gap: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
 
-        .music-player-box button {
-            background: var(--primary-color);
+        /* كروت الرسائل ذات الأنيميشن والفتح/الإخفاء */
+        .section-title {
+            font-size: 2rem;
+            margin: 40px 0 20px 0;
+            color: var(--secondary);
+            text-shadow: 0 0 10px rgba(255,102,178,0.4);
+        }
+
+        .messages-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .msg-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 20px 25px;
+            text-align: right;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .msg-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .msg-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .msg-header h3 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+        }
+
+        .toggle-btn {
+            background: var(--primary);
             color: white;
             border: none;
-            padding: 8px 15px;
+            padding: 6px 15px;
             border-radius: 15px;
             cursor: pointer;
+            font-size: 0.9rem;
             font-weight: bold;
         }
 
-        /* بطاقات الرسائل الـ 10 */
-        .messages-section {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            margin: 35px 0;
+        .msg-body {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #f9f9f9;
         }
 
-        .message-card {
+        /* قسم لعبة الأسئلة "إنت تعرفني قد إيه؟" */
+        .quiz-section {
             background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 22px;
-            border-radius: 18px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 30px;
+            margin: 50px 0;
             text-align: right;
-            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
-        .message-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--secondary-color);
+        .quiz-question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .message-card h3 {
-            color: var(--secondary-color);
-            margin-bottom: 8px;
-            font-size: 1.25rem;
+        .quiz-question h4 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
         }
 
-        .message-card p {
-            line-height: 1.6;
-            font-size: 1.05rem;
+        .quiz-options label {
+            display: block;
+            background: rgba(255,255,255,0.05);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid transparent;
         }
 
-        /* قسم الألعاب التفاعلية */
-        .games-section {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 25px;
-            margin: 35px 0;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .quiz-options label:hover {
+            background: rgba(255, 51, 102, 0.15);
+            border-color: var(--primary);
+        }
+
+        .quiz-options input {
+            margin-left: 10px;
+        }
+
+        /* قسم الواتس والتوقيع */
+        .whatsapp-section {
+            margin: 50px 0 20px 0;
+            padding: 30px;
+            background: rgba(37, 211, 102, 0.12);
+            border: 1px solid rgba(37, 211, 102, 0.35);
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
         }
 
         .btn {
-            background: linear-gradient(45deg, var(--primary-color), #ff6699);
+            background: linear-gradient(45deg, var(--primary), #ff6699);
             color: white;
             border: none;
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
-            transition: all 0.3s ease;
-            margin: 10px 5px;
+            box-shadow: 0 6px 20px rgba(255, 51, 102, 0.5);
+            transition: 0.3s;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            display: inline-block;
+            margin: 10px;
         }
 
         .btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(255, 51, 102, 0.6);
-        }
-
-        /* قسم الواتساب والتوقيع */
-        .whatsapp-section {
-            margin: 40px 0 20px 0;
-            padding: 25px;
-            background: rgba(37, 211, 102, 0.1);
-            border: 1px solid rgba(37, 211, 102, 0.3);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(255, 51, 102, 0.7);
         }
 
         .btn-whatsapp {
             background: linear-gradient(45deg, #25D366, #128C7E);
-            color: white;
-            font-size: 1.1rem;
-            padding: 15px 30px;
-            border-radius: 35px;
-            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.4);
-        }
-
-        .btn-whatsapp:hover {
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
         }
 
         .signature {
-            margin-top: 30px;
-            font-size: 2.2rem;
+            margin-top: 35px;
+            font-size: 2.5rem;
             font-weight: 900;
             color: #ffffff;
-            text-shadow: 0 0 20px rgba(255, 51, 102, 0.8), 0 0 10px #ff3366;
+            text-shadow: 0 0 25px rgba(255, 51, 102, 0.9);
             letter-spacing: 1px;
         }
 
-        .signature-sub {
-            font-size: 1rem;
-            color: var(--secondary-color);
-            margin-top: 5px;
-        }
-
-        /* زر لوحة التحكم والترس */
+        /* زر الإعدادات المخفي (الترس الصغير جداً) */
         .admin-trigger {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(15, 15, 26, 0.8);
-            border: 2px solid var(--primary-color);
-            color: white;
-            padding: 12px 15px;
-            border-radius: 50%;
+            bottom: 10px;
+            left: 10px;
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.15);
+            padding: 10px;
             cursor: pointer;
             z-index: 100;
-            font-size: 1.3rem;
-            box-shadow: 0 0 15px rgba(255,51,102,0.5);
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .admin-trigger:hover {
+            color: rgba(255,255,255,0.8);
         }
 
         /* مودال لوحة التحكم */
         #admin-modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.88);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
             z-index: 1000;
             justify-content: center;
             align-items: center;
         }
 
         .modal-content {
-            background: #161626;
-            padding: 25px;
+            background: #151525;
+            padding: 30px;
             border-radius: 20px;
             width: 90%;
-            max-width: 500px;
-            border: 1px solid var(--primary-color);
+            max-width: 600px;
+            border: 1px solid var(--primary);
             text-align: right;
             max-height: 85vh;
             overflow-y: auto;
@@ -282,138 +342,210 @@
             width: 100%;
             padding: 10px;
             margin: 8px 0 15px 0;
-            background: rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.07);
             border: 1px solid rgba(255,255,255,0.2);
             color: white;
             border-radius: 8px;
         }
 
-        .close-modal {
+        .close-btn {
             background: #e63946;
+            float: left;
+        }
+
+        .answers-log {
+            background: rgba(0,0,0,0.4);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: 0.95rem;
+            color: #ff99cc;
+            text-align: right;
         }
     </style>
 </head>
 <body>
 
-    <!-- خلفية الفيديو أو الصورة -->
-    <video id="bg-media" autoplay muted loop playsinline>
-        <source src="" type="video/mp4">
-    </video>
+    <!-- شاشة كلمة السر عند الدخول -->
+    <div id="site-lock">
+        <div class="lock-box">
+            <h2 style="color: var(--secondary); margin-bottom: 15px;">🔒 دخول خاص جداً</h2>
+            <p style="margin-bottom: 15px; color: #ddd; font-size: 0.95rem;">أدخلي كلمة المرور المخصصة لجنى لمعاينة الهدية:</p>
+            <input type="password" id="site-password-input" placeholder="اكتبي كلمة السر هنا..." style="width:100%; padding:12px; border-radius:10px; border:1px solid #ff3366; background:rgba(255,255,255,0.1); color:white; text-align:center; margin-bottom:15px; font-size:1.1rem;">
+            <button class="btn" onclick="unlockSite()" style="width:100%; margin:0;">فتح الهدية ✨</button>
+        </div>
+    </div>
+
+    <!-- خلفية ميديا -->
+    <video id="bg-media" autoplay muted loop playsinline><source src="" type="video/mp4"></video>
     <div class="bg-overlay"></div>
 
-    <!-- القلوب المتحركة -->
+    <!-- القلوب والرموز المتطايرة -->
     <div class="hearts-container" id="heartsContainer"></div>
 
-    <!-- مشغل الأغاني الخفي والمتتالي -->
+    <!-- مشغل أغانى تامر عاشور -->
     <audio id="bg-audio" preload="auto"></audio>
 
-    <div class="container">
+    <div class="container" id="main-container">
         <header>
-            <h1 id="main-title">عالم من الحب لجنى ❤️</h1>
-            <p class="subtitle" id="main-subtitle">موقع تم تصميمه خصيصاً ليكِ بكل حب وعناية</p>
+            <h1 id="main-title">عالمنا الخاص لجنى ❤️</h1>
+            <p class="subtitle" id="main-subtitle">موقع مصمم بكل حب وعشق خصيصاً ليكِ</p>
             
-            <!-- أداة التحكم بالصوت -->
-            <div class="music-player-box">
-                <span id="now-playing" style="font-size: 0.9rem;">🎵 جاري تشغيل الأغاني...</span>
-                <button onclick="toggleMusic()">تشغيل / إيقاف 🎶</button>
+            <div class="music-box">
+                <span id="now-playing" style="font-size: 0.95rem;">🎵 تامر عاشور - إحساس عالي</span>
+                <button class="toggle-btn" onclick="toggleMusic()">تشغيل / إيقاف 🎶</button>
             </div>
         </header>
 
-        <!-- قسم الـ 10 رسائل -->
-        <div class="messages-section" id="messagesContainer"></div>
+        <!-- قسم الـ 10 رسائل المخفية -->
+        <h2 class="section-title">💌 رسائل من صميم قلبي</h2>
+        <div class="messages-grid" id="messagesContainer"></div>
 
-        <!-- قسم الألعاب التفاعلية -->
-        <div class="games-section">
-            <h2>🎮 مساحة المرح والألعاب</h2>
-            <p style="margin: 15px 0; color: #ddd;">اضغطي على الزر تحت عشان تشوفي رسالة سرية جديدة أو مفاجأة!</p>
-            <button class="btn" onclick="revealSecret()">اضغطي لهدية مفاجئة ✨</button>
-            <p id="secret-box" style="margin-top: 15px; font-weight: bold; color: #ff99cc; font-size: 1.1rem; min-height: 25px;"></p>
+        <!-- قسم لعبة الأسئلة "إنت تعرفني قد إيه؟" -->
+        <div class="quiz-section">
+            <h2 style="color: var(--secondary); margin-bottom: 15px; text-align: center;">🎮 إنتِ تعرفيني قد إيه؟</h2>
+            <p style="text-align: center; margin-bottom: 25px; color: #ddd;">اختبري نفسك وشوفي هتعرفي إجاباتي بنسبة كام في المية!</p>
+            
+            <div id="quizForm"></div>
+            
+            <div style="text-align: center; margin-top: 25px;">
+                <button class="btn" onclick="calculateQuizScore()">احسبي النتيجة وارسلها لمعاذ 🚀</button>
+                <h3 id="quiz-result-text" style="margin-top: 20px; color: #ff99cc; font-size: 1.3rem;"></h3>
+            </div>
         </div>
 
-        <!-- قسم زرار الواتس والتوقيع -->
+        <!-- قسم الواتساب والتوقيع -->
         <div class="whatsapp-section">
-            <h3 style="margin-bottom: 12px; font-size: 1.3rem;">عجبك الموقع تعالى قوليلى واتس 💬</h3>
+            <h3 style="margin-bottom: 12px; font-size: 1.4rem;">عجبك الموقع تعالى قوليلى واتس 💬</h3>
             <a href="https://wa.me/201550660352?text=الموقع%20عجبني%20جداً%20يا%20معاذ!%20❤️" target="_blank" class="btn btn-whatsapp">
                 تحدثي معي على واتساب الآن 💚
             </a>
             
             <div class="signature">معاذ شعيب</div>
-            <div class="signature-sub">تم التصميم والتطوير بكل حب ❤️</div>
+            <div style="color: var(--secondary); margin-top: 5px; font-size: 1.05rem;">صُنِع بكل حب وغرام ❤️</div>
         </div>
     </div>
 
-    <!-- زر الترس لوحة التحكم -->
+    <!-- زر الترس المخفي جداً للوصول للوحة التحكم -->
     <button class="admin-trigger" onclick="openAdmin()">⚙️</button>
 
-    <!-- لوحة التحكم -->
+    <!-- لوحة التحكم المتطورة -->
     <div id="admin-modal">
         <div class="modal-content">
-            <h2>لوحة تحكم الموقع</h2>
-            <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 12px;">كلمة المرور: 13451345</p>
+            <h2>لوحة التحكم الخاصة بك</h2>
+            <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 12px;">الباسورد الافتراضي للتحكم: 13451345</p>
             
             <div id="login-box">
-                <input type="password" id="admin-pass" placeholder="أدخل كلمة المرور...">
+                <input type="password" id="admin-pass" placeholder="أدخل كلمة مرور الأدمن...">
                 <button class="btn" onclick="checkPassword()">دخول</button>
-                <button class="btn close-modal" onclick="closeAdmin()">إغلاق</button>
+                <button class="btn close-btn" onclick="closeAdmin()">إغلاق</button>
             </div>
 
             <div id="controls-box" style="display:none;">
+                <label>كلمة مرور دخول الموقع (لجنى):</label>
+                <input type="text" id="site-pass-config">
+
                 <label>رابط صورة أو فيديو الخلفية:</label>
-                <input type="text" id="bg-url-input" placeholder="ضع رابط مباشر للصورة أو الفيديو">
+                <input type="text" id="bg-url-input" placeholder="رابط مباشر للصورة أو الفيديو">
                 
-                <label>تعديل العنوان الرئيسي:</label>
+                <label>العنوان الرئيسي:</label>
                 <input type="text" id="title-input">
 
-                <label>روابط الأغاني (اكتب كل رابط أغنية MP3 في سطر لوحده):</label>
-                <textarea id="playlist-input" rows="4" placeholder="حط روابط أغانيك هنا..."></textarea>
+                <label>روابط أغاني تامر عاشور (MP3 في كل سطر):</label>
+                <textarea id="playlist-input" rows="3"></textarea>
 
-                <label>تعديل الـ 10 رسائل (كل رسالة في سطر):</label>
-                <textarea id="messages-input" rows="7"></textarea>
+                <label>الـ 10 رسائل (اكتب كل رسالة في سطر):</label>
+                <textarea id="messages-input" rows="6"></textarea>
 
-                <button class="btn" onclick="saveChanges()">حفظ التعديلات فوراً</button>
-                <button class="btn close-modal" onclick="closeAdmin()">إغلاق</button>
+                <h3 style="color:var(--secondary); margin-top:15px;">إجابات جنى على الأسئلة الواردة:</h3>
+                <div class="answers-log" id="answersLogContainer">لا توجد إجابات مسجلة بعد.</div>
+
+                <button class="btn" onclick="saveChanges()" style="margin-top:15px;">حفظ التعديلات فوراً</button>
+                <button class="btn close-btn" onclick="closeAdmin()" style="margin-top:15px;">إغلاق</button>
             </div>
         </div>
     </div>
 
     <script>
-        // نظام تشغيل الأغاني المتتالية (Playlist)
-        let defaultPlaylist = [
-            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+        // إيموجي حب متنوعة للقلوب والرموز المتطايرة
+        const symbols = ['❤️', '💖', '💌', '🌹', '✨', '🥰', '💘', '💓', '🌷'];
+        function createSymbol() {
+            const container = document.getElementById('heartsContainer');
+            const sym = document.createElement('div');
+            sym.classList.add('floating-symbol');
+            sym.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+            sym.style.left = Math.random() * 100 + 'vw';
+            sym.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            container.appendChild(sym);
+            setTimeout(() => sym.remove(), 7000);
+        }
+        setInterval(createSymbol, 300);
+
+        // البيانات الإفتراضية الشاملة
+        let defaultMessages = [
+            "وجودك في حياتي بيخلي كل الأيام منورة وأحلى بكتير.",
+            "بابتسامتك بتنسيني كل تعب ومشاكل اليوم بحاله.",
+            "أنتي أقرب شخص لقلبي ودايماً في بالي وفكري.",
+            "ربنا يخليكي ليا وما يحرمنيش من ضحكتك وصوتك أبداً.",
+            "مهما الكل غاب، أنتي السند والفرحة الحقيقية.",
+            "كل ثانية معاكي بحس إني امتلكت الدنيا وما فيها.",
+            "عيونك هما الأمان والراحة بتاعتي في الدنيا دي.",
+            "شكراً لأنك دايماً جنبي وبتدعميني بكل حب.",
+            "ربنا يكتب لنا كل الأيام والسنين الحلوة سوا في الحلال.",
+            "بحبك، وهفضل أحبك دايماً لأخر عمرى ❤️"
         ];
 
-        let siteData = JSON.parse(localStorage.getItem('jana_site_data_v4')) || {
-            title: "عالم من الحب لجنى ❤️",
-            subtitle: "موقع تم تصميمه خصيصاً ليكِ بكل حب وعناية",
+        let defaultQuestions = [
+            { q: "إيه أكتر أكلة بحبها؟", options: ["بيتزا", "كشري", "مكرونة بشاميل", "مشاوي"], correct: 2 },
+            { q: "تاريخ أول مرة تكلمنا فيه كان شهر كام؟", options: ["يناير", "يوليو", "سبتمبر", "نوفمبر"], correct: 1 },
+            { q: "أكتر صفة بحبها فيكي إيه؟", options: ["طيبتك وعفويتك", "ضحكتك", "ذكائك", "كل ماسبق"], correct: 3 },
+            { q: "لونك المفضل اللي بحبه عليكي إيه؟", options: ["الأسود", "الأحمر", "الزهري", "الأبيض"], correct: 0 },
+            { q: "لو خيروني بين العالم وبينك هختار إيه؟", options: ["العالم طبعا", "انتي أكيد", "نص ونصف", "محتار"], correct: 1 },
+            { q: "أكتر مكان بحب نقعد فيه مع بعض؟", options: ["الكافيه", "البحر", "البيت", "الشارع"], correct: 1 },
+            { q: "أغنية تامر عاشور المفضلة ليا؟", options: ["تيجي تبقي جنبي", "بصراحه", "كل يوم في عمري", "الهوا صفا"], correct: 0 },
+            { q: "أكتر كلمة بقولهالك دايماً؟", options: ["بحبك", "يا عبيطة", "ربنا يخليكي", "وحشتيني"], correct: 0 },
+            { q: "أكتر حاجة تعصبني؟", options: ["التأخير", "العناد", "الزعل", "الكدب"], correct: 3 },
+            { q: "مستقبلنا سوا هيكون عامل إزاي؟", options: ["أجمل حياة", "كلنا نجاح", "عالم خاص بينا", "كل ماسبق"], correct: 3 }
+        ];
+
+        let siteData = JSON.parse(localStorage.getItem('jana_ultimate_site')) || {
+            sitePass: "1234",
+            title: "عالمنا الخاص لجنى ❤️",
+            subtitle: "موقع مصمم بكل حب وغرام خصيصاً ليكِ",
             bgUrl: "",
-            playlist: defaultPlaylist,
-            messages: [
-                "وجودك في حياتي بيخلي كل حاجة منورة وأحلى.",
-                "بابتسامتك بتنسيني كل تعب اليوم والمشاكل.",
-                "أنتي أقرب شخص لقلبي ودايماً في بالي وفكري.",
-                "ربنا يخليكي ليا وما يحرمنيش من ضحكتك أبداً.",
-                "مهما الكل غاب، أنتي السند والفرحة والحب.",
-                "كل يوم معاكي بحس إنه بداية جديدة وأجمل.",
-                "عيونك هما الأمان والراحة بتعتي في الدنيا دي.",
-                "شكراً لأنك دايماً جنبي وبتدعميني بجد.",
-                "ربنا يكتب لنا كل الأيام والسنين الحلوة سوا.",
-                "بحبك، وهفضل أحبك دايماً لأخر العمر ❤️"
-            ]
+            playlist: [
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+            ],
+            messages: defaultMessages,
+            questions: defaultQuestions,
+            logs: []
         };
 
+        // فتح الموقع بكلمة المرور
+        function unlockSite() {
+            const entered = document.getElementById('site-password-input').value;
+            if(entered === siteData.sitePass) {
+                document.getElementById('site-lock').style.display = 'none';
+                document.getElementById('main-container').style.display = 'block';
+                renderSite();
+                playPlaylist();
+            } else {
+                alert("كلمة المرور خطأ يا فنان، جربي تاني! ❤️");
+            }
+        }
+
+        // مشغل الأغاني المتتالي
         let currentTrack = 0;
         const audioPlayer = document.getElementById('bg-audio');
 
         function playPlaylist() {
             if (!siteData.playlist || siteData.playlist.length === 0) return;
             audioPlayer.src = siteData.playlist[currentTrack];
-            audioPlayer.play().catch(e => {
-                console.log("التشغيل التلقائي يتطلب تفاعل المستخدم");
-            });
+            audioPlayer.play().catch(e => console.log("التفاعل مطلوب لتشغيل الصوت"));
             
-            document.getElementById('now-playing').innerText = `🎵 تشغيل الأغنية رقم (${currentTrack + 1})`;
-
             audioPlayer.onended = function() {
                 currentTrack = (currentTrack + 1) % siteData.playlist.length;
                 playPlaylist();
@@ -423,94 +555,8 @@
         function toggleMusic() {
             if (audioPlayer.paused) {
                 audioPlayer.play();
-                document.getElementById('now-playing').innerText = "🎵 الموسيقى شغالة";
+                document.getElementById('now-playing').innerText = "🎵 الموسيقى شغالـة";
             } else {
                 audioPlayer.pause();
                 document.getElementById('now-playing').innerText = "⏸️ الموسيقى متوقفة";
-            }
-        }
-
-        // تشغيل القلوب المتحركة
-        function createHeart() {
-            const container = document.getElementById('heartsContainer');
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 2.5 + 3.5) + 's';
-            container.appendChild(heart);
-            setTimeout(() => heart.remove(), 5500);
-        }
-        setInterval(createHeart, 350);
-
-        function renderSite() {
-            document.getElementById('main-title').innerText = siteData.title;
-            document.getElementById('main-subtitle').innerText = siteData.subtitle;
-            
-            if(siteData.bgUrl) {
-                document.getElementById('bg-media').src = siteData.bgUrl;
-            }
-
-            const container = document.getElementById('messagesContainer');
-            container.innerHTML = '';
-            siteData.messages.forEach((msg, index) => {
-                container.innerHTML += `
-                    <div class="message-card">
-                        <h3>الرسالة رقم ${index + 1} 💌</h3>
-                        <p>${msg}</p>
-                    </div>
-                `;
-            });
-        }
-
-        function revealSecret() {
-            const secrets = [
-                "مفاجأة! أنتي أجمل حاجة حصلت في حياتي كلها! ✨",
-                "سر صغير: كل سطر كود في الموقع ده مكتوب بحب عشانك! 💻❤️",
-                "أنتي تستاهلي الدنيا وما فيها يا أجمل جُنى في الوجود! 🌹"
-            ];
-            document.getElementById('secret-box').innerText = secrets[Math.floor(Math.random() * secrets.length)];
-        }
-
-        function openAdmin() { document.getElementById('admin-modal').style.display = 'flex'; }
-        function closeAdmin() { document.getElementById('admin-modal').style.display = 'none'; }
-
-        function checkPassword() {
-            if(document.getElementById('admin-pass').value === "13451345") {
-                document.getElementById('login-box').style.display = 'none';
-                document.getElementById('controls-box').style.display = 'block';
-                
-                document.getElementById('title-input').value = siteData.title;
-                document.getElementById('bg-url-input').value = siteData.bgUrl;
-                document.getElementById('playlist-input').value = siteData.playlist.join('\n');
-                document.getElementById('messages-input').value = siteData.messages.join('\n');
-            } else {
-                alert("كلمة المرور خطأ!");
-            }
-        }
-
-        function saveChanges() {
-            siteData.title = document.getElementById('title-input').value;
-            siteData.bgUrl = document.getElementById('bg-url-input').value.trim();
-            
-            const playlistText = document.getElementById('playlist-input').value;
-            siteData.playlist = playlistText.split('\n').filter(p => p.trim() !== '');
-
-            const messagesText = document.getElementById('messages-input').value;
-            siteData.messages = messagesText.split('\n').filter(m => m.trim() !== '');
-
-            localStorage.setItem('jana_site_data_v4', JSON.stringify(siteData));
-            renderSite();
-            closeAdmin();
-            alert("تم حفظ التعديلات وقائمة الأغاني بنجاح يا معاذ! 🚀");
-            playPlaylist();
-        }
-
-        renderSite();
-        // بدء تشغيل الصوت أول ما تلمس الشاشة أو تتفاعل
-        window.addEventListener('click', () => {
-            if(audioPlayer.paused && currentTrack === 0) playPlaylist();
-        }, { once: true });
-    </script>
-</body>
-</html>
+      
