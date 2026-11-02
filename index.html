@@ -1,157 +1,401 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالمنا الخاص لجنى ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #ff3366;
-            --secondary: #ff66b2;
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.18);
-            --text: #ffffff;
-            --text-sub: #f0f0f0;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-
-        body {
-            background: linear-gradient(135deg, #0a0a16, #1c0b1a, #0f0f1a);
-            background-size: 400% 400%;
-            animation: gradientBG 12s ease infinite;
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-            padding-bottom: 60px;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        #bg-media { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.35; }
-        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(20,10,25,0.7) 0%, rgba(10,10,22,0.95) 100%); z-index: -1; }
-
-        .hearts-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .floating-symbol { position: absolute; font-size: 24px; animation: flyUp 6s linear infinite; opacity: 0.75; }
-
-        @keyframes flyUp {
-            0% { transform: translateY(105vh) scale(0.4) rotate(0deg); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.3) rotate(360deg); opacity: 0; }
-        }
-
-        .container { max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; text-align: center; }
-        header { margin: 40px 0; }
-
-        h1 { font-size: 2.8rem; color: #ff4d88; text-shadow: 0 0 20px rgba(255, 51, 102, 0.7); font-weight: 900; margin-bottom: 10px; }
-        p.subtitle { font-size: 1.2rem; color: var(--text-sub); }
-
-        .music-box {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            padding: 12px 25px;
-            border-radius: 30px;
-            margin: 20px auto;
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-
-        .section-title { font-size: 2rem; margin: 40px 0 20px 0; color: var(--secondary); text-shadow: 0 0 10px rgba(255,102,178,0.4); }
-        .messages-grid { display: flex; flex-direction: column; gap: 20px; }
-
-        .msg-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 20px 25px;
-            text-align: right;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            transition: all 0.5s ease;
-        }
-
-        .msg-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        .msg-header h3 { color: var(--secondary); font-size: 1.3rem; }
-
-        .toggle-btn {
-            background: var(--primary); color: white; border: none; padding: 6px 15px; border-radius: 15px; cursor: pointer; font-size: 0.9rem; font-weight: bold;
-        }
-
-        .msg-body { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 1.1rem; line-height: 1.7; color: #f9f9f9; }
-
-        .quiz-section {
-            background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 25px; padding: 30px; margin: 50px 0; text-align: right; box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-        }
-
-        .quiz-question { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .quiz-question h4 { color: var(--secondary); font-size: 1.2rem; margin-bottom: 12px; }
-
-        .quiz-options label { display: block; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 10px; margin: 8px 0; cursor: pointer; transition: 0.3s; }
-        .quiz-options label:hover { background: rgba(255, 51, 102, 0.15); border-color: var(--primary); }
-        .quiz-options input { margin-left: 10px; }
-
-        .whatsapp-section { margin: 50px 0 20px 0; padding: 30px; background: rgba(37, 211, 102, 0.12); border: 1px solid rgba(37, 211, 102, 0.35); border-radius: 25px; backdrop-filter: blur(15px); }
-
-        .btn {
-            background: linear-gradient(45deg, var(--primary), #ff6699); color: white; border: none; padding: 14px 32px; border-radius: 35px; font-size: 1.1rem; font-weight: bold; cursor: pointer; box-shadow: 0 6px 20px rgba(255, 51, 102, 0.5); transition: 0.3s; text-decoration: none; display: inline-block; margin: 10px;
-        }
-
-        .btn-whatsapp { background: linear-gradient(45deg, #25D366, #128C7E); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5); }
-        .signature { margin-top: 35px; font-size: 2.5rem; font-weight: 900; color: #ffffff; text-shadow: 0 0 25px rgba(255, 51, 102, 0.9); }
-
-        .admin-trigger { position: fixed; bottom: 10px; left: 10px; background: transparent; border: none; color: rgba(255,255,255,0.2); padding: 10px; cursor: pointer; z-index: 100; font-size: 1rem; }
-
-        #admin-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center; }
-        .modal-content { background: #151525; padding: 30px; border-radius: 20px; width: 90%; max-width: 600px; border: 1px solid var(--primary); text-align: right; max-height: 85vh; overflow-y: auto; }
-        .modal-content input, .modal-content textarea { width: 100%; padding: 10px; margin: 8px 0 15px 0; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 8px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#100913">
+<title>هدية لجنى ❤️</title>
+<style>
+:root{--pink:#ff77b7;--bg:#100913;--glass:#ffffff0d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#fff0f7;font-family:Tahoma,Arial,sans-serif;overflow-x:hidden}
+button,input,textarea{font:inherit}
+button{cursor:pointer;border:0;border-radius:14px;padding:12px 17px;background:linear-gradient(120deg,#ff65aa,#b74bff);color:white;font-weight:bold}
+input,textarea{width:100%;padding:13px;border-radius:12px;border:1px solid #ffffff25;background:#160e1b;color:white;margin:7px 0}
+textarea{min-height:85px;resize:vertical}
+.wrap{width:min(900px,92%);margin:auto}
+.center{min-height:100dvh;display:flex;align-items:center;justify-content:center;text-align:center}
+.panel,.card{background:var(--glass);border:1px solid #ffffff20;border-radius:22px;padding:22px;backdrop-filter:blur(14px);box-shadow:0 12px 45px #0004}
+.panel{width:min(420px,90%);position:relative;z-index:2}
+h1{color:#ffacd5;font-size:clamp(27px,7vw,44px)}
+h2{color:#ffacd5}
+.sub{color:#d8b9ce;line-height:1.9}
+.hidden{display:none!important}
+header{text-align:center;padding:55px 0 25px}
+section{padding:22px 0 35px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px}
+.card{transition:transform .35s,opacity .35s}
+.card.reveal{opacity:0;transform:translateY(22px)}
+.card.reveal.visible{opacity:1;transform:translateY(0)}
+.msg{line-height:1.9;white-space:pre-wrap}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.small{font-size:12px;color:#cbb4c9}
+#floaters{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.heart{position:absolute;bottom:-50px;animation:rise linear forwards;opacity:.7}
+@keyframes rise{to{transform:translateY(-115vh) rotate(35deg);opacity:0}}
+main,header,footer{position:relative;z-index:1}
+footer{text-align:center;padding:45px 12px 35px}
+.signature{font-size:27px;color:#ff9acb;text-shadow:0 0 20px #ff42a8}
+#musicbox{position:fixed;bottom:12px;left:12px;z-index:5;background:#1c1020ed;border:1px solid #ffffff25;border-radius:15px;padding:12px;width:min(300px,calc(100% - 24px))}
+#musicbox button{padding:9px 12px}
+#musicname{font-size:13px;margin-bottom:8px}
+#admin{position:fixed;inset:0;background:#09060bf5;z-index:10;overflow:auto;padding:20px}
+#admin .inner{max-width:700px;margin:auto}
+.admin-trigger{position:fixed;top:6px;left:6px;z-index:6;background:#ffffff09;padding:5px;font-size:11px;opacity:.22}
+.admin-trigger:hover{opacity:1}
+.question{margin:15px 0;padding:14px;border:1px solid #ffffff1c;border-radius:15px}
+.option{display:block;text-align:right;width:100%;margin:7px 0;background:#ffffff0c;border:1px solid #ffffff20}
+.option.selected{background:#9d3676}
+.note{background:#3b253e;padding:12px;border-radius:12px;line-height:1.8}
+a{color:#ffacd5}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
+<div id="floaters"></div>
 
-    <video id="bg-media" autoplay muted loop playsinline><source src="" type="video/mp4"></video>
-    <div class="bg-overlay"></div>
-    <div class="hearts-container" id="heartsContainer"></div>
-    <audio id="bg-audio" preload="auto"></audio>
+<div id="lock" class="center">
+ <div class="panel">
+  <div style="font-size:48px">💌</div>
+  <h1 id="lockTitle">هدية صغيرة لجنى</h1>
+  <p class="sub" id="lockSub">في حاجة حلوة مستنياكي ❤️</p>
+  <form id="unlockForm">
+   <input id="pass" type="password" placeholder="كلمة السر" autocomplete="current-password" required>
+   <button style="width:100%">فتح الهدية ✨</button>
+  </form>
+  <p id="lockError" class="small"></p>
+ </div>
+</div>
 
-    <div class="container">
-        <header>
-            <h1 id="main-title">عالمنا الخاص لجنى ❤️</h1>
-            <p class="subtitle" id="main-subtitle">موقع مصمم بكل حب وغرام خصيصاً ليكِ</p>
-            
-            <div class="music-box">
-                <span id="now-playing" style="font-size: 0.95rem;">🎵 تشغيل أغاني تامر عاشور</span>
-                <button class="toggle-btn" onclick="toggleMusic()">تشغيل / إيقاف 🎶</button>
-            </div>
-        </header>
+<div id="site" class="hidden">
+ <button class="admin-trigger" id="adminBtn" aria-label="الإعدادات">⚙️</button>
+ <header class="wrap">
+  <div style="font-size:44px">🌹 ❤️ ✨</div>
+  <h1 id="title">إلى جنى، أجمل هدية ❤️</h1>
+  <p class="sub" id="subtitle">كل تفصيلة هنا معمولة مخصوص عشانك.</p>
+  <p>💖 كل ما تنزلي هتلاقي حاجة جديدة 💖</p>
+ </header>
 
-        <h2 class="section-title">💌 رسائل من صميم قلبي</h2>
-        <div class="messages-grid" id="messagesContainer"></div>
+ <main class="wrap">
+  <section>
+   <h2>💌 رسائل ليكي</h2>
+   <p class="sub">كل رسالة ليها كلامها الخاص… افتحي اللي تحبيه.</p>
+   <div id="messages" class="grid"></div>
+  </section>
 
-        <div class="quiz-section">
-            <h2 style="color: var(--secondary); margin-bottom: 15px; text-align: center;">🎮 إنتِ تعرفيني قد إيه؟</h2>
-            <p style="text-align: center; margin-bottom: 25px; color: #ddd;">اختبري نفسك وشوفي هتعرفي إجاباتي بنسبة كام في المية!</p>
-            <div id="quizForm"></div>
-            <div style="text-align: center; margin-top: 25px;">
-                <button class="btn" onclick="calculateQuizScore()">احسبي النتيجة وارسلها لمعاذ 🚀</button>
-                <h3 id="quiz-result-text" style="margin-top: 20px; color: #ff99cc; font-size: 1.3rem;"></h3>
-            </div>
-        </div>
+  <section>
+   <h2>🎀 إنتِ تعرفيني قد إيه؟</h2>
+   <div class="card" id="quizCard">
+    <p class="sub" id="quizIntro">جاوبي على الأسئلة وشوفي نتيجتك ❤️</p>
+    <div id="quizQuestions"></div>
+    <button id="submitQuiz">احسبي النتيجة وأرسليها لمعاذ 🚀</button>
+    <p id="quizResult" aria-live="polite"></p>
+   </div>
+  </section>
 
-        <div class="whatsapp-section">
-            <h3 style="margin-bottom: 12px; font-size: 1.4rem;">عجبك الموقع تعالى قوليلى واتس 💬</h3>
-            <a href="https://wa.me/201550660352?text=الموقع%20عجبني%20جداً%20يا%20معاذ!%20❤️" target="_blank" class="btn btn-whatsapp">
-                تحدثي معي على واتساب الآن سأقوم الآن بتوليد ملف `index.html` المطور بالكامل وبملف واحد، مع إزالة شاشة الحماية تماماً لتجنب أي تعليق، وتوفير كافة الميزات المطلوبة بحرفية عالية ودقة متناهية.
+  <section>
+   <h2>🎶 موسيقى هادية</h2>
+   <div class="card">
+    <p class="sub">شغّلي الموسيقى من زر التشغيل. تقدري تضيفي روابط ملفات صوتية تملكي حق استخدامها من لوحة الإعدادات.</p>
+    <p id="playlistInfo">قائمة التشغيل جاهزة للإعداد 🎵</p>
+   </div>
+  </section>
 
-http://googleusercontent.com/immersive_entry_chip/0
+  <section style="text-align:center">
+   <h2>💗 كلمة منك</h2>
+   <p class="sub">لو حبيتي تبعتي رأيك في الهدية، اضغطي هنا.</p>
+   <button id="whatsapp">ابعتيلي على واتساب ❤️</button>
+  </section>
+ </main>
 
-لقد قمت بإزالة شاشة القفل تماماً لضمان فتح الموقع فوراً وبدون أي عوائق، وتوفير تجربة استعراض ملساء وممتعة لموقع الهدية الخاص بجنى.
-                
+ <footer>
+  <div style="font-size:25px">صُنعت بمحبة ❤️</div>
+  <p class="signature">معاذ شعيب</p>
+  <p class="sub">تم التصميم والتطوير بكل حب ❤️</p>
+ </footer>
+</div>
+
+<div id="musicbox" class="hidden">
+ <div id="musicname">مفيش أغنية مضافة</div>
+ <div class="actions">
+  <button id="playMusic">تشغيل 🎶</button>
+  <button id="nextMusic">التالي ⏭</button>
+ </div>
+ <audio id="audio" preload="none"></audio>
+</div>
+
+<div id="admin" class="hidden">
+ <div class="inner">
+  <div class="actions">
+   <h2 style="flex:1">⚙️ لوحة الإعدادات</h2>
+   <button id="closeAdmin">إغلاق ✕</button>
+  </div>
+  <div class="note">
+   هذه نسخة تجريبية: كلمة سر الأدمن والإعدادات هنا داخل المتصفح وليستا حماية حقيقية. لا تضعي بيانات حساسة، وسنضيف المصادقة وقاعدة البيانات لاحقًا.
+  </div>
+
+  <h2>🔐 كلمات المرور</h2>
+  <label>كلمة مرور دخول جنى</label>
+  <input id="cfgPass" type="password">
+  <label>كلمة مرور الأدمن</label>
+  <input id="cfgAdminPass" type="password">
+  <button id="savePasswords">حفظ كلمات المرور</button>
+
+  <h2>✍️ عنوان الموقع</h2>
+  <label>العنوان الرئيسي</label>
+  <input id="cfgTitle">
+  <label>العنوان الفرعي</label>
+  <input id="cfgSubtitle">
+  <label>خلفية صورة أو فيديو (رابط مباشر)</label>
+  <input id="cfgBg" placeholder="https://example.com/image.jpg أو video.mp4">
+  <button id="saveAppearance">حفظ المظهر</button>
+
+  <h2>💌 تعديل الرسائل العشرة</h2>
+  <div id="messageEditor"></div>
+  <button id="saveMessages">حفظ الرسائل</button>
+
+  <h2>🎵 قائمة الأغاني</h2>
+  <p class="small">اكتب اسم كل أغنية ثم | ثم رابط MP3 مباشر، كل أغنية في سطر. يجب أن يكون المصدر مسموحًا ويتيح التشغيل من موقعك.</p>
+  <textarea id="cfgSongs" placeholder="اسم الأغنية | https://example.com/song.mp3"></textarea>
+  <button id="saveSongs">حفظ قائمة الأغاني</button>
+
+  <h2>🧠 إعدادات الاختبار</h2>
+  <p class="small">كل سؤال في سطر منفصل: السؤال | الاختيار الأول | الاختيار الثاني | الاختيار الثالث | رقم الإجابة الصحيحة (1 أو 2 أو 3).</p>
+  <textarea id="cfgQuiz" style="min-height:220px"></textarea>
+  <button id="saveQuiz">حفظ الأسئلة</button>
+
+  <h2>📊 نتائج الاختبار على هذا الجهاز</h2>
+  <p class="small">النتائج هنا محلية على نفس المتصفح فقط، وليست مرئية لك من جهاز آخر.</p>
+  <button id="showResults">عرض النتائج</button>
+  <button id="clearResults" style="background:#71334c">مسح النتائج المحلية</button>
+  <div id="resultsArea"></div>
+ </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const defaults={
+ pass:"1234",
+ adminPass:"13451345",
+ title:"إلى جنى، أجمل هدية ❤️",
+ subtitle:"كل تفصيلة هنا معمولة مخصوص عشانك.",
+ bg:"",
+ messages:[
+ "يا جنى، وجودك بيضيف لحياتي حاجات حلوة كتير ❤️",
+ "أتمنى دايمًا تلاقي سبب يخلّي يومك أحلى.",
+ "يمكن الكلام ما يوصفش كل اللي جوايا، بس إنتِ غالية عندي.",
+ "أجمل حاجة إننا نعرف نسمع بعض ونفهم بعض.",
+ "أتمنى لك أيام مليانة راحة وفرح ونجاح 🌷",
+ "خليكي دايمًا فخورة بنفسك وبكل خطوة بتعمليها.",
+ "لو اليوم كان صعب، أتمنى بكرة يكون ألطف عليكي ✨",
+ "ضحكتك وفرحتك حاجات أتمنى أشوفها دايمًا.",
+ "شكرًا على اللحظات الحلوة والكلام الجميل 💌",
+ "دي هديتي الصغيرة ليكي، وأتمنى إنها ترسم ابتسامة على وشك ❤️"
+ ],
+ songs:[],
+ quiz:[
+ ["إيه اللون اللي بحبه أكتر؟","الأسود","الأزرق","الأحمر",1],
+ ["إيه أكتر حاجة بحب أعملها؟","البرمجة","الرسم","الطبخ",1],
+ ["أنا بحب الهدوء ولا الدوشة؟","الهدوء","الدوشة","الاتنين بالتساوي",1],
+ ["إيه أكتر حاجة بتفرحني؟","كلام حلو من شخص غالي","الهدايا الغالية","النوم طول اليوم",1],
+ ["لو عندي وقت فاضي أختار إيه؟","أتعلم حاجة جديدة","أفضل زهقان","أسيب كل حاجة",1],
+ ["إيه أكتر صفة مهمة عندي؟","الصدق","المظاهر","المنافسة",1],
+ ["بحب أتعلم عن إيه؟","التكنولوجيا","الزراعة فقط","الفلك فقط",1],
+ ["إيه أفضل طريقة لحل مشكلة؟","أفكر بهدوء","أستعجل","أتجاهلها دائمًا",1],
+ ["إيه اللي يهمني في الكلام؟","الصراحة والاحترام","الكلام الكتير","المجاملة فقط",1],
+ ["إيه اللي أتمنى لك دايمًا؟","الفرح والنجاح","التعب","القلق",1]
+ ]
+};
+let cfg;
+try{cfg={...defaults,...JSON.parse(localStorage.getItem("janaSiteConfig")||"{}")}}catch(e){cfg={...defaults}}
+let answers={},questionIndex=0,currentSong=0;
+
+function saveCfg(){localStorage.setItem("janaSiteConfig",JSON.stringify(cfg))}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function safeUrl(s){try{let u=new URL(s);return ["https:","http:"].includes(u.protocol)?u.href:""}catch(e){return ""}}
+
+function makeHearts(){
+ const box=$("floaters");
+ const icons=["❤️","💖","💌","🌹","✨","🥰","💘","💓","🌷"];
+ for(let i=0;i<22;i++){
+  const h=document.createElement("span");
+  h.className="heart";h.textContent=icons[Math.floor(Math.random()*icons.length)];
+  h.style.left=Math.random()*100+"%";
+  h.style.fontSize=(13+Math.random()*21)+"px";
+  h.style.animationDuration=(7+Math.random()*12)+"s";
+  h.style.animationDelay=(-Math.random()*16)+"s";
+  box.appendChild(h);
+ }
+}
+makeHearts();
+
+function applyBackground(){
+ document.body.style.background=cfg.bg?"#100913":"var(--bg)";
+ document.querySelectorAll(".custom-bg").forEach(x=>x.remove());
+ const url=safeUrl(cfg.bg||"");if(!url)return;
+ if(/\.(mp4|webm|ogg)(\?.*)?$/i.test(url)){
+  const v=document.createElement("video");v.src=url;v.autoplay=true;v.loop=true;v.muted=true;v.playsInline=true;
+  v.className="custom-bg";v.style.cssText="position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.3";
+  document.body.prepend(v);
+ }else{
+  const d=document.createElement("div");d.className="custom-bg";
+  d.style.cssText="position:fixed;inset:0;background:linear-gradient(#10091399,#100913cc),url('"+url.replace(/'/g,"%27")+"') center/cover;z-index:-2";
+  document.body.prepend(d);
+ }
+}
+function renderSiteText(){
+ $("title").textContent=cfg.title;
+ $("subtitle").textContent=cfg.subtitle;
+ $("lockTitle").textContent=cfg.title;
+ $("lockSub").textContent=cfg.subtitle;
+ applyBackground();
+}
+
+function renderMessages(){
+ $("messages").innerHTML=cfg.messages.map((m,i)=>`
+ <article class="card reveal">
+  <h3>💌 رسالة رقم ${i+1}</h3>
+  <p class="msg hidden" id="msg${i}">${escapeHTML(m)}</p>
+  <button data-msg="${i}">فتح الرسالة 💗</button>
+ </article>`).join("");
+ $("messages").querySelectorAll("button").forEach(b=>b.onclick=()=>{
+  const p=$("msg"+b.dataset.msg);p.classList.toggle("hidden");
+  b.textContent=p.classList.contains("hidden")?"فتح الرسالة 💗":"إخفاء الرسالة";
+ });
+ setupReveals();
+}
+function setupReveals(){
+ if(!("IntersectionObserver" in window)){
+  document.querySelectorAll(".reveal").forEach(x=>x.classList.add("visible"));return;
+ }
+ const io=new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target)}
+ }),{threshold:.12});
+ document.querySelectorAll(".reveal").forEach(x=>io.observe(x));
+}
+
+function renderQuiz(){
+ answers={};
+ $("quizResult").textContent="";
+ $("quizQuestions").innerHTML=cfg.quiz.map((q,i)=>`
+ <div class="question">
+ <strong>${i+1}. ${escapeHTML(q[0])}</strong>
+ ${q.slice(1,4).map((o,j)=>`<button class="option" data-q="${i}" data-a="${j+1}">${j+1}. ${escapeHTML(o)}</button>`).join("")}
+ </div>`).join("");
+ $("quizQuestions").querySelectorAll(".option").forEach(b=>b.onclick=()=>{
+  const qi=+b.dataset.q;answers[qi]=+b.dataset.a;
+  document.querySelectorAll('[data-q="'+qi+'"]').forEach(x=>x.classList.remove("selected"));
+  b.classList.add("selected");
+ });
+}
+$("submitQuiz").onclick=()=>{
+ if(Object.keys(answers).length!==cfg.quiz.length){
+  $("quizResult").textContent="جاوبي على كل الأسئلة الأول ❤️";return;
+ }
+ let correct=0;
+ cfg.quiz.forEach((q,i)=>{if(answers[i]===+q[4])correct++});
+ const score=Math.round(correct/cfg.quiz.length*100);
+ const record={date:new Date().toLocaleString("ar-EG"),score,correct,total:cfg.quiz.length,answers:cfg.quiz.map((q,i)=>({question:q[0],answer:q[answers[i]],correct:answers[i]===+q[4]}))};
+ let results=[];try{results=JSON.parse(localStorage.getItem("janaQuizResults")||"[]")}catch(e){}
+ results.push(record);localStorage.setItem("janaQuizResults",JSON.stringify(results));
+ $("quizResult").textContent=`إنتِ تعرفيني بنسبة ${score}% ❤️ (${correct} من ${cfg.quiz.length})`;
+ const body=`نتيجة اختبار جنى: ${score}% (${correct}/${cfg.quiz.length})`;
+ const wa="https://wa.me/201550660352?text="+encodeURIComponent(body);
+ const a=document.createElement("a");a.href=wa;a.target="_blank";a.rel="noopener";a.textContent="إرسال النتيجة على واتساب";
+ a.style.cssText="display:inline-block;margin-top:12px;color:#ffacd5";
+ $("quizResult").appendChild(document.createElement("br"));$("quizResult").appendChild(a);
+};
+
+function parseSongs(){
+ return (cfg.songs||[]).map(s=>{
+  const p=s.split("|");return {name:(p[0]||"أغنية").trim(),url:safeUrl((p[1]||"").trim())};
+ }).filter(s=>s.url);
+}
+function renderSongs(){
+ const songs=parseSongs();
+ $("musicbox").classList.toggle("hidden",!songs.length);
+ $("playlistInfo").textContent=songs.length?`تم إعداد ${songs.length} أغنية 🎵`:"أضيفي روابط الأغاني من لوحة الإعدادات.";
+ if(!songs.length){$("audio").removeAttribute("src");$("musicname").textContent="مفيش أغنية مضافة";return}
+ if(currentSong>=songs.length)currentSong=0;
+ $("musicname").textContent=songs[currentSong].name;
+ $("audio").src=songs[currentSong].url;
+}
+$("playMusic").onclick=async()=>{
+ const a=$("audio");
+ if(a.paused){try{await a.play();$("playMusic").textContent="إيقاف مؤقت ⏸"}catch(e){$("musicname").textContent="تعذر التشغيل؛ تأكدي من رابط الصوت."}}
+ else{a.pause();$("playMusic").textContent="تشغيل 🎶"}
+};
+$("audio").addEventListener("ended",()=>{
+ const s=parseSongs();if(!s.length)return;
+ currentSong=(currentSong+1)%s.length;renderSongs();
+ $("audio").play().catch(()=>{$("musicname").textContent+=" — اضغطي تشغيل"});
+});
+$("audio").addEventListener("pause",()=>{$("playMusic").textContent="تشغيل 🎶"});
+$("audio").addEventListener("play",()=>{$("playMusic").textContent="إيقاف مؤقت ⏸"});
+$("nextMusic").onclick=()=>{
+ const s=parseSongs();if(!s.length)return;
+ currentSong=(currentSong+1)%s.length;renderSongs();
+ $("audio").play().catch(()=>{});
+};
+$("whatsapp").onclick=()=>window.open("https://wa.me/201550660352?text="+encodeURIComponent("الموقع عجبني جداً يا معاذ! ❤️"),"_blank","noopener");
+
+function openAdmin(){
+ const p=prompt("كلمة مرور لوحة التحكم");
+ if(p!==cfg.adminPass){alert("كلمة المرور غير صحيحة");return}
+ $("admin").classList.remove("hidden");fillAdmin();
+}
+$("adminBtn").onclick=openAdmin;
+$("closeAdmin").onclick=()=>$("admin").classList.add("hidden");
+
+function fillAdmin(){
+ $("cfgPass").value=cfg.pass;$("cfgAdminPass").value=cfg.adminPass;
+ $("cfgTitle").value=cfg.title;$("cfgSubtitle").value=cfg.subtitle;$("cfgBg").value=cfg.bg;
+ $("messageEditor").innerHTML=cfg.messages.map((m,i)=>`<label>الرسالة ${i+1}</label><textarea data-editmsg="${i}">${escapeHTML(m)}</textarea>`).join("");
+ $("cfgSongs").value=(cfg.songs||[]).join("\n");
+ $("cfgQuiz").value=cfg.quiz.map(q=>q.join(" | ")).join("\n");
+}
+$("savePasswords").onclick=()=>{
+ if(!$("cfgPass").value||!$("cfgAdminPass").value){alert("اكتبي كلمتي مرور");return}
+ cfg.pass=$("cfgPass").value;cfg.adminPass=$("cfgAdminPass").value;saveCfg();alert("تم الحفظ على هذا المتصفح فقط");
+};
+$("saveAppearance").onclick=()=>{
+ cfg.title=$("cfgTitle").value;cfg.subtitle=$("cfgSubtitle").value;cfg.bg=$("cfgBg").value;saveCfg();renderSiteText();alert("تم حفظ المظهر");
+};
+$("saveMessages").onclick=()=>{
+ cfg.messages=[...$("messageEditor").querySelectorAll("textarea")].map(x=>x.value);
+ saveCfg();renderMessages();alert("تم حفظ الرسائل");
+};
+$("saveSongs").onclick=()=>{
+ cfg.songs=$("cfgSongs").value.split("\n").map(x=>x.trim()).filter(Boolean);
+ saveCfg();currentSong=0;renderSongs();alert("تم حفظ قائمة التشغيل");
+};
+$("saveQuiz").onclick=()=>{
+ const rows=$("cfgQuiz").value.split("\n").map(s=>s.split("|").map(x=>x.trim())).filter(a=>a.length>=5);
+ if(rows.length!==10||rows.some(q=>!q[0]||!q[1]||!q[2]||!q[3]||!["1","2","3"].includes(q[4]))){
+  alert("لازم تدخلي 10 أسئلة، ولكل سؤال 3 اختيارات ورقم إجابة صحيحة من 1 إلى 3.");return;
+ }
+ cfg.quiz=rows.map(q=>[q[0],q[1],q[2],q[3],+q[4]]);
+ saveCfg();renderQuiz();alert("تم حفظ الأسئلة");
+};
+$("showResults").onclick=()=>{
+ let r=[];try{r=JSON.parse(localStorage.getItem("janaQuizResults")||"[]")}catch(e){}
+ $("resultsArea").innerHTML=r.length?r.slice().reverse().map(x=>`
+ <div class="card" style="margin:12px 0">
+ <strong>${escapeHTML(x.date)}</strong><p>النتيجة: ${x.score}% (${x.correct}/${x.total})</p>
+ ${x.answers.map(a=>`<p>${escapeHTML(a.question)}<br>الإجابة: ${escapeHTML(a.answer)} ${a.correct?"✅":"❌"}</p>`).join("")}
+ </div>`).join(""):"<p>مفيش نتائج محفوظة على هذا الجهاز.</p>";
+};
+$("clearResults").onclick=()=>{
+ if(confirm("متأكد إنك عايز تمسح كل النتائج المحلية؟")){localStorage.removeItem("janaQuizResults");$("resultsArea").innerHTML=""}
+};
+$("unlockForm").onsubmit=e=>{
+ e.preventDefault();
+ if($("pass").value===cfg.pass){
+  $("lock").classList.add("hidden");$("site").classList.remove("hidden");renderSiteText();
+ }else{$("lockError").textContent="كلمة السر مش صحيحة، جربي تاني ❤️"}
+};
+
+renderSiteText();renderMessages();renderQuiz();renderSongs();
+</script>
+</body>
+</html>
