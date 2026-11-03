@@ -133,7 +133,7 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
     <div style="font-size:54px;margin:12px">💌</div>
     <h1 id="lockTitle">هدية مخصوص لجنى</h1>
     <p class="sub" id="lockSubtitle">في حكاية صغيرة مستنياكي جوه ❤️</p>
-    <form id="unlockForm">
+    <form id="unlockForm" onsubmit="return false;">
       <input id="sitePassword" type="password" placeholder="كلمة السر" autocomplete="current-password" required aria-label="كلمة مرور الموقع">
       <button type="submit" style="width:100%">افتحي الهدية ✨</button>
     </form>
@@ -442,6 +442,28 @@ async function loadCloudConfig(){
     }
   } catch(error) { console.error("Cloud load failed:",error); }
 }
+
+$("unlockForm").addEventListener("submit",async event=>{
+  event.preventDefault();
+  if($("sitePassword").value!==config.sitePass){setText("lockError","كلمة السر مش صحيحة، جربي تاني ❤️");return;}
+  $("lockScreen").classList.add("hidden");
+  const intro=$("loveIntro");intro.classList.add("show");
+  const field=$("introHeartField");field.replaceChildren();
+  for(let i=0;i<110;i++){
+    const h=document.createElement("span");h.className="intro-heart";h.textContent=["♥","💗","💖","❤"][i%4];
+    h.style.left=(Math.random()*100)+"%";h.style.fontSize=(12+Math.random()*27)+"px";
+    h.style.setProperty("--dx",((Math.random()-.5)*100)+"vw");h.style.setProperty("--sc",(.7+Math.random()*1.5).toFixed(2));
+    h.style.animationDelay=(Math.random()*.45)+"s";field.appendChild(h);
+  }
+  setTimeout(()=>{intro.classList.remove("show");$("site").classList.remove("hidden");$("floatingCounter").style.display="block";renderConfigText();updateCounter();setupReveals();},2200);
+  const songs=parseSongs();
+  if(songs.length){
+    // Autoplay is attempted only after the user's password submission.
+    renderSongs();
+    try{await $("audio").play();setText("songState","بتشتغل دلوقتي ♫");}
+    catch{setText("songState","اضغطي ▶ لتشغيل الموسيقى");}
+  }
+});
 function esc(value){return String(value ?? "").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
 function safeHttpUrl(value){
   try { const u=new URL(String(value)); return ["https:","http:"].includes(u.protocol)?u.href:""; }
@@ -780,27 +802,7 @@ $("viewResults").addEventListener("click",()=>{
 $("clearResults").addEventListener("click",()=>{
   if(confirm("تمسح النتائج المحفوظة محليًا من هذا المتصفح؟")){localStorage.removeItem("moazLoveResults");$("resultsList").textContent="تم مسح النتائج المحلية.";}
 });
-$("unlockForm").addEventListener("submit",async event=>{
-  event.preventDefault();
-  if($("sitePassword").value!==config.sitePass){setText("lockError","كلمة السر مش صحيحة، جربي تاني ❤️");return;}
-  $("lockScreen").classList.add("hidden");
-  const intro=$("loveIntro");intro.classList.add("show");
-  const field=$("introHeartField");field.replaceChildren();
-  for(let i=0;i<110;i++){
-    const h=document.createElement("span");h.className="intro-heart";h.textContent=["♥","💗","💖","❤"][i%4];
-    h.style.left=(Math.random()*100)+"%";h.style.fontSize=(12+Math.random()*27)+"px";
-    h.style.setProperty("--dx",((Math.random()-.5)*100)+"vw");h.style.setProperty("--sc",(.7+Math.random()*1.5).toFixed(2));
-    h.style.animationDelay=(Math.random()*.45)+"s";field.appendChild(h);
-  }
-  setTimeout(()=>{intro.classList.remove("show");$("site").classList.remove("hidden");$("floatingCounter").style.display="block";renderConfigText();updateCounter();setupReveals();},2200);
-  const songs=parseSongs();
-  if(songs.length){
-    // Autoplay is attempted only after the user's password submission.
-    renderSongs();
-    try{await $("audio").play();setText("songState","بتشتغل دلوقتي ♫");}
-    catch{setText("songState","اضغطي ▶ لتشغيل الموسيقى");}
-  }
-});
+
 renderFloaters();renderConfigText();renderTimeline();renderGallery();renderMessages();renderQuiz();renderSongs();renderRomanticVideo();renderEndPhotos();
 updateCounter();setInterval(updateCounter,1000);
 loadCloudConfig();
