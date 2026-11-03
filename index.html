@@ -114,6 +114,12 @@ nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:20px auto}
 nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px solid #ffffff15;border-radius:99px;font-size:12px}
 @media(max-width:520px){.counter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lock-card{padding:23px}.card{padding:17px}.hero-inner{padding-top:85px}.counter-unit{padding:14px 4px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition:none!important;scroll-behavior:auto!important}}
+
+.site-bg-video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;opacity:.13;z-index:-2;pointer-events:none}
+.media-video{display:block;width:100%;max-height:65vh;border-radius:18px;background:#08070c}
+.end-photos{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;margin:18px auto}
+.end-photo{width:clamp(120px,34vw,190px);aspect-ratio:1/1;object-fit:cover;border-radius:50%;border:3px solid rgba(255,170,215,.8);box-shadow:0 0 25px rgba(255,90,180,.22)}
+.share-result{margin-top:16px}
 </style>
 </head>
 <body>
@@ -153,7 +159,7 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
   </section>
 
   <nav class="wrap" aria-label="التنقل داخل الموقع">
-    <a href="#counter">العداد ⏳</a><a href="#story">حكايتنا ✨</a><a href="#gallery">معرض الصور 🌷</a><a href="#messages">الرسائل 💌</a><a href="#quiz">الاختبار 🧠</a><a href="#surprise">مفاجأة 🎁</a><a href="#tiktok">فيديو 🎬</a>
+    <a href="#counter">العداد ⏳</a><a href="#story">حكايتنا ✨</a><a href="#gallery">معرض الصور 🌷</a><a href="#messages">الرسائل 💌</a><a href="#quiz">الاختبار 🧠</a><a href="#surprise">مفاجأة 🎁</a><a href="#romanticVideo">فيديو لينا ذكرى 🎬</a>
   </nav>
 
   <main class="wrap">
@@ -219,14 +225,19 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
       <div id="moodResult" class="result hidden" style="margin-top:15px"></div>
     </section>
 
-    <section id="tiktok">
-      <div class="section-head reveal"><div class="icon">🎬</div><h2>فيديو ليه ذكرى</h2><p class="sub">الصقي رابط فيديو TikTok الكامل لو عاوزة تعرضيه داخل الموقع.</p></div>
+    <section id="romanticVideo">
+      <div class="section-head reveal"><div class="icon">🎬</div><h2>فيديو لينا ذكرى</h2><p class="sub">لحظة حلوة نرجعلها كل ما نحب نفتكرها ❤️</p></div>
       <div class="glass card reveal">
-        <label for="tiktokUrl">رابط فيديو TikTok</label>
-        <input id="tiktokUrl" placeholder="https://www.tiktok.com/@.../video/..." inputmode="url">
-        <button id="loadTikTok">تشغيل الفيديو بالصوت إن سمح تيك توك 🎬</button>
-        <p id="tiktokError" class="tiny" aria-live="polite"></p>
-        <div id="tiktokPlayer"></div>
+        <video id="romanticVideoPlayer" class="media-video" controls playsinline preload="metadata"></video>
+        <p id="romanticVideoHint" class="tiny" aria-live="polite">الفيديو هيتضاف من لوحة الأدمن 💗</p>
+      </div>
+    </section>
+
+    <section id="endPhotos">
+      <div class="section-head reveal"><div class="icon">🦋</div><h2>صورتين في آخر الحكاية</h2><p class="sub">تفاصيل صغيرة غالية علينا ❤️</p></div>
+      <div class="end-photos">
+        <img id="endPhoto1" class="end-photo hidden" alt="ذكرى جميلة الأولى">
+        <img id="endPhoto2" class="end-photo hidden" alt="ذكرى جميلة الثانية">
       </div>
     </section>
 
@@ -256,7 +267,7 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
 <div id="adminOverlay" class="hidden">
   <div class="admin-inner">
     <div class="admin-top"><h2>⚙️ لوحة معاذ شعيب</h2><button id="closeAdmin" class="ghost">إغلاق ✕</button></div>
-    <div class="notice">مهم جدًا: دي نسخة واجهة جاهزة للتجربة. حاليًا الإعدادات والنتائج محفوظة على نفس المتصفح فقط؛ علشان تتزامن مع جهاز جنى لازم ربط قاعدة بيانات أونلاين وإعداد صلاحيات آمنة. كلمة مرور الأدمن داخل الصفحة وحدها مش حماية حقيقية، فلا تضيف بيانات خاصة.</div>
+    <div class="notice">مهم جدًا: دي نسخة واجهة جاهزة للتجربة. حاليًا إعدادات الموقع تُحفظ على الجهاز وتحاول المزامنة عبر قاعدة البيانات عند توفر الاتصال. نتائج الاختبار تظل على نفس المتصفح. كلمة مرور الأدمن داخل الصفحة وحدها مش حماية حقيقية، فلا تضيف بيانات خاصة.</div>
 
     <div class="glass admin-block">
       <h3>🔐 كلمات المرور</h3>
@@ -273,7 +284,10 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
       <label>عبارة فوق العداد</label><input id="adminCounterCaption">
       <label>رسالة الختام</label><textarea id="adminClosing"></textarea>
       <label>رابط صورة الخلفية (اختياري)</label><input id="adminHeroImage" placeholder="رابط صورة مباشر">
-      <label>رابط فيديو خلفية MP4/WebM مباشر (اختياري)</label><input id="adminBgVideo" placeholder="رابط ملف فيديو مباشر، وليس رابط TikTok">
+      <label>رابط فيديو الخلفية (رابط مباشر أو Google Drive)</label><input id="adminBgVideo" placeholder="رابط مشاركة Google Drive أو MP4/WebM">
+      <label>رابط الفيديو الرومانسي (Google Drive أو رابط مباشر)</label><input id="adminRomanticVideo" placeholder="رابط الفيديو">
+      <label>رابط الصورة الدائرية الأولى (Google Drive)</label><input id="adminEndPhoto1" placeholder="رابط مشاركة الصورة الأولى">
+      <label>رابط الصورة الدائرية الثانية (Google Drive)</label><input id="adminEndPhoto2" placeholder="رابط مشاركة الصورة الثانية">
       <label>رابط واتساب بصيغة دولية بدون +</label><input id="adminWhatsapp" placeholder="201550660352">
       <button id="saveAppearance">حفظ المظهر</button>
     </div>
@@ -346,6 +360,8 @@ const defaultConfig = {
   closing:"أتمنى كل مرة تفتحي فيها الموقع تلاقي تفصيلة لطيفة ترسم ابتسامة على وشك. ❤️",
   heroImage:"https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=1800&q=85",
   bgVideo:"",
+  romanticVideo:"",
+  endPhotos:["",""],
   whatsapp:"201550660352",
   timeline:[
     ["أجمل صدفة في حياتي ✨","13/8 — بداية الكلام الساعة 12:04 بالضبط","اتعرفنا من جروب صدفة، وكانت أجمل صدفة في حياتي."],
@@ -418,7 +434,7 @@ async function loadCloudConfig(){
     if(rows[0] && rows[0].settings && typeof rows[0].settings === "object"){
       config={...defaultConfig,...rows[0].settings};
       localStorage.setItem("moazLoveConfig",JSON.stringify(config));
-      renderConfigText();renderTimeline();renderGallery();renderMessages();renderQuiz();renderSongs();updateCounter();
+      renderConfigText();renderTimeline();renderGallery();renderMessages();renderQuiz();renderSongs();renderRomanticVideo();renderEndPhotos();updateCounter();
     } else {
       await fetch(`${SUPABASE_URL}/rest/v1/site_settings?id=eq.1`,{
         method:"PATCH",headers:{"apikey":SUPABASE_KEY,"Authorization":`Bearer ${SUPABASE_KEY}`,"Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify({settings:config})
@@ -430,6 +446,21 @@ function esc(value){return String(value ?? "").replace(/[&<>"']/g,ch=>({"&":"&am
 function safeHttpUrl(value){
   try { const u=new URL(String(value)); return ["https:","http:"].includes(u.protocol)?u.href:""; }
   catch { return ""; }
+}
+function driveFileId(value){
+  const url=safeHttpUrl(value);if(!url)return "";
+  try{
+    const u=new URL(url);
+    const m=u.pathname.match(/\/file\/d\/([^/]+)/);
+    return m?m[1]:(u.searchParams.get("id")||"");
+  }catch{return "";}
+}
+function mediaUrl(value,type="image"){
+  const url=safeHttpUrl(value);if(!url)return "";
+  const id=driveFileId(url);if(!id)return url;
+  return type==="image"
+    ?"https://drive.google.com/thumbnail?id="+encodeURIComponent(id)+"&sz=w1200"
+    :"https://drive.google.com/uc?export=download&id="+encodeURIComponent(id);
 }
 function setText(id,value){$(id).textContent=value ?? "";}
 function parseLines(value,minimum){
@@ -462,15 +493,32 @@ function renderConfigText(){
   const image=safeHttpUrl(config.heroImage)||fallbackImage;
   $("heroImage").src=image;
   if(bgVideoElement){bgVideoElement.remove();bgVideoElement=null;}
-  const videoUrl=safeHttpUrl(config.bgVideo);
-  if(videoUrl && /\.(mp4|webm|ogg)(\?.*)?$/i.test(videoUrl)){
+  const videoUrl=mediaUrl(config.bgVideo,"video");
+  if(videoUrl){
     bgVideoElement=document.createElement("video");
     bgVideoElement.src=videoUrl;bgVideoElement.autoplay=true;bgVideoElement.loop=true;
-    bgVideoElement.muted=true;bgVideoElement.playsInline=true;bgVideoElement.className="hero-image";
-    bgVideoElement.style.opacity=".25";bgVideoElement.setAttribute("aria-hidden","true");
-    $("site").querySelector(".hero").prepend(bgVideoElement);
+    bgVideoElement.muted=true;bgVideoElement.playsInline=true;bgVideoElement.className="site-bg-video";
+    bgVideoElement.setAttribute("aria-hidden","true");
+    document.body.prepend(bgVideoElement);
     bgVideoElement.play().catch(()=>{});
   }
+}
+function renderRomanticVideo(){
+  const video=$("romanticVideoPlayer"),hint=$("romanticVideoHint");
+  const url=mediaUrl(config.romanticVideo,"video");
+  if(!url){video.pause();video.removeAttribute("src");video.load();hint.textContent="الفيديو هيتضاف من لوحة الأدمن 💗";return;}
+  video.src=url;video.load();hint.textContent="لو الفيديو مش بيشتغل، اتأكدي إن مشاركة Drive متاحة لأي شخص لديه الرابط.";
+  video.onerror=()=>{hint.textContent="تعذر تشغيل الفيديو. راجعي صلاحية المشاركة أو جرّبي رابط فيديو مباشر.";};
+}
+function renderEndPhotos(){
+  const photos=config.endPhotos||["",""];
+  [0,1].forEach(i=>{
+    const img=$("endPhoto"+(i+1)),url=mediaUrl(photos[i],"image");
+    img.classList.toggle("hidden",!url);
+    if(url){img.src=url;img.onerror=()=>img.classList.add("hidden");}
+    else img.removeAttribute("src");
+  });
+  $("endPhotos").classList.toggle("hidden",!photos.some(Boolean));
 }
 function renderTimeline(){
   $("timeline").innerHTML=config.timeline.map((item,i)=>`
@@ -482,7 +530,7 @@ function renderTimeline(){
 }
 function renderGallery(){
   $("galleryGrid").innerHTML=config.gallery.map((item,i)=>{
-    const url=safeHttpUrl(item[1]);
+    const url=mediaUrl(item[1],"image");
     return `<article class="glass photo-card reveal">
       ${url?`<img src="${esc(url)}" alt="${esc(item[0])}" loading="lazy" onerror="this.style.display='none'">`:`<div style="height:170px;display:grid;place-items:center;font-size:45px">🌷</div>`}
       <div class="photo-caption"><h3>${esc(item[0])}</h3><p class="tiny">ذكرى لطيفة • ${i+1}</p></div>
@@ -538,9 +586,17 @@ function submitQuiz(){
   const title=document.createElement("h3");title.textContent=`إنتِ تعرفيني بنسبة ${score}% ❤️`;
   const desc=document.createElement("p");desc.textContent=`إجابات صحيحة: ${correct} من ${config.quiz.length}.`;
   box.append(title,desc);
-  const wa=document.createElement("a");wa.href="https://wa.me/"+config.whatsapp+"?text="+encodeURIComponent(`نتيجة اختبار جنى: ${score}% (${correct}/${config.quiz.length}) ❤️`);wa.target="_blank";wa.rel="noopener";wa.textContent="إرسال النتيجة على واتساب";
-  box.appendChild(wa);
+  const lines=detail.map((item,i)=>`${i+1}. ${item.question}\nإجابتي: ${item.answer} ${item.correct?"✓":"✗"}`);
+  const message=`نتيجة اختبار جنى ❤️\nالنتيجة: ${score}% (${correct}/${config.quiz.length})\n\n${lines.join("\n\n")}`;
+  const shareBtn=document.createElement("button");shareBtn.type="button";shareBtn.className="share-result";
+  shareBtn.textContent="شارك مع شعيب 💗";
+  shareBtn.addEventListener("click",()=>{
+    const number=String(config.whatsapp||"").replace(/\D/g,"");
+    window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message),"_blank","noopener");
+  });
+  box.appendChild(shareBtn);
 }
+$("submitQuiz").addEventListener("click",submitQuiz);
 function parseSongs(){return (config.songs||[]).map(row=>({name:(row[0]||"موسيقى").trim(),url:safeHttpUrl(row[1]||"")})).filter(x=>x.url);}
 function renderSongs(){
   const songs=parseSongs();$("musicDock").classList.toggle("hidden",songs.length===0);
@@ -648,7 +704,9 @@ function fillAdmin(){
   $("adminTitle").value=config.title;$("adminSubtitle").value=config.subtitle;
   $("adminCounterIntro").value=config.counterIntro;$("adminCounterCaption").value=config.counterCaption;
   $("adminClosing").value=config.closing;$("adminHeroImage").value=config.heroImage;
-  $("adminBgVideo").value=config.bgVideo;$("adminWhatsapp").value=config.whatsapp;
+  $("adminBgVideo").value=config.bgVideo;$("adminRomanticVideo").value=config.romanticVideo||"";
+  $("adminEndPhoto1").value=(config.endPhotos||[])[0]||"";$("adminEndPhoto2").value=(config.endPhotos||[])[1]||"";
+  $("adminWhatsapp").value=config.whatsapp;
   $("adminStartDate").value=config.startDate;
   $("adminTimeline").value=config.timeline.map(x=>x.join(" | ")).join("\n");
   $("adminGallery").value=config.gallery.map(x=>x.join(" | ")).join("\n");
@@ -669,8 +727,10 @@ $("saveAppearance").addEventListener("click",()=>{
   config.closing=$("adminClosing").value.trim();
   config.heroImage=safeHttpUrl($("adminHeroImage").value)||fallbackImage;
   config.bgVideo=safeHttpUrl($("adminBgVideo").value);
+  config.romanticVideo=safeHttpUrl($("adminRomanticVideo").value);
+  config.endPhotos=[safeHttpUrl($("adminEndPhoto1").value),safeHttpUrl($("adminEndPhoto2").value)];
   config.whatsapp=$("adminWhatsapp").value.replace(/\D/g,"")||"201550660352";
-  saveConfig();renderConfigText();alert("اتحفظ المظهر.");
+  saveConfig();renderConfigText();renderRomanticVideo();renderEndPhotos();alert("اتحفظ المظهر.");
 });
 $("saveCounter").addEventListener("click",()=>{
   const date=$("adminStartDate").value;
@@ -741,10 +801,10 @@ $("unlockForm").addEventListener("submit",async event=>{
     catch{setText("songState","اضغطي ▶ لتشغيل الموسيقى");}
   }
 });
-renderFloaters();renderConfigText();renderTimeline();renderGallery();renderMessages();renderQuiz();renderSongs();
+renderFloaters();renderConfigText();renderTimeline();renderGallery();renderMessages();renderQuiz();renderSongs();renderRomanticVideo();renderEndPhotos();
 updateCounter();setInterval(updateCounter,1000);
 loadCloudConfig();
 })();
 </script>
 </body>
-  </html>
+</html>
