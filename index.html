@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#100815">
-<title>Nox Love • هدية لجنى</title>
+<title>معاذ شعيب • هدية لجنى</title>
 <style>
-:root{--bg:#100815;--pink:#ff83c5;--pink2:#ff4fa8;--purple:#b18aff;--glass:rgba(255,255,255,.075);--line:rgba(255,255,255,.16);--muted:#d8c5dc}
+:root{--bg:#090719;--pink:#ff7ce8;--pink2:#ff2ebd;--purple:#7c5cff;--cyan:#37e8ff;--glass:rgba(24,10,48,.62);--line:rgba(255,125,238,.32);--muted:#e2d5ff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:18px}
-body{margin:0;background:var(--bg);color:#fff4fb;font-family:Tahoma,Arial,sans-serif;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:#fff4fb;font-family:Tahoma,Arial,sans-serif;overflow-x:hidden;background-image:radial-gradient(ellipse at 15% 12%,#ff2ebd35,transparent 38%),radial-gradient(ellipse at 88% 40%,#5738ff44,transparent 42%),radial-gradient(ellipse at 40% 85%,#00d9ff20,transparent 38%);background-attachment:fixed}
 body:before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(ellipse at 15% 10%,#81235b55,transparent 42%),radial-gradient(ellipse at 90% 45%,#5032a355,transparent 45%),linear-gradient(145deg,#100815,#160b21 55%,#09060d)}
 button,input,textarea,select{font:inherit}
 button{border:1px solid #ffffff18;border-radius:14px;padding:12px 17px;background:linear-gradient(120deg,var(--pink2),#9259ed);color:white;font-weight:700;cursor:pointer;transition:transform .2s,filter .2s,box-shadow .2s}
@@ -41,7 +41,7 @@ h3{color:#ffd5eb}
 .pill{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid #ff9ed044;border-radius:99px;background:#ffffff08;color:#ffe0f0;font-size:13px}
 .actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
 .ghost{background:#ffffff0a;border:1px solid #ffffff25}
-section{padding:36px 0 46px}
+section{padding:36px 0 46px;position:relative} section:not(.hero)::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;opacity:.12;background-image:url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=1200&q=70');background-size:cover;background-position:center;mask-image:linear-gradient(90deg,transparent,#000 25%,#000 75%,transparent)}
 .section-head{text-align:center;max-width:690px;margin:0 auto 24px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr));gap:15px}
 .card{padding:20px;position:relative;overflow:hidden}
@@ -72,6 +72,22 @@ section{padding:36px 0 46px}
 .gift-icon{font-size:75px;animation:float 3s ease-in-out infinite}
 footer{text-align:center;padding:60px 12px 100px}
 .signature{font-size:clamp(27px,7vw,42px);font-weight:bold;color:#ff9bd1;text-shadow:0 0 22px #ff4fa86e;margin:10px 0}
+button,.glass,.pill{box-shadow:0 0 18px #ff2ebd18,0 0 38px #6347ff12}
+.hero:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 20% 35%,#ff2ebd24,transparent 30%),radial-gradient(circle at 80% 65%,#37e8ff1c,transparent 32%);animation:neonPulse 5s ease-in-out infinite alternate}
+@keyframes neonPulse{from{opacity:.55;filter:hue-rotate(0deg)}to{opacity:1;filter:hue-rotate(35deg)}}
+#loveIntro{position:fixed;inset:0;z-index:25;display:none;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;background:radial-gradient(circle,#28104e 0%,#090719 72%);text-align:center}
+#loveIntro.show{display:flex}
+#loveIntro .love-word{font-size:clamp(34px,10vw,68px);font-weight:900;color:#fff;text-shadow:0 0 10px #ff2ebd,0 0 28px #ff2ebd,0 0 55px #7c5cff;opacity:0;transform:scale(.2);animation:loveWord 1s 1.15s forwards}
+#loveIntro .big-heart{font-size:clamp(100px,36vw,220px);line-height:1;color:#ff2ebd;filter:drop-shadow(0 0 25px #ff2ebd);opacity:0;transform:scale(.1);animation:heartBuild .85s 1.2s cubic-bezier(.2,1.4,.4,1) forwards}
+.intro-heart{position:absolute;top:110%;animation:heartFly 1.5s cubic-bezier(.1,.7,.3,1) forwards;filter:drop-shadow(0 0 9px #ff54dc)}
+@keyframes heartFly{0%{transform:translateY(0) scale(.25) rotate(0);opacity:0}15%{opacity:1}75%{opacity:1}100%{transform:translate(var(--dx),-115vh) scale(var(--sc)) rotate(260deg);opacity:0}}
+@keyframes loveWord{to{opacity:1;transform:scale(1)}}@keyframes heartBuild{to{opacity:1;transform:scale(1)}}
+#floatingCounter{position:fixed;top:10px;right:10px;z-index:7;padding:8px 12px;border:1px solid #ff72df88;border-radius:999px;background:#130a2be8;backdrop-filter:blur(12px);box-shadow:0 0 22px #ff2ebd44;font-size:12px;color:#fff;display:none;max-width:calc(100% - 20px)}
+#floatingCounter b{color:#ff8be9}
+.message-card{border-color:#ff7ce855;background:linear-gradient(145deg,#1b0d32d9,#120a26d9);transition:transform .35s,box-shadow .35s}
+.message-card.opened{box-shadow:0 0 28px #ff2ebd44,0 0 50px #7c5cff22;transform:translateY(-3px)}
+.photo-card img{filter:saturate(1.18) contrast(1.04)}
+#musicDock{border-color:#ff7ce877;background:#100823ee}
 #floaters{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
 .floater{position:absolute;bottom:-70px;animation:floatUp linear forwards;opacity:.7;filter:drop-shadow(0 0 8px #ff64b955)}
 @keyframes floatUp{to{transform:translateY(-115svh) rotate(35deg);opacity:0}}
@@ -102,6 +118,8 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
 </head>
 <body>
 <div id="floaters" aria-hidden="true"></div>
+<div id="loveIntro" aria-hidden="true"><div id="introHeartField"></div><div class="love-word">بحبك يا جنى</div><div class="big-heart">♥</div></div>
+<div id="floatingCounter" aria-live="off">❤️ بقالنا <b id="floatDays">0</b> يوم و <b id="floatHours">00</b>:<b id="floatMinutes">00</b>:<b id="floatSeconds">00</b></div>
 
 <div id="lockScreen" class="center-screen">
   <div class="lock-card glass">
@@ -114,7 +132,7 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
       <button type="submit" style="width:100%">افتحي الهدية ✨</button>
     </form>
     <p id="lockError" class="tiny" aria-live="polite"></p>
-    <p class="tiny">صممت بكل حب • Nox Love</p>
+    <p class="tiny">صممت بكل حب • معاذ شعيب</p>
   </div>
 </div>
 
@@ -161,17 +179,17 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
     </section>
 
     <section id="story">
-      <div class="section-head reveal"><div class="icon">📖</div><h2>محطات في الحكاية</h2><p class="sub">اكتبوا هنا تفاصيل حقيقية من حكايتكم؛ كل محطة ليها معنى مختلف.</p></div>
+      <div class="section-head reveal"><div class="icon">📖</div><h2>محطات في الحكاية</h2><p class="sub">من صدفة صغيرة بدأت حكاية ليها مكان كبير في القلب.</p></div>
       <div id="timeline" class="timeline"></div>
     </section>
 
     <section id="gallery">
-      <div class="section-head reveal"><div class="icon">🌷</div><h2>ركن الصور والذكريات</h2><p class="sub">صور هادية وألوان دافية، وتقدر تغيّر الروابط من لوحة الأدمن.</p></div>
+      <div class="section-head reveal"><div class="icon">🌷</div><h2>ركن الصور والذكريات</h2><p class="sub">بين صور حالمة ولمسات أنمي وألوان نيون، كل تفصيلة معمولة عشان الحكاية.</p></div>
       <div id="galleryGrid" class="grid"></div>
     </section>
 
     <section id="messages">
-      <div class="section-head reveal"><div class="icon">💌</div><h2>عشر رسائل ليكي</h2><p class="sub">كل كارت مقفول لحد ما تضغطي عليه. افتحيهم واحدة واحدة براحتك.</p></div>
+      <div class="section-head reveal"><div class="icon">💌</div><h2>عشر رسائل ليكي</h2><p class="sub">كل كارت جواه كلام مستنيكي… افتحيه وشوفي المفاجأة 💌</p></div>
       <div id="messagesGrid" class="grid"></div>
     </section>
 
@@ -206,7 +224,7 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
       <div class="glass card reveal">
         <label for="tiktokUrl">رابط فيديو TikTok</label>
         <input id="tiktokUrl" placeholder="https://www.tiktok.com/@.../video/..." inputmode="url">
-        <button id="loadTikTok">عرض الفيديو ✨</button>
+        <button id="loadTikTok">تشغيل الفيديو بالصوت إن سمح تيك توك 🎬</button>
         <p id="tiktokError" class="tiny" aria-live="polite"></p>
         <div id="tiktokPlayer"></div>
       </div>
@@ -223,7 +241,7 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
       </div>
     </section>
   </main>
-  <footer><p class="tiny">A little digital gift • Nox Love</p><p style="color:#ffabd7">♡ صُنعت بكل حب ♡</p></footer>
+  <footer><p class="tiny">هدية رقمية معمولة بكل حب • معاذ شعيب</p><p style="color:#ffabd7">♡ صُنعت بكل حب ♡</p></footer>
 </div>
 
 <div id="musicDock" class="hidden">
@@ -237,8 +255,8 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
 
 <div id="adminOverlay" class="hidden">
   <div class="admin-inner">
-    <div class="admin-top"><h2>⚙️ لوحة Nox Love</h2><button id="closeAdmin" class="ghost">إغلاق ✕</button></div>
-    <div class="notice">تنبيه مهم: هذه نسخة GitHub Pages تجريبية. الإعدادات وكلمات المرور والنتائج تُحفظ في المتصفح الحالي فقط، وكلمة مرور الأدمن ليست حماية حقيقية لأن الكود ظاهر للزوار. لا تضعي بيانات خاصة هنا. الربط الآمن بين الأجهزة يحتاج قاعدة بيانات ومصادقة منفصلتين.</div>
+    <div class="admin-top"><h2>⚙️ لوحة معاذ شعيب</h2><button id="closeAdmin" class="ghost">إغلاق ✕</button></div>
+    <div class="notice">مهم جدًا: دي نسخة واجهة جاهزة للتجربة. حاليًا الإعدادات والنتائج محفوظة على نفس المتصفح فقط؛ علشان تتزامن مع جهاز جنى لازم ربط قاعدة بيانات أونلاين وإعداد صلاحيات آمنة. كلمة مرور الأدمن داخل الصفحة وحدها مش حماية حقيقية، فلا تضيف بيانات خاصة.</div>
 
     <div class="glass admin-block">
       <h3>🔐 كلمات المرور</h3>
@@ -303,7 +321,7 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
     </div>
 
     <div class="glass admin-block">
-      <h3>📊 سجل النتائج على هذا الجهاز</h3>
+      <h3>📊 سجل النتائج (محلي حاليًا)</h3>
       <button id="viewResults">عرض النتائج</button> <button id="clearResults" class="ghost">مسح النتائج المحلية</button>
       <div id="resultsList"></div>
     </div>
@@ -326,10 +344,10 @@ const defaultConfig = {
   bgVideo:"",
   whatsapp:"201550660352",
   timeline:[
-    ["البداية ✨","أول ذكرى","اكتب هنا التاريخ والتفاصيل الحقيقية لبداية حكايتكم."],
-    ["لحظة مميزة 💌","ذكرى تانية","ضيف موقف جميل أو كلام ليه معنى خاص عندكم."],
-    ["ضحكة مش بتتنسي 🌷","ذكرى تالتة","اكتب موقف مضحك بتفتكروه سوا."],
-    ["والحكاية مكملة 🦋","اللي جاي","أمنية حلوة للمستقبل من غير وعود أو ضغط."]
+    ["أجمل صدفة في حياتي ✨","13/8 — بداية الكلام الساعة 12:04 بالضبط","اتعرفنا من جروب صدفة، وكانت أجمل صدفة في حياتي."],
+    ["أول سهرة سوا 💌","أول يوم سهرنا فيه مع بعض في الجروب","سهرنا واتكلمنا وعرفنا بعض أكتر، وكانت بداية ذكريات حلوة."],
+    ["ضحكة مش بتتنسي 😂","لما بنتنمر على أي حد عمومًا","الضحك والهزار اللي بينا من التفاصيل اللي بتفضل في الذاكرة."],
+    ["والحكاية مكملة 🦋","لسه في ذكريات كتير جاية","كل يوم جديد ممكن يضيف حكاية صغيرة نفتكرها ونضحك عليها."]
   ],
   gallery:[
     ["ورود هادية","https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=80"],
@@ -338,16 +356,16 @@ const defaultConfig = {
     ["وردة وردية","https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=900&q=80"]
   ],
   messages:[
-    "يا جنى، دي هدية صغيرة معمولة مخصوص عشان ترسم ابتسامة على وشك ❤️",
-    "أتمنى تلاقي في كل يوم حاجة بسيطة تفرح قلبك 🌷",
-    "وجود الناس اللي بنرتاح معاهم نعمة تستاهل التقدير.",
-    "خليكي دايمًا فخورة بنفسك وبكل خطوة بتعمليها ✨",
-    "حتى الأيام العادية ممكن تبقى أحلى بذكرى لطيفة.",
-    "أتمنى أحلامك تكبر معاكي وتوصليلها واحدة واحدة 🦋",
-    "خليكي على طبيعتك؛ مفيش أجمل من الصدق والراحة.",
-    "لو يومك كان صعب، أتمنى بكرة يكون ألطف وأهدى 🌙",
-    "شكرًا على كل لحظة حلوة وكل كلمة لطيفة 💌",
-    "دي مش نهاية الحكاية، دي صفحة صغيرة من ذكريات جميلة ❤️"
+    "بصي بقى، البوست البنات الكلام ده ليكي: أنا بحبك وطول مانا فيا الروح هفضل أحبك ومش هحب حد غيرك يا ست البنات، لأنك أحلى حاجة شافت عيني.",
+    "بحبك يا صدفة لقيت فيها عمري وأجمل من اختاره قلبي.",
+    "حتى لو كان لدي مليون اختيار هفضل أختارك في كل مرة.",
+    "أنا قوي بيكي يا نقطة ضعفي.",
+    "وجودك في حياتي لوحده كفاية يخليني أحب أيامي أكتر. بحبك يا جنى.",
+    "يا جنى لو كان ليا أختار من بين كل احتمالات الدنيا هختارك ألف مرة، لأن قلبي لما عرفك مبقاش عاوز يعرف طريق لحد غيرك.",
+    "حتى يومي العادي لما بسمع صوتك فيه بيتحول لأحلى يوم. فاكرة؟ ❤️",
+    "مهما قلت كلام وإني بحبك قد إيه مش هيوصف اللي جوايا ليكي، بس فعلًا إنتِ أغلى حد في حياتي. بحبك بحبك.",
+    "بحبك بحبك. شكرًا على كل لحظة حلوة وكل كلمة لطيفة.",
+    "دي مش نهاية الحكاية، دي صفحة صغيرة من ذكريات جميلة. بحبك يا ممرضة قلبي ❤️"
   ],
   songs:[],
   quiz:[
@@ -365,7 +383,7 @@ const defaultConfig = {
 };
 let config;
 try {
-  const stored = JSON.parse(localStorage.getItem("noxLoveConfig") || "{}");
+  const stored = JSON.parse(localStorage.getItem("moazLoveConfig") || "{}");
   config = {...defaultConfig,...stored};
 } catch { config = {...defaultConfig}; }
 let answers = {};
@@ -373,7 +391,7 @@ let songIndex = 0;
 let bgVideoElement = null;
 const fallbackImage = defaultConfig.heroImage;
 
-function saveConfig(){localStorage.setItem("noxLoveConfig",JSON.stringify(config));}
+function saveConfig(){localStorage.setItem("moazLoveConfig",JSON.stringify(config));}
 function esc(value){return String(value ?? "").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
 function safeHttpUrl(value){
   try { const u=new URL(String(value)); return ["https:","http:"].includes(u.protocol)?u.href:""; }
@@ -449,7 +467,7 @@ function renderMessages(){
     btn.addEventListener("click",()=>{
       const p=$("message-"+btn.dataset.openMessage);
       p.classList.toggle("closed");
-      btn.textContent=p.classList.contains("closed")?"افتحي الرسالة ✨":"اقفلي الرسالة 💗";
+      btn.textContent=p.classList.contains("closed")?"افتحي الرسالة ✨":"اقفلي الرسالة 💗";btn.closest(".message-card").classList.toggle("opened",!p.classList.contains("closed"));
     });
   });
   setupReveals();
@@ -468,7 +486,7 @@ function renderQuiz(){
     btn.classList.add("selected");
   }));
 }
-function readResults(){try{return JSON.parse(localStorage.getItem("noxLoveResults")||"[]");}catch{return [];}}
+function readResults(){try{return JSON.parse(localStorage.getItem("moazLoveResults")||"[]");}catch{return [];}}
 function submitQuiz(){
   if(Object.keys(answers).length!==config.quiz.length){
     $("quizResult").textContent="جاوبي على كل الأسئلة الأول عشان نحسب النتيجة ❤️";
@@ -480,8 +498,8 @@ function submitQuiz(){
     return {question:q[0],answer:q[answers[i]],correct:ok};
   });
   const score=Math.round(correct/config.quiz.length*100);
-  const record={date:new Date().toISOString(),score,correct,total:config.quiz.length,detail};
-  const results=readResults();results.push(record);localStorage.setItem("noxLoveResults",JSON.stringify(results));
+  const record={date:new Date().toISOString(),name:"جنى",score,correct,total:config.quiz.length,detail};
+  const results=readResults();results.push(record);localStorage.setItem("moazLoveResults",JSON.stringify(results));
   const box=$("quizResult");box.replaceChildren();box.classList.remove("hidden");
   const title=document.createElement("h3");title.textContent=`إنتِ تعرفيني بنسبة ${score}% ❤️`;
   const desc=document.createElement("p");desc.textContent=`إجابات صحيحة: ${correct} من ${config.quiz.length}.`;
@@ -539,6 +557,7 @@ function updateCounter(){
   setText("weeks",Math.floor(totalDays/7).toLocaleString("en-US"));
   setText("totalDays",totalDays.toLocaleString("en-US"));
   setText("totalHours",totalHours.toLocaleString("en-US"));
+  setText("floatDays",totalDays.toLocaleString("en-US"));setText("floatHours",String(hours).padStart(2,"0"));setText("floatMinutes",String(minutes).padStart(2,"0"));setText("floatSeconds",String(seconds).padStart(2,"0"));
 }
 const surprises=[
   "أتمنى تلاقي النهارده سبب صغير يفرح قلبك ❤️",
@@ -572,13 +591,13 @@ $("loadTikTok").addEventListener("click",()=>{
   const host=u.hostname.toLowerCase();
   if(!(host==="tiktok.com"||host.endsWith(".tiktok.com"))){$("tiktokError").textContent="ده مش رابط TikTok.";return;}
   const match=u.pathname.match(/\/video\/(\d+)/);
-  if(!match){$("tiktokError").textContent="الرابط المختصر قد لا يعمل هنا؛ افتحي الفيديو وانسخي الرابط الكامل.";return;}
+  if(!match){$("tiktokError").textContent="الرابط ده مختصر. افتحي الفيديو في تيك توك ثم مشاركة ← نسخ الرابط الكامل، وبعدها جرّبي تاني.";return;}
   $("tiktokError").textContent="";
   const box=$("tiktokPlayer");box.replaceChildren();
   const frame=document.createElement("div");frame.className="video-frame";
   const iframe=document.createElement("iframe");
   iframe.src="https://www.tiktok.com/player/v1/"+match[1]+"?controls=1";
-  iframe.title="TikTok video";iframe.allow="fullscreen";iframe.allowFullscreen=true;iframe.loading="lazy";
+  iframe.title="TikTok video";iframe.allow="fullscreen; autoplay; encrypted-media; picture-in-picture; web-share";iframe.allowFullscreen=true;iframe.loading="lazy";
   frame.appendChild(iframe);box.appendChild(frame);
 });
 
@@ -665,13 +684,21 @@ $("viewResults").addEventListener("click",()=>{
   });
 });
 $("clearResults").addEventListener("click",()=>{
-  if(confirm("تمسح النتائج المحفوظة محليًا من هذا المتصفح؟")){localStorage.removeItem("noxLoveResults");$("resultsList").textContent="تم مسح النتائج المحلية.";}
+  if(confirm("تمسح النتائج المحفوظة محليًا من هذا المتصفح؟")){localStorage.removeItem("moazLoveResults");$("resultsList").textContent="تم مسح النتائج المحلية.";}
 });
 $("unlockForm").addEventListener("submit",async event=>{
   event.preventDefault();
   if($("sitePassword").value!==config.sitePass){setText("lockError","كلمة السر مش صحيحة، جربي تاني ❤️");return;}
-  $("lockScreen").classList.add("hidden");$("site").classList.remove("hidden");
-  renderConfigText();updateCounter();setupReveals();
+  $("lockScreen").classList.add("hidden");
+  const intro=$("loveIntro");intro.classList.add("show");
+  const field=$("introHeartField");field.replaceChildren();
+  for(let i=0;i<110;i++){
+    const h=document.createElement("span");h.className="intro-heart";h.textContent=["♥","💗","💖","❤"][i%4];
+    h.style.left=(Math.random()*100)+"%";h.style.fontSize=(12+Math.random()*27)+"px";
+    h.style.setProperty("--dx",((Math.random()-.5)*100)+"vw");h.style.setProperty("--sc",(.7+Math.random()*1.5).toFixed(2));
+    h.style.animationDelay=(Math.random()*.45)+"s";field.appendChild(h);
+  }
+  setTimeout(()=>{intro.classList.remove("show");$("site").classList.remove("hidden");$("floatingCounter").style.display="block";renderConfigText();updateCounter();setupReveals();},2200);
   const songs=parseSongs();
   if(songs.length){
     // Autoplay is attempted only after the user's password submission.
@@ -685,4 +712,4 @@ updateCounter();setInterval(updateCounter,1000);
 })();
 </script>
 </body>
- </html>
+  </html>
