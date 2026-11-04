@@ -102,7 +102,6 @@ button,.glass,.pill{box-shadow:0 0 18px #ff2ebd18,0 0 38px #6347ff12}
 .admin-top{display:flex;align-items:center;gap:10px;justify-content:space-between;position:sticky;top:0;background:#0a0610f2;padding:10px 0;z-index:2}
 .admin-block{padding:18px;margin:15px 0}
 .notice{padding:12px 14px;border-radius:12px;background:#39243d;color:#f5d9ed;line-height:1.8;font-size:13px}
-hr{border:0;border-top:1px solid #ffffff18;margin:20px 0}
 .video-showcase{width:min(100%,420px);aspect-ratio:16/9;margin:18px auto;border-radius:20px;overflow:hidden;background:#050407;border:1px solid #ff9dd544}
 .video-showcase video{width:100%;height:100%;object-fit:cover}
 .dual-circles{display:flex;justify-content:center;gap:20px;margin:20px 0;flex-wrap:wrap}
@@ -124,10 +123,10 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
     <div style="font-size:54px;margin:12px">💌</div>
     <h1 id="lockTitle">هدية مخصوص لجنى</h1>
     <p class="sub" id="lockSubtitle">في حكاية صغيرة مستنياكي جوه ❤️</p>
-    <form id="unlockForm">
+    <div onsubmit="event.preventDefault();">
       <input id="sitePassword" type="password" placeholder="كلمة السر" autocomplete="current-password" required aria-label="كلمة مرور الموقع">
-      <button type="submit" style="width:100%">افتحي الهدية ✨</button>
-    </form>
+      <button type="button" onclick="checkUnlockPassword()" style="width:100%">افتحي الهدية ✨</button>
+    </div>
     <p id="lockError" class="tiny" aria-live="polite"></p>
     <p class="tiny">صممت بكل حب • معاذ شعيب</p>
   </div>
@@ -761,10 +760,12 @@ const sQuiz = $("saveQuiz"); if(sQuiz) sQuiz.addEventListener("click",()=>{
   saveConfig(); renderQuiz(); alert("تم حفظ الاختبار.");
 });
 
-const unlockForm = $("unlockForm");
-if(unlockForm) unlockForm.addEventListener("submit",async event=>{
-  event.preventDefault();
-  if($("sitePassword").value!==config.sitePass){setText("lockError","كلمة السر مش صحيحة، جربي تاني ❤️");return;}
+window.checkUnlockPassword = async function() {
+  if($("sitePassword").value !== config.sitePass){
+    setText("lockError","كلمة السر مش صحيحة، جربي تاني ❤️");
+    return;
+  }
+  setText("lockError","");
   $("lockScreen").classList.add("hidden");
   const intro=$("loveIntro"); intro.classList.add("show");
   const field=$("introHeartField"); field.replaceChildren();
@@ -783,7 +784,7 @@ if(unlockForm) unlockForm.addEventListener("submit",async event=>{
 
   const songs=parseSongs();
   if(songs.length){ renderSongs(); try{await $("audio").play();}catch{} }
-});
+};
 
 renderFloaters(); renderConfigText(); renderTimeline(); renderGallery(); renderMessages(); renderQuiz(); renderSongs();
 updateCounter(); setInterval(updateCounter,1000);
