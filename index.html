@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#100815">
 <title>معاذ شعيب • هدية لجنى</title>
 <style>
-:root{--bg:#090719;--pink:#ff7ce8;--pink2:#ff2ebd;--purple:#7c5cff;--cyan:#37e8ff;--glass:rgba(24,10,48,.62);--line:rgba(255,125,238,.32);--muted:#e2d5ff}
+:root{--bg:#090719;--pink:#ff7ce8;--pink2:#ff2ebd;--purple:#7c5cff;--cyan:#37e8ff;--glass:rgba(20,10,38,0.75);--line:rgba(255,125,238,0.32);--muted:#e2d5ff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:18px}
 body{margin:0;background:var(--bg);color:#fff4fb;font-family:Tahoma,Arial,sans-serif;overflow-x:hidden;background-image:radial-gradient(ellipse at 15% 12%,#ff2ebd35,transparent 38%),radial-gradient(ellipse at 88% 40%,#5738ff44,transparent 42%),radial-gradient(ellipse at 40% 85%,#00d9ff20,transparent 38%);background-attachment:fixed}
@@ -24,58 +24,28 @@ a{color:#ffc3e4}
 .center-screen{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:22px;position:relative}
 .glass{background:var(--glass);border:1px solid var(--line);border-radius:24px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 18px 55px #0004}
 
-/* الواجهة الجديدة لشاشة القفل */
+/* واجهة موحدة بالستايل السري الفخم */
 .lock-card-new{
-  width:min(440px,100%);
+  width:min(420px,100%);
   padding:36px 28px;
   text-align:center;
   position:relative;
   z-index:2;
   border-radius:30px;
-  background:rgba(20, 10, 38, 0.75);
+  background:var(--glass);
   border:1px solid rgba(255, 124, 232, 0.4);
   box-shadow: 0 0 40px rgba(255, 46, 189, 0.25), inset 0 0 25px rgba(124, 92, 255, 0.15);
+  backdrop-filter:blur(20px);
 }
 .lock-avatar{
-  width:85px;
-  height:85px;
-  margin:0 auto 15px;
-  border-radius:50%;
+  width:80px;height:80px;margin:0 auto 15px;border-radius:50%;
   background:linear-gradient(135deg, #ff2ebd, #7c5cff);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:42px;
+  display:flex;align-items:center;justify-content:center;font-size:38px;
   box-shadow:0 0 25px #ff2ebd66;
-  animation: pulseGlow 3s infinite alternate;
 }
-@keyframes pulseGlow {
-  0%{ transform: scale(1); box-shadow:0 0 20px #ff2ebd66; }
-  100%{ transform: scale(1.06); box-shadow:0 0 35px #ff7ce8aa; }
-}
-.pass-box-wrap{
-  position:relative;
-  margin:20px 0 10px;
-}
-.pass-input-custom{
-  text-align:center;
-  font-size:18px;
-  letter-spacing:3px;
-  padding:14px;
-  border-radius:16px;
-  background:rgba(12, 6, 24, 0.8);
-  border:1px solid var(--pink);
-  box-shadow:0 0 15px rgba(255, 46, 189, 0.2);
-  transition:all 0.3s ease;
-}
-.pass-input-custom:focus{
-  box-shadow:0 0 25px rgba(255, 46, 189, 0.5);
-  border-color:#fff;
-}
-
 .eyebrow{letter-spacing:2px;font-size:11px;color:#e6b4dc;text-transform:uppercase}
 h1,h2,h3,p{overflow-wrap:anywhere}
-h1{font-size:clamp(26px,7vw,46px);line-height:1.2;color:#ffd0e9;margin:10px 0;text-shadow:0 0 25px #ff55b84d}
+h1{font-size:clamp(26px,7vw,44px);line-height:1.2;color:#ffd0e9;margin:10px 0;text-shadow:0 0 25px #ff55b84d}
 h2{color:#ffc0e1;font-size:clamp(22px,5vw,31px);margin:0 0 12px}
 h3{color:#ffd5eb}
 .sub{color:var(--muted);line-height:1.95}
@@ -165,16 +135,16 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
 <div id="loveIntro" aria-hidden="true"><div id="introHeartField"></div><div class="love-word">بحبك يا جنى</div><div class="big-heart">♥</div></div>
 <div id="floatingCounter" aria-live="off">❤️ بقالنا <b id="floatDays">0</b> يوم و <b id="floatHours">00</b>:<b id="floatMinutes">00</b>:<b id="floatSeconds">00</b></div>
 
-<!-- شاشة القفل المعدلة والمطورة بالكامل -->
+<!-- شاشة القفل بستايل موحد وبدون أي ريفريش -->
 <div id="lockScreen" class="center-screen">
-  <div class="lock-card-new glass">
+  <div class="lock-card-new">
     <div class="lock-avatar">🎁</div>
     <div class="eyebrow">A Special Gift For You</div>
     <h1 id="lockTitle">هدية مخصوص لجنى</h1>
     <p class="sub" id="lockSubtitle">في حكاية صغيرة مستنياكي جوه ❤️</p>
     
-    <div class="pass-box-wrap">
-      <input id="sitePassword" type="password" class="pass-input-custom" placeholder="اكتبي كلمة السر هنا..." autocomplete="off">
+    <div style="margin:20px 0 10px;">
+      <input id="sitePassword" type="password" placeholder="اكتبي كلمة السر هنا..." style="text-align:center; font-size:16px; letter-spacing:2px;" autocomplete="off">
     </div>
     
     <button id="unlockBtn" type="button" style="width:100%; padding:14px; font-size:16px;">افتحي الهدية ✨</button>
@@ -812,10 +782,10 @@ const sQuiz = $("saveQuiz"); if(sQuiz) sQuiz.addEventListener("click",()=>{
   saveConfig(); renderQuiz(); alert("تم حفظ الاختبار.");
 });
 
-/* نظام فتح كلمة السر اللحظي وبدون ريفريش */
-async function processUnlock() {
-  const enteredPass = ($("sitePassword").value || "").trim();
-  if (enteredPass !== config.sitePass) {
+/* معالج الفتح السريع والمباشر (بدون أشكال فورم ولا ريفريش) */
+function executeUnlock() {
+  const entered = ($("sitePassword").value || "").trim();
+  if (entered !== config.sitePass) {
     setText("lockError", "كلمة السر مش صحيحة، جربي تاني ❤️");
     return;
   }
@@ -854,22 +824,26 @@ async function processUnlock() {
   const songs = parseSongs();
   if (songs.length) { 
     renderSongs(); 
-    try { await $("audio").play(); } catch {} 
+    try { $("audio").play(); } catch {} 
   }
 }
 
-// ربط الزرار وزر الـ Enter بالفحص المباشر
 const unlockBtn = $("unlockBtn");
-if (unlockBtn) unlockBtn.addEventListener("click", processUnlock);
+if (unlockBtn) {
+  unlockBtn.onclick = function(e) {
+    e.preventDefault();
+    executeUnlock();
+  };
+}
 
-const passInput = $("sitePassword");
-if (passInput) {
-  passInput.addEventListener("keypress", (e) => {
+const passField = $("sitePassword");
+if (passField) {
+  passField.onkeydown = function(e) {
     if (e.key === "Enter") {
       e.preventDefault();
-      processUnlock();
+      executeUnlock();
     }
-  });
+  };
 }
 
 function renderAll() {
