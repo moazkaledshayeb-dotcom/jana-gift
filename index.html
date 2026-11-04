@@ -23,11 +23,59 @@ a{color:#ffc3e4}
 .wrap{width:min(1000px,92%);margin:auto}
 .center-screen{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:22px;position:relative}
 .glass{background:var(--glass);border:1px solid var(--line);border-radius:24px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 18px 55px #0004}
-.lock-card{width:min(430px,100%);padding:28px;text-align:center;position:relative;z-index:2;overflow:hidden}
-.lock-card:before{content:"";position:absolute;width:230px;height:230px;border-radius:50%;background:#ff58b31c;filter:blur(30px);top:-100px;right:-70px;pointer-events:none}
+
+/* الواجهة الجديدة لشاشة القفل */
+.lock-card-new{
+  width:min(440px,100%);
+  padding:36px 28px;
+  text-align:center;
+  position:relative;
+  z-index:2;
+  border-radius:30px;
+  background:rgba(20, 10, 38, 0.75);
+  border:1px solid rgba(255, 124, 232, 0.4);
+  box-shadow: 0 0 40px rgba(255, 46, 189, 0.25), inset 0 0 25px rgba(124, 92, 255, 0.15);
+}
+.lock-avatar{
+  width:85px;
+  height:85px;
+  margin:0 auto 15px;
+  border-radius:50%;
+  background:linear-gradient(135deg, #ff2ebd, #7c5cff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:42px;
+  box-shadow:0 0 25px #ff2ebd66;
+  animation: pulseGlow 3s infinite alternate;
+}
+@keyframes pulseGlow {
+  0%{ transform: scale(1); box-shadow:0 0 20px #ff2ebd66; }
+  100%{ transform: scale(1.06); box-shadow:0 0 35px #ff7ce8aa; }
+}
+.pass-box-wrap{
+  position:relative;
+  margin:20px 0 10px;
+}
+.pass-input-custom{
+  text-align:center;
+  font-size:18px;
+  letter-spacing:3px;
+  padding:14px;
+  border-radius:16px;
+  background:rgba(12, 6, 24, 0.8);
+  border:1px solid var(--pink);
+  box-shadow:0 0 15px rgba(255, 46, 189, 0.2);
+  transition:all 0.3s ease;
+}
+.pass-input-custom:focus{
+  box-shadow:0 0 25px rgba(255, 46, 189, 0.5);
+  border-color:#fff;
+}
+
 .eyebrow{letter-spacing:2px;font-size:11px;color:#e6b4dc;text-transform:uppercase}
 h1,h2,h3,p{overflow-wrap:anywhere}
-h1{font-size:clamp(30px,8vw,56px);line-height:1.2;color:#ffd0e9;margin:14px 0;text-shadow:0 0 25px #ff55b84d}
+h1{font-size:clamp(26px,7vw,46px);line-height:1.2;color:#ffd0e9;margin:10px 0;text-shadow:0 0 25px #ff55b84d}
 h2{color:#ffc0e1;font-size:clamp(22px,5vw,31px);margin:0 0 12px}
 h3{color:#ffd5eb}
 .sub{color:var(--muted);line-height:1.95}
@@ -109,7 +157,7 @@ button,.glass,.pill{box-shadow:0 0 18px #ff2ebd18,0 0 38px #6347ff12}
 .circle-card img{width:100%;height:100%;object-fit:cover}
 nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:20px auto}
 nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px solid #ffffff15;border-radius:99px;font-size:12px}
-@media(max-width:520px){.counter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lock-card{padding:23px}.card{padding:17px}.hero-inner{padding-top:85px}.counter-unit{padding:14px 4px}}
+@media(max-width:520px){.counter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:17px}.hero-inner{padding-top:85px}.counter-unit{padding:14px 4px}}
 </style>
 </head>
 <body>
@@ -117,18 +165,22 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
 <div id="loveIntro" aria-hidden="true"><div id="introHeartField"></div><div class="love-word">بحبك يا جنى</div><div class="big-heart">♥</div></div>
 <div id="floatingCounter" aria-live="off">❤️ بقالنا <b id="floatDays">0</b> يوم و <b id="floatHours">00</b>:<b id="floatMinutes">00</b>:<b id="floatSeconds">00</b></div>
 
+<!-- شاشة القفل المعدلة والمطورة بالكامل -->
 <div id="lockScreen" class="center-screen">
-  <div class="lock-card glass">
-    <div class="eyebrow">A little something for you</div>
-    <div style="font-size:54px;margin:12px">💌</div>
+  <div class="lock-card-new glass">
+    <div class="lock-avatar">🎁</div>
+    <div class="eyebrow">A Special Gift For You</div>
     <h1 id="lockTitle">هدية مخصوص لجنى</h1>
     <p class="sub" id="lockSubtitle">في حكاية صغيرة مستنياكي جوه ❤️</p>
-    <div onsubmit="event.preventDefault();">
-      <input id="sitePassword" type="password" placeholder="كلمة السر" autocomplete="current-password" required aria-label="كلمة مرور الموقع">
-      <button type="button" onclick="checkUnlockPassword()" style="width:100%">افتحي الهدية ✨</button>
+    
+    <div class="pass-box-wrap">
+      <input id="sitePassword" type="password" class="pass-input-custom" placeholder="اكتبي كلمة السر هنا..." autocomplete="off">
     </div>
-    <p id="lockError" class="tiny" aria-live="polite"></p>
-    <p class="tiny">صممت بكل حب • معاذ شعيب</p>
+    
+    <button id="unlockBtn" type="button" style="width:100%; padding:14px; font-size:16px;">افتحي الهدية ✨</button>
+    <p id="lockError" class="tiny" style="color:#ff6b8b; font-weight:bold; margin-top:12px;" aria-live="polite"></p>
+    
+    <p class="tiny" style="margin-top:18px; opacity:0.8;">صممت بكل حب • معاذ شعيب</p>
   </div>
 </div>
 
@@ -760,35 +812,81 @@ const sQuiz = $("saveQuiz"); if(sQuiz) sQuiz.addEventListener("click",()=>{
   saveConfig(); renderQuiz(); alert("تم حفظ الاختبار.");
 });
 
-window.checkUnlockPassword = async function() {
-  if($("sitePassword").value !== config.sitePass){
-    setText("lockError","كلمة السر مش صحيحة، جربي تاني ❤️");
+/* نظام فتح كلمة السر اللحظي وبدون ريفريش */
+async function processUnlock() {
+  const enteredPass = ($("sitePassword").value || "").trim();
+  if (enteredPass !== config.sitePass) {
+    setText("lockError", "كلمة السر مش صحيحة، جربي تاني ❤️");
     return;
   }
-  setText("lockError","");
+  
+  setText("lockError", "");
   $("lockScreen").classList.add("hidden");
-  const intro=$("loveIntro"); intro.classList.add("show");
-  const field=$("introHeartField"); field.replaceChildren();
-  for(let i=0;i<100;i++){
-    const h=document.createElement("span"); h.className="intro-heart"; h.textContent=["♥","💗","💖","❤"][i%4];
-    h.style.left=(Math.random()*100)+"%"; h.style.fontSize=(12+Math.random()*27)+"px";
-    h.style.setProperty("--dx",((Math.random()-.5)*100)+"vw"); h.style.setProperty("--sc",(.7+Math.random()*1.5).toFixed(2));
-    h.style.animationDelay=(Math.random()*0.45)+"s"; field.appendChild(h);
+  
+  const intro = $("loveIntro"); 
+  intro.classList.add("show");
+  
+  const field = $("introHeartField"); 
+  field.replaceChildren();
+  
+  for (let i = 0; i < 100; i++) {
+    const h = document.createElement("span"); 
+    h.className = "intro-heart"; 
+    h.textContent = ["♥","💗","💖","❤"][i % 4];
+    h.style.left = (Math.random() * 100) + "%"; 
+    h.style.fontSize = (12 + Math.random() * 27) + "px";
+    h.style.setProperty("--dx", ((Math.random() - .5) * 100) + "vw"); 
+    h.style.setProperty("--sc", (.7 + Math.random() * 1.5).toFixed(2));
+    h.style.animationDelay = (Math.random() * 0.45) + "s"; 
+    field.appendChild(h);
   }
-  setTimeout(()=>{
+  
+  setTimeout(() => {
     intro.classList.remove("show");
     $("site").classList.remove("hidden");
-    const fc = $("floatingCounter"); if(fc) fc.style.display="block";
-    renderConfigText(); updateCounter(); setupReveals();
-  },2200);
+    const fc = $("floatingCounter"); 
+    if (fc) fc.style.display = "block";
+    renderConfigText(); 
+    updateCounter(); 
+    setupReveals();
+  }, 2200);
 
-  const songs=parseSongs();
-  if(songs.length){ renderSongs(); try{await $("audio").play();}catch{} }
-};
+  const songs = parseSongs();
+  if (songs.length) { 
+    renderSongs(); 
+    try { await $("audio").play(); } catch {} 
+  }
+}
 
-renderFloaters(); renderConfigText(); renderTimeline(); renderGallery(); renderMessages(); renderQuiz(); renderSongs();
-updateCounter(); setInterval(updateCounter,1000);
+// ربط الزرار وزر الـ Enter بالفحص المباشر
+const unlockBtn = $("unlockBtn");
+if (unlockBtn) unlockBtn.addEventListener("click", processUnlock);
+
+const passInput = $("sitePassword");
+if (passInput) {
+  passInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      processUnlock();
+    }
+  });
+}
+
+function renderAll() {
+  renderConfigText();
+  renderTimeline();
+  renderGallery();
+  renderMessages();
+  renderQuiz();
+  renderSongs();
+  updateCounter();
+}
+
+renderFloaters(); 
+renderAll();
+setInterval(updateCounter, 1000);
 loadCloudConfig();
+
 })();
 </script>
 </body>
