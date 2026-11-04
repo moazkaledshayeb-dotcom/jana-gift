@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#100815">
-<title>معاذ شعيب • هدية لجنى</title>
+<title>معاذ شعيب • هدية لعيد الحب</title>
 <style>
 :root{--bg:#090719;--pink:#ff7ce8;--pink2:#ff2ebd;--purple:#7c5cff;--cyan:#37e8ff;--glass:rgba(20,10,38,0.75);--line:rgba(255,125,238,0.32);--muted:#e2d5ff}
 *{box-sizing:border-box}
@@ -24,7 +24,6 @@ a{color:#ffc3e4}
 .center-screen{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:22px;position:relative}
 .glass{background:var(--glass);border:1px solid var(--line);border-radius:24px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 18px 55px #0004}
 
-/* واجهة موحدة بالستايل السري الفخم */
 .lock-card-new{
   width:min(420px,100%);
   padding:36px 28px;
@@ -42,7 +41,10 @@ a{color:#ffc3e4}
   background:linear-gradient(135deg, #ff2ebd, #7c5cff);
   display:flex;align-items:center;justify-content:center;font-size:38px;
   box-shadow:0 0 25px #ff2ebd66;
+  animation: floatIcon 3s ease-in-out infinite;
 }
+@keyframes floatIcon {0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
 .eyebrow{letter-spacing:2px;font-size:11px;color:#e6b4dc;text-transform:uppercase}
 h1,h2,h3,p{overflow-wrap:anywhere}
 h1{font-size:clamp(26px,7vw,44px);line-height:1.2;color:#ffd0e9;margin:10px 0;text-shadow:0 0 25px #ff55b84d}
@@ -91,13 +93,16 @@ footer{text-align:center;padding:60px 12px 100px}
 button,.glass,.pill{box-shadow:0 0 18px #ff2ebd18,0 0 38px #6347ff12}
 .hero:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 20% 35%,#ff2ebd24,transparent 30%),radial-gradient(circle at 80% 65%,#37e8ff1c,transparent 32%);animation:neonPulse 5s ease-in-out infinite alternate}
 @keyframes neonPulse{from{opacity:.55;filter:hue-rotate(0deg)}to{opacity:1;filter:hue-rotate(35deg)}}
+
+/* شاشة الاحتفال المؤقتة (عيد حب سعيد يا جوجا) */
 #loveIntro{position:fixed;inset:0;z-index:25;display:none;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;background:radial-gradient(circle,#28104e 0%,#090719 72%);text-align:center}
 #loveIntro.show{display:flex}
-#loveIntro .love-word{font-size:clamp(34px,10vw,68px);font-weight:900;color:#fff;text-shadow:0 0 10px #ff2ebd,0 0 28px #ff2ebd,0 0 55px #7c5cff;opacity:0;transform:scale(.2);animation:loveWord 1s 1.15s forwards}
-#loveIntro .big-heart{font-size:clamp(100px,36vw,220px);line-height:1;color:#ff2ebd;filter:drop-shadow(0 0 25px #ff2ebd);opacity:0;transform:scale(.1);animation:heartBuild .85s 1.2s cubic-bezier(.2,1.4,.4,1) forwards}
+#loveIntro .love-word{font-size:clamp(28px,7vw,55px);font-weight:900;color:#fff;text-shadow:0 0 15px #ff2ebd,0 0 30px #ff2ebd;opacity:0;transform:scale(.3);animation:loveWord 0.8s 0.2s forwards}
+@keyframes loveWord{to{opacity:1;transform:scale(1)}}
+
 .intro-heart{position:absolute;top:110%;animation:heartFly 1.5s cubic-bezier(.1,.7,.3,1) forwards;filter:drop-shadow(0 0 9px #ff54dc)}
 @keyframes heartFly{0%{transform:translateY(0) scale(.25) rotate(0);opacity:0}15%{opacity:1}75%{opacity:1}100%{transform:translate(var(--dx),-115vh) scale(var(--sc)) rotate(260deg);opacity:0}}
-@keyframes loveWord{to{opacity:1;transform:scale(1)}}@keyframes heartBuild{to{opacity:1;transform:scale(1)}}
+
 #floatingCounter{position:fixed;top:10px;right:10px;z-index:7;padding:8px 12px;border:1px solid #ff72df88;border-radius:999px;background:#130a2be8;backdrop-filter:blur(12px);box-shadow:0 0 22px #ff2ebd44;font-size:12px;color:#fff;display:none;max-width:calc(100% - 20px)}
 #floatingCounter b{color:#ff8be9}
 .message-card{border-color:#ff7ce855;background:linear-gradient(145deg,#1b0d32d9,#120a26d9);transition:transform .35s,box-shadow .35s}
@@ -132,10 +137,16 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
 </head>
 <body>
 <div id="floaters" aria-hidden="true"></div>
-<div id="loveIntro" aria-hidden="true"><div id="introHeartField"></div><div class="love-word">بحبك يا جنى</div><div class="big-heart">♥</div></div>
+
+<!-- شاشة الاحتفال المؤقتة (عرض عيد حب سعيد يا جوجا لمدة ثانيتين بالقلوب) -->
+<div id="loveIntro" aria-hidden="true">
+  <div id="introHeartField"></div>
+  <div class="love-word">❤️ عيد حب سعيد يا چوچا ❤️</div>
+</div>
+
 <div id="floatingCounter" aria-live="off">❤️ بقالنا <b id="floatDays">0</b> يوم و <b id="floatHours">00</b>:<b id="floatMinutes">00</b>:<b id="floatSeconds">00</b></div>
 
-<!-- شاشة القفل بستايل موحد وبدون أي ريفريش -->
+<!-- شاشة القفل المحسنة والذكية -->
 <div id="lockScreen" class="center-screen">
   <div class="lock-card-new">
     <div class="lock-avatar">🎁</div>
@@ -148,7 +159,9 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
     </div>
     
     <button id="unlockBtn" type="button" style="width:100%; padding:14px; font-size:16px;">افتحي الهدية ✨</button>
-    <p id="lockError" class="tiny" style="color:#ff6b8b; font-weight:bold; margin-top:12px;" aria-live="polite"></p>
+    
+    <!-- رسالة الخطأ أو التحذير -->
+    <p id="lockError" class="tiny" style="color:#ff4f8b; font-weight:bold; margin-top:14px; min-height:20px;" aria-live="polite"></p>
     
     <p class="tiny" style="margin-top:18px; opacity:0.8;">صممت بكل حب • معاذ شعيب</p>
   </div>
@@ -453,14 +466,14 @@ function parseLines(value,minimum){
 }
 
 function renderFloaters(){
-  const root=$("floaters"), emojis=["❤️","💖","💌","🌹","✨","💘","💓","🌷","🦋"];
+  const root=$("floaters"), emojis=["❤️","💖","💌","🌹","✨","💘","💓","🌷","🦋","💕","💗"];
   if(!root) return;
   root.innerHTML = "";
-  for(let i=0;i<22;i++){
+  for(let i=0;i<25;i++){
     const el=document.createElement("span");
     el.className="floater";el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
-    el.style.left=(Math.random()*100)+"%";el.style.fontSize=(14+Math.random()*22)+"px";
-    el.style.animationDuration=(9+Math.random()*13)+"s";el.style.animationDelay=(-Math.random()*20)+"s";
+    el.style.left=(Math.random()*100)+"%";el.style.fontSize=(16+Math.random()*24)+"px";
+    el.style.animationDuration=(8+Math.random()*12)+"s";el.style.animationDelay=(-Math.random()*20)+"s";
     root.appendChild(el);
   }
 }
@@ -782,14 +795,16 @@ const sQuiz = $("saveQuiz"); if(sQuiz) sQuiz.addEventListener("click",()=>{
   saveConfig(); renderQuiz(); alert("تم حفظ الاختبار.");
 });
 
-/* معالج الفتح السريع والمباشر (بدون أشكال فورم ولا ريفريش) */
+/* معالج الفتح الفوري مع رسالة الخطأ أو رسالة عيد الحب والقلوب */
 function executeUnlock() {
   const entered = ($("sitePassword").value || "").trim();
+  
   if (entered !== config.sitePass) {
-    setText("lockError", "كلمة السر مش صحيحة، جربي تاني ❤️");
+    setText("lockError", "غلط يا جوجا، حاولي تاني 💔");
     return;
   }
   
+  // لو الباسورد صح:
   setText("lockError", "");
   $("lockScreen").classList.add("hidden");
   
@@ -799,18 +814,19 @@ function executeUnlock() {
   const field = $("introHeartField"); 
   field.replaceChildren();
   
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 120; i++) {
     const h = document.createElement("span"); 
     h.className = "intro-heart"; 
-    h.textContent = ["♥","💗","💖","❤"][i % 4];
+    h.textContent = ["❤️","💖","💕","💗","💘","✨"][i % 6];
     h.style.left = (Math.random() * 100) + "%"; 
-    h.style.fontSize = (12 + Math.random() * 27) + "px";
-    h.style.setProperty("--dx", ((Math.random() - .5) * 100) + "vw"); 
-    h.style.setProperty("--sc", (.7 + Math.random() * 1.5).toFixed(2));
-    h.style.animationDelay = (Math.random() * 0.45) + "s"; 
+    h.style.fontSize = (14 + Math.random() * 30) + "px";
+    h.style.setProperty("--dx", ((Math.random() - .5) * 110) + "vw"); 
+    h.style.setProperty("--sc", (.7 + Math.random() * 1.6).toFixed(2));
+    h.style.animationDelay = (Math.random() * 0.4) + "s"; 
     field.appendChild(h);
   }
   
+  // يظهر شاشة "عيد حب سعيد يا چوچا" لمدة ثانيتين وبعدين يدخل الموقع
   setTimeout(() => {
     intro.classList.remove("show");
     $("site").classList.remove("hidden");
@@ -819,7 +835,7 @@ function executeUnlock() {
     renderConfigText(); 
     updateCounter(); 
     setupReveals();
-  }, 2200);
+  }, 2000);
 
   const songs = parseSongs();
   if (songs.length) { 
