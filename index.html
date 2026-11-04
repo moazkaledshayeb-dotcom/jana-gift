@@ -6,14 +6,14 @@
 <meta name="theme-color" content="#070411">
 <title>معاذ شعيب • هدية رومانسية أسطورية لجنى</title>
 <style>
-:root{--bg:#070411;--pink:#ff6ac1;--pink2:#ff1b9d;--purple:#7b4eff;--cyan:#00f0ff;--glass:rgba(18,8,34,0.82);--line:rgba(255,106,193,0.4);--muted:#e9dbff}
+:root{--bg:#070411;--pink:#ff6ac1;--pink2:#ff1b9d;--purple:#7b4eff;--cyan:#00f0ff;--glass:rgba(18,8,34,0.85);--line:rgba(255,106,193,0.45);--muted:#e9dbff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:20px}
-body{margin:0;background:var(--bg);color:#fff5fa;font-family:Tahoma,Arial,sans-serif;overflow-x:hidden;background-image:radial-gradient(circle at 10% 15%,#ff1b9d35,transparent 40%),radial-gradient(circle at 90% 85%,#7b4eff40,transparent 45%),radial-gradient(circle at 50% 50%,#00f0ff20,transparent 50%);background-attachment:fixed}
+body{margin:0;background:var(--bg);color:#fff5fa;font-family:Tahoma,Arial,sans-serif;overflow-x:hidden;background-image:radial-gradient(circle at 10% 15%,#ff1b9d40,transparent 40%),radial-gradient(circle at 90% 85%,#7b4eff45,transparent 45%),radial-gradient(circle at 50% 50%,#00f0ff25,transparent 50%);background-attachment:fixed}
 body:before{content:"";position:fixed;inset:0;z-index:-4;background:linear-gradient(135deg,#070411,#130722 50%,#05020a)}
 
 button,input,textarea,select{font:inherit}
-button{border:1px solid #ffffff30;border-radius:18px;padding:15px 24px;background:linear-gradient(135deg,var(--pink2),var(--purple));color:white;font-weight:700;cursor:pointer;transition:all .35s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 25px rgba(255,27,157,0.5)}
+button{border:1px solid #ffffff35;border-radius:18px;padding:15px 24px;background:linear-gradient(135deg,var(--pink2),var(--purple));color:white;font-weight:700;cursor:pointer;transition:all .35s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 25px rgba(255,27,157,0.5)}
 button:hover{transform:translateY(-4px) scale(1.03);filter:brightness(1.2);box-shadow:0 0 45px rgba(255,27,157,0.8)}
 button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 
@@ -51,7 +51,7 @@ h3{color:#ffe4f3}
 .sub{color:var(--muted);line-height:2}
 .tiny{font-size:12px;color:#d4bfe2;line-height:1.8}
 
-/* شاشة التتابع السحري الأسطورية بعد الباسورد */
+/* شاشة التتابع السحري الأسطورية بالثواني */
 #loveIntro{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;background:radial-gradient(circle,#1a0933 0%,#070411 85%);text-align:center}
 #loveIntro.show{display:flex}
 .sequence-box{position:relative;z-index:2;padding:25px;animation:fadeInScale .6s cubic-bezier(.1,1.2,.3,1) forwards}
@@ -64,8 +64,8 @@ h3{color:#ffe4f3}
 /* فيديو الخلفية الواضح للرئيسية */
 .hero{min-height:100svh;display:flex;align-items:center;text-align:center;position:relative;overflow:hidden}
 .hero-inner{padding:100px 0 70px;width:100%;z-index:2}
-.hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.6;z-index:-1;filter:brightness(0.9) contrast(1.15)}
-.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,4,17,0.2) 0%,rgba(7,4,17,0.75) 75%,var(--bg))}
+.hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.65;z-index:-1;filter:brightness(0.9) contrast(1.15)}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,4,17,0.2) 0%,rgba(7,4,17,0.8) 75%,var(--bg))}
 
 .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid #ff6ac166;border-radius:99px;background:rgba(255,255,255,0.08);color:#ffdef2;font-size:13px;box-shadow:0 0 20px #ff1b9d33}
 .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}
@@ -186,7 +186,7 @@ nav a:hover{background:var(--pink2);color:#fff;box-shadow:0 0 15px var(--pink2)}
 <div id="site" class="hidden">
   <button id="adminBtn" aria-label="فتح لوحة الإعدادات">⚙️</button>
   <section class="hero">
-    <!-- فيديو الخلفية الرومانسي المباشر من درايف -->
+    <!-- فيديو الخلفية الرومانسي المباشر من درايف (رابطك الجديد) -->
     <video id="heroBgVideo" class="hero-bg-video" autoplay loop muted playsinline></video>
     <div class="wrap hero-inner">
       <span class="pill">✦ MADE WITH PASSION & LOVE ✦</span>
@@ -383,7 +383,7 @@ var SUPABASE_URL = "https://rwdvedsmitwoxkfgxfzm.supabase.co";
 var SUPABASE_KEY = "sb_publishable_gO3EKNRFwHMisUgbABUPig_K1XMkOnM";
 var supabaseReady = function() { return SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("PASTE_"); };
 
-// دالة تحويل روابط جوجل درايف لروابط عرض مباشرة للصور والفيديوهات لضمان عملها 100%
+// دالة ذكية لإصلاح وتحويل روابط درايف لأصل العرض المباشر الصريح
 function fixDriveUrl(url) {
   if (!url) return "";
   var trimmed = String(url).trim();
@@ -960,7 +960,7 @@ if(sQuiz) sQuiz.addEventListener("click", function(){
   alert("تم حفظ الاختبار.");
 });
 
-/* وظيفة الفتح السحري المتتابع بدقة بالثواني المحددة */
+/* وظيفة الفتح السحري المتتابع بالثواني المحددة بدقة */
 function executeUnlock() {
   var passwordInput = $("sitePassword");
   var entered = passwordInput ? passwordInput.value.trim() : "";
