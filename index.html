@@ -97,7 +97,7 @@ button,.glass,.pill{box-shadow:0 0 18px #ff2ebd18,0 0 38px #6347ff12}
 /* شاشة الاحتفال المؤقتة (عيد حب سعيد يا جوجا) */
 #loveIntro{position:fixed;inset:0;z-index:25;display:none;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;background:radial-gradient(circle,#28104e 0%,#090719 72%);text-align:center}
 #loveIntro.show{display:flex}
-#loveIntro .love-word{font-size:clamp(28px,7vw,55px);font-weight:900;color:#fff;text-shadow:0 0 15px #ff2ebd,0 0 30px #ff2ebd;opacity:0;transform:scale(.3);animation:loveWord 0.8s 0.2s forwards}
+#loveIntro .love-word{font-size:clamp(26px,6vw,50px);font-weight:900;color:#fff;text-shadow:0 0 15px #ff2ebd,0 0 30px #ff2ebd;opacity:0;transform:scale(.3);animation:loveWord 0.8s 0.2s forwards}
 @keyframes loveWord{to{opacity:1;transform:scale(1)}}
 
 .intro-heart{position:absolute;top:110%;animation:heartFly 1.5s cubic-bezier(.1,.7,.3,1) forwards;filter:drop-shadow(0 0 9px #ff54dc)}
@@ -138,7 +138,7 @@ nav a{text-decoration:none;padding:9px 12px;background:#ffffff08;border:1px soli
 <body>
 <div id="floaters" aria-hidden="true"></div>
 
-<!-- شاشة الاحتفال المؤقتة (عرض عيد حب سعيد يا جوجا لمدة ثانيتين بالقلوب) -->
+<!-- شاشة الاحتفال المؤقتة (عيد حب سعيد يا جوجا) -->
 <div id="loveIntro" aria-hidden="true">
   <div id="introHeartField"></div>
   <div class="love-word">❤️ عيد حب سعيد يا چوچا ❤️</div>
@@ -455,7 +455,7 @@ async function loadCloudConfig(){
   } catch(error) { console.error("Cloud load failed:",error); }
 }
 
-function esc(value){return String(value ?? "").replace(/[&<>"']/g,ch=>({"&":"&","<":"<",">":">",'"':"&quot;","'":"&#39;"}[ch]));}
+function esc(value){return String(value ?? "").replace(/[&<>"']/g,ch=>({"&":"&","<":"<",">":">",'"':"&quot;","'":"&#39;"}[ch]);)}
 function safeHttpUrl(value){
   try { const u=new URL(String(value)); return ["https:","http:"].includes(u.protocol)?u.href:""; }
   catch { return ""; }
@@ -837,7 +837,7 @@ function executeUnlock() {
     setupReveals();
   }, 2000);
 
-  const songs = parseSongs();
+    const songs = parseSongs();
   if (songs.length) { 
     renderSongs(); 
     try { $("audio").play(); } catch {} 
